@@ -4,7 +4,7 @@ import { ElementBawah } from "../elements/ElementBawah";
 
 export default function Hero() {
   return (
-    <div id="hero" className="h-screen relative overflow-hidden">
+    <div id="hero" className="max-h-screen relative overflow-hidden">
       <Image src="/assets/themes/royal-garden/bg-gunung.webp" alt="bg-gunung" width={1280} height={720} className="w-full h-screen" />
       <Image src="/assets/themes/royal-garden/daunatastengah.webp" alt="ornamen-atas" width={1280} height={720} className="absolute top-0 left-0 right-0" />
       <ElementAtas />
