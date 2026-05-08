@@ -108,7 +108,7 @@ export default function Layout() {
 
   return (
     <div className={!isOpened ? 'h-screen overflow-hidden' : ''}>
-      <div className="max-w-[510px] mx-auto overflow-x-hidden">
+      <div className="max-w-[510px] mx-auto overflow-hidden">
         {!isOpened && (
           <div className="relative">
             <Intro onOpen={handleOpen} />
