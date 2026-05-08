@@ -99,11 +99,17 @@ const CardMempelai = ({ className = "" }: { className?: string }) => {
   )
 }
 
+import AOS from "aos";
+
 export default function Layout() {
   const [isOpened, setIsOpened] = useState(false);
 
   const handleOpen = () => {
     setIsOpened(true);
+    // Reset semua animasi AOS agar Hero dan section lain replay animasinya
+    setTimeout(() => {
+      AOS.refreshHard();
+    }, 50);
   };
 
   return (
