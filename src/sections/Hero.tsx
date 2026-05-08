@@ -6,7 +6,7 @@ import { ElementBawah } from "../elements/ElementBawah";
 
 export default function Hero() {
   return (
-    <div id="hero" className="h-screen w-full relative overflow-hidden bg-gray-900">
+    <div id="hero" className="h-[95vh] w-full relative overflow-hidden bg-gray-900">
   {/* Background Image - Menggunakan fill agar pas dengan h-dvh container */}
   <Image 
     src="/assets/themes/royal-garden/bg-gunung.webp" 
