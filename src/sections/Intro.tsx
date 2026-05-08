@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { ElementAtas } from "../elements/ElementAtas";
 import { ElementBawah } from "../elements/ElementBawah";
@@ -12,23 +12,47 @@ interface HeroProps {
 export default function Intro({ onOpen }: HeroProps) {
   const [isClosing, setIsClosing] = useState(false);
 
-  const handleOpen = () => {
-    setIsClosing(true);
-  };
+  // Lock body scroll saat Intro tampil
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.width = "100%";
+    document.body.style.height = "100%";
 
-  const handleTransitionEnd = () => {
-    if (isClosing && onOpen) {
-      onOpen();
-    }
-  };
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.width = "";
+      document.body.style.height = "";
+    };
+  }, []);
+
+  const handleOpen = useCallback(() => {
+    setIsClosing(true);
+  }, []);
+
+  const handleTransitionEnd = useCallback(
+    (e: React.TransitionEvent<HTMLDivElement>) => {
+      // Hanya respond ke transition dari div utama, bukan dari child elements
+      if (e.target !== e.currentTarget) return;
+      if (e.propertyName !== "transform") return;
+      if (isClosing && onOpen) {
+        onOpen();
+      }
+    },
+    [isClosing, onOpen]
+  );
 
   return (
     <div
       id="intro"
-      className="max-w-[510px] mx-auto fixed left-0 top-0 right-0 bottom-0 z-9999"
+      className="max-w-[510px] mx-auto fixed left-0 top-0 right-0 z-9999"
       style={{
+        height: "100dvh",
         transform: isClosing ? "translateY(-100%)" : "translateY(0)",
         transition: "transform 0.8s ease-in-out",
+        touchAction: "none",
+        overscrollBehavior: "none",
       }}
       onTransitionEnd={handleTransitionEnd}
     >
