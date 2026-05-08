@@ -1,11 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Hero from "./sections/Hero";
 import Mempelai from "./sections/Mempelai";
 import Countdown from "./sections/Countdown";
 import Akad from "./sections/Akad";
 import Galeri from "./sections/Galeri";
+import Intro from "./sections/Intro";
 
 const DaunAtas = ({ className = "" }: { className?: string }) => {
   return (
@@ -98,9 +100,20 @@ const CardMempelai = ({ className = "" }: { className?: string }) => {
 }
 
 export default function Layout() {
+  const [isOpened, setIsOpened] = useState(false);
+
+  const handleOpen = () => {
+    setIsOpened(true);
+  };
+
   return (
-    <div>
+    <div className={!isOpened ? 'h-screen overflow-hidden' : ''}>
       <div className="max-w-[510px] mx-auto overflow-x-hidden">
+        {!isOpened && (
+          <div className="relative">
+            <Intro onOpen={handleOpen} />
+          </div>
+        )}
         <Hero />
         <Mempelai />
         <Countdown />
