@@ -38,3 +38,32 @@ body {
   }
 }
 
+/* --- Animasi Besar-Kecil untuk Elemen Biasa --- */
+@keyframes bounceScale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08); /* Membesar 8% */
+  }
+}
+
+/* --- Animasi Besar-Kecil KHUSUS Elemen Tengah --- */
+/* Kita harus menyertakan translateX(-50%) agar posisi tengahnya tidak rusak */
+@keyframes bounceScaleCenter {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.08);
+  }
+}
+
+/* --- Class Utility untuk dipanggil di Komponen --- */
+.animate-custom-pulse {
+  animation: bounceScale 3s ease-in-out infinite;
+}
+
+.animate-custom-pulse-center {
+  animation: bounceScaleCenter 3s ease-in-out infinite;
+}

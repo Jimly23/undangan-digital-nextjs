@@ -1,10 +1,17 @@
 import Image from "next/image";
 import { ElementAtas } from "../elements/ElementAtas";
 import { ElementBawah } from "../elements/ElementBawah";
+import { useEffect } from "react";
+import AOS from "aos";
 
 
 
 export default function Hero() {
+
+  useEffect(() => {
+    // Refresh AOS saat komponen Hero mounted/muncul
+    AOS.refresh();
+  }, []);
   return (
     <div id="hero" className="h-[95vh] w-full relative overflow-hidden bg-gray-900">
   {/* Background Image - Menggunakan fill agar pas dengan h-dvh container */}
