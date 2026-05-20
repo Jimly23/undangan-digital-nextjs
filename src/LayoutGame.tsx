@@ -111,12 +111,12 @@ const LayoutGame = () => {
   const isSectionPage = activePage !== 'intro' && activePage !== 'menu';
 
   return (
-    <div className='w-[380px] min-h-screen mx-auto relative bg-[#E6F9FA]'>
+    <div className='w-[380px] h-screen mx-auto relative bg-[#E6F9FA] overflow-x-hidden'>
 
       {/* INTRO SCREEN */}
       {activePage === 'intro' && (
         <div
-          className={`absolute inset-0 z-10 transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
+          className={`absolute overflow-hidden inset-0 z-10 transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
         >
           <Image src="/assets/themes/estella/bg-intro.webp" alt="bg-game" width={380} height={800} className='h-full relative' />
           <p className='absolute top-[140px] left-0 right-0 text-center text-blue-700 font-bold'>The Wedding Of</p>
