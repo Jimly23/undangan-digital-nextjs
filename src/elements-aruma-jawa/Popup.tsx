@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import Template from '../sections-aruma/Template';
+import Template from '../sections-aruma-jawa/Template';
 
 interface PopupProps {
   isOpen: boolean;
