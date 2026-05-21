@@ -35,8 +35,14 @@
 
 
 import type { Metadata } from "next";
+import localFont from "next/font/local"; // Import modul font lokal
 import "./globals.css";
 import { AOSInit } from "../src/AOSInit";
+
+const anginSenja = localFont({
+  src: "../public/assets/fonts/Angin-Senja.otf", // Sesuaikan path relative dari file layout.tsx ke file font Anda
+  variable: "--font-angin-senja", // Definisikan sebagai variabel CSS
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -50,7 +56,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">
+      <body className={`min-h-full flex flex-col ${anginSenja.variable} antialiased`}>
         {children}
         <AOSInit />
       </body>

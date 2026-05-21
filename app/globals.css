@@ -25,6 +25,15 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+@theme {
+  /* Jika Anda menggunakan Tailwind v4 terbaru, cara daftarnya seperti ini: */
+  --font-angin: var(--font-angin-senja);
+}
+
+/* ATAU jika cara di atas tidak terbaca, gunakan utility class standar CSS: */
+.font-angin-senja {
+  font-family: var(--font-angin-senja), sans-serif;
+}
 
 /* daun bergerak */
 @layer utilities {
