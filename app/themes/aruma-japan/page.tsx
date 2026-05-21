@@ -118,7 +118,7 @@ const Page = () => {
   const isSectionPage = activePage !== 'intro' && activePage !== 'menu';
 
   return (
-    <div className='w-[380px] h-screen mx-auto relative bg-[#E6F9FA] overflow-x-hidden'>
+    <div className='w-full max-w-[380px] h-screen mx-auto relative bg-[#E6F9FA] overflow-x-hidden'>
 
       {/* INTRO SCREEN */}
       {activePage === 'intro' && (
@@ -126,8 +126,8 @@ const Page = () => {
           className={`absolute overflow-hidden inset-0 z-10 transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
         >
           <Image src="/assets/themes/aruma-jepang/intro.webp" alt="bg-game" width={380} height={800} className='h-full relative' />
-          <p className='font-angin-senja absolute top-[220px] left-0 right-0 text-center text-[#6b2e1d]'>The Wedding Of</p>
-          <p className='font-angin-senja absolute top-[250px] left-0 right-0 text-center text-2xl text-[#6b2e1d]'>Ahmad & Laras</p>
+          <p className='font-angin-senja absolute top-[230px] left-0 right-0 text-center text-4xl text-[#6b2e1d]'>The Wedding Of</p>
+          <p className='font-angin-senja absolute top-[260px] left-0 right-0 text-center text-6xl text-[#6b2e1d]'>Ahmad & Laras</p>
           <div className='absolute bottom-20 left-0 right-0 text-center flex justify-center'>
             <Image
               src="/assets/themes/aruma-jepang/btn.webp"
@@ -199,7 +199,7 @@ const Page = () => {
           <div id='love-story' className={`w-[60px] h-[60px] absolute left-1/2 top-[50px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center cursor-pointer`} onClick={() => setIsLoveStoryOpen(true)}>
             <Image src="/assets/themes/aruma-jepang/love-story.webp" alt='Love Story' width={150} height={150} />
           </div>
-          <div id='about-us' className={`w-[120px] h-[120px] absolute left-[160px] top-[250px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center [animation-delay:400ms] cursor-pointer`} onClick={() => setIsAboutOpen(true)}>
+          <div id='about-us' className={`w-[120px] h-[120px] absolute left-[160px] bottom-[42%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center [animation-delay:400ms] cursor-pointer`} onClick={() => setIsAboutOpen(true)}>
             <Image src="/assets/themes/aruma-jepang/about.webp" alt='About Us' width={150} height={150} />
           </div>
 
@@ -209,7 +209,7 @@ const Page = () => {
           <div id='dresscode' className={`w-[70px] h-[70px] absolute right-[70px] top-[210px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse [animation-delay:500ms] cursor-pointer`} onClick={() => setIsDresscodeOpen(true)}>
             <Image src="/assets/themes/aruma-jepang/dresscode.webp" alt='Dresscode' width={120} height={120} />
           </div>
-          <div id='rsvp' className={`w-[90px] h-[90px] absolute right-[20px] top-[335px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center [animation-delay:150ms] cursor-pointer`} onClick={() => setIsRsvpOpen(true)}>
+          <div id='rsvp' className={`w-[90px] h-[90px] absolute right-[20px] bottom-[35%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center [animation-delay:150ms] cursor-pointer`} onClick={() => setIsRsvpOpen(true)}>
             <Image src="/assets/themes/aruma-jepang/rsvp.webp" alt='RSVP' width={170} height={170} />
           </div>
         </div>
