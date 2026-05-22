@@ -6,9 +6,11 @@ interface TemplatePopupProps {
   onClose: () => void;
   title?: string; // Menambahkan custom title agar lebih fleksibel
   children: React.ReactNode; // Menambahkan tipe data children
+  warnaBg: string;
+  warnaBorder: string;
 }
 
-export default function Template({ isOpen, onClose, title = "Judul Popup", children }: TemplatePopupProps) {
+export default function Template({ isOpen, onClose, title = "Judul Popup", children, warnaBg, warnaBorder }: TemplatePopupProps) {
   // Jika popup tidak aktif, jangan render apapun
   if (!isOpen) return null;
 
@@ -20,7 +22,10 @@ export default function Template({ isOpen, onClose, title = "Judul Popup", child
       <div className="w-full max-w-[370px] h-auto max-h-[90vh] bg-white rounded-2xl border border-black flex flex-col overflow-hidden shadow-lg">
         
         {/* 3. Top Mac-Style Window Bar (Pink) */}
-        <div className="w-full bg-[#FFB5C5] border-b border-black p-3 flex items-center justify-between gap-2 shrink-0">
+        <div 
+          style={{ backgroundColor: warnaBg, borderColor: warnaBorder }}
+          className="w-full border-b p-3 flex items-center justify-between gap-2 shrink-0"
+        >
           <div className="flex gap-1.5">
             <span className="w-3 h-3 rounded-full bg-[#FF5F56] border border-black" />
             <span className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-black" />

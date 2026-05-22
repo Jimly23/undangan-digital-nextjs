@@ -6,14 +6,16 @@ interface MessagesModalProps {
   isOpen: boolean;
   onClose: () => void;
   totalMessages?: number; // Opsional jika ingin passing jumlah data dinamis
+  warnaBg: string;
+  warnaBorder: string;
 }
 
-export default function MessagesModal({ isOpen, onClose, totalMessages = 0 }: MessagesModalProps) {
+export default function MessagesModal({ isOpen, onClose, totalMessages = 0, warnaBg, warnaBorder }: MessagesModalProps) {
   // Cegah rendering jika modal dalam kondisi tertutup
   if (!isOpen) return null;
 
   return (
-    <Template isOpen={isOpen} onClose={onClose} title="Semua Pesan">
+    <Template isOpen={isOpen} onClose={onClose} warnaBg={warnaBg} warnaBorder={warnaBorder} title="Semua Pesan">
       {/* Teks Sub-Header Atas */}
           <div className="w-full">
             <p className="text-[#557577] text-xs font-medium leading-relaxed px-2">
@@ -22,14 +24,14 @@ export default function MessagesModal({ isOpen, onClose, totalMessages = 0 }: Me
 
             {/* Pill Badge Indikator Jumlah Pesan */}
             <div className="w-full flex justify-center mt-3">
-              <div className="inline-flex items-center gap-1.5 px-4 py-1 rounded-full border border-dashed border-[#00C2CB] bg-[#E6F9FA]/60 text-[#1A4345] text-[11px] font-bold tracking-wider uppercase shadow-sm">
-                <Users size={12} className="text-[#00C2CB]" />
+              <div style={{ borderColor: warnaBg }} className="inline-flex items-center gap-1.5 px-4 py-1 rounded-full border border-dashed text-[#1A4345] text-[11px] font-bold tracking-wider uppercase shadow-sm">
+                <Users size={12} style={{ color: warnaBg }} />
                 <span>{totalMessages} Pesan</span>
               </div>
             </div>
 
             {/* Garis Pembatas Tipis */}
-            <hr className="border-t border-[#00C2CB]/20 mt-4 w-full" />
+            <hr style={{ borderColor: warnaBg }} className="border-t mt-4 w-full" />
           </div>
 
           {/* AREA TENGAH: EMPTY STATE (Belum Ada Pesan) */}
@@ -48,7 +50,7 @@ export default function MessagesModal({ isOpen, onClose, totalMessages = 0 }: Me
           {/* AREA BAWAH: FOOTER TEXT & NOTE */}
           <div className="w-full">
             {/* Garis Pembatas Bawah */}
-            <hr className="border-t border-[#00C2CB]/20 mb-4 w-full" />
+            <hr style={{ borderColor: warnaBg }} className="border-t mt-4 w-full" />
             
             <p className="text-[#557577] text-[11px] font-medium tracking-wide flex items-center justify-center gap-1">
               Terima kasih atas ucapan dan doa yang telah diberikan 

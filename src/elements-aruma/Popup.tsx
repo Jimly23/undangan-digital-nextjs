@@ -5,9 +5,11 @@ import Template from '../sections-aruma/Template';
 interface PopupProps {
   isOpen: boolean;
   onClose: () => void;
+  warnaBg: string;
+  warnaBorder: string;
 }
 
-export default function Popup({ isOpen, onClose }: PopupProps) {
+export default function Popup({ isOpen, onClose, warnaBg, warnaBorder }: PopupProps) {
   // Jika state isOpen false, modal tidak akan dirender
   if (!isOpen) return null;
 
@@ -58,7 +60,7 @@ export default function Popup({ isOpen, onClose }: PopupProps) {
   ];
 
   return (
-    <Template isOpen={isOpen} onClose={onClose} title="Ruangan Interaktif">
+    <Template isOpen={isOpen} onClose={onClose} warnaBg={warnaBg} warnaBorder={warnaBorder} title="Ruangan Interaktif">
       <p className="text-center mb-3 text-[#557577] text-xs font-medium leading-relaxed px-2">
             Klik elemen-elemen di dalam ruangan ini untuk menemukan kejutan dan informasi penting seputar hari istimewa kami.
           </p>
@@ -71,11 +73,12 @@ export default function Popup({ isOpen, onClose }: PopupProps) {
                 // Tambahkan fungsi navigasi atau action di sini jika di-klik
                 console.log(`Menu ${item.id} diklik`);
               }}
-              className="w-full mb-3 bg-white border border-[#00C2CB]/60 rounded-2xl p-3 flex items-center gap-3 shadow-sm hover:border-[#00C2CB] hover:bg-[#E6F9FA]/30 transition text-left active:scale-[0.99] group"
+              className="w-full mb-3 bg-white border rounded-2xl p-3 flex items-center gap-3 shadow-sm transition text-left active:scale-[0.99] group"
+              style={{ borderColor: warnaBg }}
             >
               {/* Box Wadah Ikon Mini (Rounded-xl dengan border hitam tipis sesuai gambar) */}
-              <div className="w-16 h-16 rounded-xl border border-black/80 bg-[#E6F9FA] relative overflow-hidden flex-shrink-0 flex items-center justify-center p-1 shadow-sm">
-                <div className="absolute inset-0.5 border border-dashed border-[#00C2CB]/40 rounded-lg pointer-events-none" />
+              <div style={{ borderColor: warnaBg }} className="w-16 h-16 rounded-xl border relative overflow-hidden flex-shrink-0 flex items-center justify-center p-1 shadow-sm">
+                <div style={{ borderColor: `${warnaBg}80` }} className="absolute inset-0.5 border border-dashed rounded-lg pointer-events-none" />
                 <Image
                   src={item.icon}
                   alt={item.title}

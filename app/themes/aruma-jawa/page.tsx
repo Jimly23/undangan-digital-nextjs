@@ -3,20 +3,45 @@
 import Image from 'next/image'
 import { ArrowLeft, CircleAlert, Volume2, VolumeX, Lightbulb, LightbulbOff, MessageSquare, MessageSquareDashed } from 'lucide-react';
 import { useState, useEffect, useCallback, useRef, type ReactNode } from 'react';
-import Galeri from '@/src/sections-aruma-jawa/Galeri';
-import Rsvp from '@/src/sections-aruma-jawa/Rsvp';
-import Gift from '@/src/sections-aruma-jawa/Gift';
-import LoveStory from '@/src/sections-aruma-jawa/LoveStory';
-import Date from '@/src/sections-aruma-jawa/Date';
-import Dresscode from '@/src/sections-aruma-jawa/Dresscode';
-import About from '@/src/sections-aruma-jawa/About';
-import Navbar from '@/src/elements-aruma-jawa/Navbar';
-import Popup from '@/src/elements-aruma-jawa/Popup';
-import MessagesModal from '@/src/elements-aruma-jawa/MessageModal';
+import Galeri from '@/src/sections-aruma/Galeri';
+import Rsvp from '@/src/sections-aruma/Rsvp';
+import Gift from '@/src/sections-aruma/Gift';
+import LoveStory from '@/src/sections-aruma/LoveStory';
+import Date from '@/src/sections-aruma/Date';
+import Dresscode from '@/src/sections-aruma/Dresscode';
+import About from '@/src/sections-aruma/About';
+import Navbar from '@/src/elements-aruma/Navbar';
+import Popup from '@/src/elements-aruma/Popup';
+import MessagesModal from '@/src/elements-aruma/MessageModal';
 
 type ActivePage = 'intro' | 'menu' | 'galeri' | 'rsvp' | 'gift' | 'love-story' | 'date' | 'dresscode' | 'about';
 
 const validPages: ActivePage[] = ['intro', 'menu', 'galeri', 'rsvp', 'gift', 'love-story', 'date', 'dresscode', 'about'];
+
+const listFotoGallery = [
+  "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=600",
+  "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600",
+  "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=600",
+  "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=600"
+];
+
+const warnaBg = "#e1b87e";
+const warnaBorder = "#603310";
+
+const ceritaKita = [
+  {
+    title: "AGUSTUS 2019 – AWAL YANG TAK DISANGKA",
+    description: "Tanpa pernah direncanakan, langkah kami dipertemukan di ruang kelas..."
+  },
+  {
+    title: "DESEMBER 2021 – BERBAGI KOMITMEN",
+    description: "Setelah melewati ratusan obrolan dan menyelaraskan visi masa depan..."
+  },
+  {
+    title: "MEI 2026 – LANGKAH MENUJU PELAMINAN",
+    description: "Hari yang dinanti akhirnya tiba. Kami sepakat untuk mengikat janji suci..."
+  }
+];
 
 const Page = () => {
   const [activePage, setActivePage] = useState<ActivePage>('intro');
@@ -96,13 +121,11 @@ const Page = () => {
   }, []);
 
   const sectionPages: Record<string, ReactNode> = {
-    'galeri': <Galeri isOpen={false} onClose={() => {}} />,
-    'rsvp': <Rsvp isOpen={false} onClose={() => {}} />,
-    'gift': <Gift isOpen={false} onClose={() => {}} />,
-    'love-story': <LoveStory isOpen={false} onClose={() => {}} />,
-    'date': <Date isOpen={false} onClose={() => {}} />,
-    'dresscode': <Dresscode isOpen={false} onClose={() => {}} />,
-    'about': <About isOpen={false} onClose={() => {}} />,
+    // 'galeri': <Galeri isOpen={false} onClose={() => {}} />,
+    // 'rsvp': <Rsvp isOpen={false} onClose={() => {}} />,
+    // 'gift': <Gift isOpen={false} onClose={() => {}} />,
+    // 'love-story': <LoveStory isOpen={false} onClose={() => {}} />,
+    // 'about': <About isOpen={false} onClose={() => {}} fotoWanita={"https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600&auto=format&fit=crop"} fotoPria={"https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600&auto=format&fit=crop"} namaWanita={"Elina Clarissa"} namaPria={"Adelio Nugroho"} ayahWanita={"Reynaldi"} ibuWanita={"Cantika"} ayahPria={"Budi Sentosa"} ibuPria={"Siti Amanah"} instagramWanita={"elinaclarissa"} instagramPria={"adelionugroho"} />,
   };
 
   const sectionLabels: Record<string, string> = {
@@ -149,43 +172,45 @@ const Page = () => {
         <div
           className={`absolute inset-0 z-10 transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'} ${!isLightOn ? 'bg-black' : ''}`}
         >
-          <Image src="/assets/themes/aruma-jawa/bg.webp" alt="bg-game" width={380} height={800} className={`h-full relative transition-[filter] duration-500 ${!isLightOn ? 'brightness-50' : 'brightness-100'}`} />
-          <div onClick={() => setIsModalOpen(true)} className='w-[40px] h-[40px] z-99 rounded-lg bg-[#e1b87e] border-2 border-[#603310] absolute left-3 top-3 flex items-center justify-center cursor-pointer hover:scale-95 transition-transform'>
-            <div className='w-[80%] h-[80%] rounded-xl bg-white border border-[#603310] flex items-center justify-center'>
-              <CircleAlert size={18} className='text-[#603310]' />
+          <Image src="/assets/themes/aruma-jawa/bg.png" alt="bg-game" width={380} height={800} className={`h-full relative transition-[filter] duration-500 ${!isLightOn ? 'brightness-50' : 'brightness-100'}`} />
+          <div onClick={() => setIsModalOpen(true)} className='w-[40px] h-[40px] z-99 rounded-lg border-2 absolute left-3 top-3 flex items-center justify-center cursor-pointer hover:scale-95 transition-transform' style={{ backgroundColor: warnaBg, borderColor: warnaBorder }}>
+            <div className='w-[80%] h-[80%] rounded-xl bg-white border flex items-center justify-center' style={{ borderColor: warnaBorder }}>
+              <CircleAlert size={18} style={{ color: warnaBorder }} />
             </div>
           </div>
           <div
-            className='w-[40px] h-[40px] z-99 rounded-lg bg-[#e1b87e] border-2 border-[#603310] absolute right-3 top-3 flex items-center justify-center cursor-pointer hover:scale-95 transition-transform'
+            className='w-[40px] h-[40px] z-99 rounded-lg border-2 absolute right-3 top-3 flex items-center justify-center cursor-pointer hover:scale-95 transition-transform'
             onClick={toggleMusic}
+            style={{ backgroundColor: warnaBg, borderColor: warnaBorder }}
           >
-            <div className='w-[80%] h-[80%] rounded-xl bg-white border border-[#603310] flex items-center justify-center text-[#603310]'>
+            <div className='w-[80%] h-[80%] rounded-xl bg-white border flex items-center justify-center' style={{ borderColor: warnaBorder, color: warnaBorder }}>
               {isPlaying ? <Volume2 size={18} /> : <VolumeX size={18} />}
             </div>
           </div>
           <div
-            className='w-[40px] h-[40px] z-99 rounded-lg bg-[#e1b87e] border-2 border-[#603310] absolute right-3 top-16 flex items-center justify-center cursor-pointer hover:scale-95 transition-transform'
+            className='w-[40px] h-[40px] z-99 rounded-lg border-2 absolute right-3 top-16 flex items-center justify-center cursor-pointer hover:scale-95 transition-transform'
             onClick={() => setIsLightOn(!isLightOn)}
+            style={{ backgroundColor: warnaBg, borderColor: warnaBorder }}
           >
-            <div className='w-[80%] h-[80%] rounded-xl bg-white border border-[#603310] flex items-center justify-center text-[#603310]'>
+            <div className='w-[80%] h-[80%] rounded-xl bg-white border flex items-center justify-center' style={{ borderColor: warnaBorder, color: warnaBorder }}>
               {isLightOn ? <LightbulbOff size={18} /> : <Lightbulb size={18} />}
             </div>
           </div>
 
           {isPromptVisible && (
-            <div className='w-[200px] z-99 rounded-lg bg-white border-2 border-[#603310] absolute left-3 bottom-16 flex items-center justify-center p-1'><div className='w-full h-full rounded-lg border-dashed bg-white border border-[#603310] p-2 text-xs text-[#603310]'>
+            <div className='w-[200px] z-99 rounded-lg bg-white border-2 absolute left-3 bottom-16 flex items-center justify-center p-1' style={{ borderColor: warnaBorder }}><div className='w-full h-full rounded-lg border-dashed bg-white border p-2 text-xs' style={{ borderColor: warnaBorder, color: warnaBorder }}>
               <p>Silahkan konfirmasi kehadiran dan berikan ucapan terbaik untuk kami.</p>
-              <span onClick={() => setIsRsvpOpen(true)} className='cursor-pointer w-full block py-1 mt-2 text-center rounded-full border border-[#603310] bg-[#e1b87e] text-white font-semibold'>Konfirmasi Kehadiran</span>
+              <span onClick={() => setIsRsvpOpen(true)} className='cursor-pointer w-full block py-1 mt-2 text-center rounded-full border text-white font-semibold' style={{ backgroundColor: warnaBg, borderColor: warnaBorder }}>Konfirmasi Kehadiran</span>
               </div>
             </div>
           )}
-          <div onClick={() => setIsMessageModalOpen(true)} className='cursor-pointer w-[40px] h-[40px] z-99 rounded-lg bg-[#e1b87e] border-2 border-[#603310] text-[#603310] absolute left-3 bottom-3 flex items-center justify-center'><div className='w-[80%] h-[80%] flex justify-center items-center rounded-xl bg-white border border-[#603310]'>{isMessageModalOpen ? <MessageSquare size={18} /> : <MessageSquareDashed size={18} />}</div></div>
-          <div onClick={() => setIsPromptVisible(!isPromptVisible)} className='w-[148px] h-[40px] z-99 rounded-lg cursor-pointer bg-[#e1b87e] border-2 border-[#603310] absolute left-16 bottom-3 flex items-center justify-center transition-all hover:scale-95'><div className='w-[90%] h-[80%] flex items-center justify-center rounded-xl bg-white border border-[#603310]'>
-            <p className='text-[#603310] text-xs text-center'>{isPromptVisible ? 'Sembunyikan Ucapan' : 'Tampilkan Ucapan'}</p>
+          <div onClick={() => setIsMessageModalOpen(true)} className='cursor-pointer w-[40px] h-[40px] z-99 rounded-lg border-2 absolute left-3 bottom-3 flex items-center justify-center' style={{ backgroundColor: warnaBg, borderColor: warnaBorder, color: warnaBorder }}><div className='w-[80%] h-[80%] flex justify-center items-center rounded-xl bg-white border' style={{ borderColor: warnaBorder }}>{isMessageModalOpen ? <MessageSquare size={18} /> : <MessageSquareDashed size={18} />}</div></div>
+          <div onClick={() => setIsPromptVisible(!isPromptVisible)} className='w-[148px] h-[40px] z-99 rounded-lg cursor-pointer border-2 absolute left-16 bottom-3 flex items-center justify-center transition-all hover:scale-95' style={{ backgroundColor: warnaBg, borderColor: warnaBorder }}><div className='w-[90%] h-[80%] flex items-center justify-center rounded-xl bg-white border' style={{ borderColor: warnaBorder }}>
+            <p className='text-xs text-center' style={{ color: warnaBorder }}>{isPromptVisible ? 'Sembunyikan Ucapan' : 'Tampilkan Ucapan'}</p>
             </div>
           </div>
 
-          <div id='gallery' className={`w-[90px] h-[90px] rotate-2 absolute left-[50px] top-[15%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse cursor-pointer`} onClick={() => setIsGaleriOpen(true)}>
+          <div id='gallery' className={`w-[90px] h-[90px] -rotate-1 absolute left-[50px] top-[20%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse cursor-pointer`} onClick={() => setIsGaleriOpen(true)}>
             <Image
               src="/assets/themes/aruma-jawa/gallery.png"
               alt='Gallery'
@@ -201,17 +226,17 @@ const Page = () => {
           <div id='love-story' className={`w-[70px] h-[70px] absolute left-1/2 top-[50px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center cursor-pointer`} onClick={() => setIsLoveStoryOpen(true)}>
             <Image src="/assets/themes/aruma-jawa/love-story.png" alt='Love Story' width={150} height={150} />
           </div>
-          <div id='about-us' className={`w-[110px] h-[110px] -rotate-4 absolute left-[160px] bottom-[51%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center [animation-delay:400ms] cursor-pointer`} onClick={() => setIsAboutOpen(true)}>
+          <div id='about-us' className={`w-[110px] h-[110px] -rotate-4 absolute left-[160px] bottom-[43%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center [animation-delay:400ms] cursor-pointer`} onClick={() => setIsAboutOpen(true)}>
             <Image src="/assets/themes/aruma-jawa/about.png" alt='About Us' width={150} height={150} />
           </div>
 
-          <div id='date-venue' className={`w-[80px] h-[80px] absolute right-[30px] top-[80px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse [animation-delay:300ms] cursor-pointer`} onClick={() => setIsDateOpen(true)}>
+          <div id='date-venue' className={`w-[80px] h-[80px] absolute right-[70px] top-[80px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse [animation-delay:300ms] cursor-pointer`} onClick={() => setIsDateOpen(true)}>
             <Image src="/assets/themes/aruma-jawa/date.png" alt='Date & Venue' width={90} height={90} />
           </div>
-          <div id='dresscode' className={`w-[70px] h-[70px] absolute right-[90px] top-[30%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse [animation-delay:500ms] cursor-pointer`} onClick={() => setIsDresscodeOpen(true)}>
+          <div id='dresscode' className={`w-[70px] h-[70px] absolute right-[75px] top-[30%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse [animation-delay:500ms] cursor-pointer`} onClick={() => setIsDresscodeOpen(true)}>
             <Image src="/assets/themes/aruma-jawa/dresscode.png" alt='Dresscode' width={120} height={120} />
           </div>
-          <div id='rsvp' className={`w-[100px] h-[100px] absolute -right-[45px] bottom-[43%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center [animation-delay:150ms] cursor-pointer`} onClick={() => setIsRsvpOpen(true)}>
+          <div id='rsvp' className={`w-[80px] h-[80px] absolute right-[35px] bottom-[35%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center [animation-delay:150ms] cursor-pointer`} onClick={() => setIsRsvpOpen(true)}>
             <Image src="/assets/themes/aruma-jawa/rsvp.png" alt='RSVP' width={170} height={170} />
           </div>
         </div>
@@ -234,38 +259,67 @@ const Page = () => {
       <Popup
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        warnaBg={warnaBg}
+        warnaBorder={warnaBorder}
       />
       <MessagesModal
         isOpen={isMessageModalOpen}
         onClose={() => setIsMessageModalOpen(false)}
+        warnaBg={warnaBg}
+        warnaBorder={warnaBorder}
       />
       <Galeri
         isOpen={isGaleriOpen}
         onClose={() => setIsGaleriOpen(false)}
+        fotoGallery={listFotoGallery}
+        warnaBg={warnaBg}
+        warnaBorder={warnaBorder}
       />
       <Gift
         isOpen={isGiftOpen}
         onClose={() => setIsGiftOpen(false)}
+        icon="/assets/themes/aruma-jawa/gift.png"
+        warnaBg={warnaBg}
+        warnaBorder={warnaBorder}
       />
       <About
         isOpen={isAboutOpen}
         onClose={() => setIsAboutOpen(false)}
+        fotoWanita={"https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600&auto=format&fit=crop"} fotoPria={"https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600&auto=format&fit=crop"} namaWanita={"Elina Clarissa"} namaPria={"Adelio Nugroho"} ayahWanita={"Reynaldi"} ibuWanita={"Cantika"} ayahPria={"Budi Sentosa"} ibuPria={"Siti Amanah"} instagramWanita={"elinaclarissa"} instagramPria={"adelionugroho"}
+        warnaBg={warnaBg} warnaBorder={warnaBorder} 
       />
       <Date
         isOpen={isDateOpen}
         onClose={() => setIsDateOpen(false)}
+        tanggal="Kamis, 31 Desember 2026"
+        waktu="02:00 PM - 04:00 PM"
+        namaTempat="Masjid Istiqlal"
+        alamatTempat="Jl. Taman Wijaya Kusuma, Pasar Baru..."
+        fotoTempat="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600&auto=format&fit=crop"
+        googleMaps="https://maps.google.com/..."
+        warnaBg={warnaBg}
+        warnaBorder={warnaBorder}
       />
       <Dresscode
         isOpen={isDresscodeOpen}
         onClose={() => setIsDresscodeOpen(false)}
+        icon="/assets/themes/aruma-jepang/dresscode.webp"
+        warnaBg={warnaBg}
+        warnaBorder={warnaBorder}
       />
       <LoveStory
         isOpen={isLoveStoryOpen}
         onClose={() => setIsLoveStoryOpen(false)}
+        stories={ceritaKita}
+        warnaBg={warnaBg}
+        warnaBorder={warnaBorder}
       />
       <Rsvp
         isOpen={isRsvpOpen}
         onClose={() => setIsRsvpOpen(false)}
+        icon="/assets/themes/aruma-jawa/rsvp.png"
+        warnaBg={warnaBg}
+        warnaBorder={warnaBorder}
       />
     </div>
   )

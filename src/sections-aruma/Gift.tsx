@@ -5,16 +5,19 @@ import Template from "./Template";
 interface GiftPopupProps {
   isOpen: boolean;
   onClose: () => void;
+  icon: string;
+  warnaBg: string;
+  warnaBorder: string;
 }
 
-export default function Gift({ isOpen, onClose }: GiftPopupProps) {
+export default function Gift({ isOpen, onClose, icon, warnaBg, warnaBorder }: GiftPopupProps) {
   // Jika popup tidak aktif, jangan render apapun
   if (!isOpen) return null;
   return (
-    <Template isOpen={isOpen} onClose={onClose} title="Gift">
-      <div className="relative w-44 h-44 flex items-center justify-center drop-shadow-[0_0_15px_rgba(0,194,203,0.4)] mb-4 animate-custom-pulse mx-auto">
+    <Template isOpen={isOpen} onClose={onClose} warnaBg={warnaBg} warnaBorder={warnaBorder} title="Gift">
+      <div className="relative w-44 h-44 flex items-center justify-center  mb-4 mx-auto">
             <Image
-              src="/assets/themes/aruma-jepang/gift.webp"
+              src={icon}
               alt="Gift Illustration"
               width={100}
               height={100}

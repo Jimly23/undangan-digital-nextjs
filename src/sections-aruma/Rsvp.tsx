@@ -8,9 +8,12 @@ import Template from "./Template";
 interface RsvpPopupProps {
   isOpen: boolean;
   onClose: () => void;
+  icon: string;
+  warnaBg: string;
+  warnaBorder: string;
 }
 
-export default function Rsvp({ isOpen, onClose }: RsvpPopupProps) {
+export default function Rsvp({ isOpen, onClose, icon, warnaBg, warnaBorder }: RsvpPopupProps) {
   const [nama, setNama] = useState('');
   const [kehadiran, setKehadiran] = useState('');
   const [jumlahTamu, setJumlahTamu] = useState('');
@@ -19,10 +22,10 @@ export default function Rsvp({ isOpen, onClose }: RsvpPopupProps) {
   if (!isOpen) return null;
 
   return (
-    <Template isOpen={isOpen} onClose={onClose} title="RSVP">
-      <div className="relative w-44 h-56 mx-auto flex items-center justify-center drop-shadow-[0_0_15px_rgba(0,194,203,0.35)] animate-custom-pulse">
+    <Template isOpen={isOpen} onClose={onClose} warnaBg={warnaBg} warnaBorder={warnaBorder} title="RSVP">
+      <div className="relative w-44 h-56 mx-auto flex items-center justify-center ">
           <Image
-            src="/assets/themes/aruma-jepang/rsvp.webp"
+            src={icon}
             alt="RSVP Illustration"
             width={100}
             height={150}
@@ -41,14 +44,16 @@ export default function Rsvp({ isOpen, onClose }: RsvpPopupProps) {
             placeholder="Nama Lengkap"
             value={nama}
             onChange={(e) => setNama(e.target.value)}
-            className="w-full h-12 px-5 bg-white/70 border border-[#00C2CB]/30 rounded-2xl text-sm placeholder-gray-400 focus:outline-none focus:border-[#00C2CB] focus:bg-white transition"
+            style={{ borderColor: `${warnaBg}`, backgroundColor: `${warnaBg}10`, color: `${warnaBorder}` }}
+            className="w-full h-12 px-5  border rounded-2xl text-sm focus:outline-none transition"
           />
 
           <div className="relative w-40">
             <select
               value={kehadiran}
               onChange={(e) => setKehadiran(e.target.value)}
-              className="w-full h-10 px-4 pr-9 bg-white/70 border border-[#00C2CB]/30 rounded-2xl text-sm text-gray-600 appearance-none focus:outline-none focus:border-[#00C2CB] focus:bg-white transition cursor-pointer"
+              style={{ borderColor: `${warnaBg}`, backgroundColor: `${warnaBg}10`, color: `${warnaBorder}` }}
+              className="w-full h-10 px-4 pr-9 border rounded-2xl text-sm text-gray-600 appearance-none focus:outline-none transition cursor-pointer"
             >
               <option value="" disabled hidden>Kehadiran</option>
               <option value="hadir">Hadir</option>
@@ -61,7 +66,8 @@ export default function Rsvp({ isOpen, onClose }: RsvpPopupProps) {
             <select
               value={jumlahTamu}
               onChange={(e) => setJumlahTamu(e.target.value)}
-              className="w-full h-10 px-4 pr-9 bg-white/70 border border-[#00C2CB]/30 rounded-2xl text-sm text-gray-600 appearance-none focus:outline-none focus:border-[#00C2CB] focus:bg-white transition cursor-pointer"
+              style={{ borderColor: `${warnaBg}`, backgroundColor: `${warnaBg}10`, color: `${warnaBorder}` }}
+              className="w-full h-10 px-4 pr-9 border rounded-2xl text-sm text-gray-600 appearance-none focus:outline-none transition cursor-pointer"
             >
               <option value="" disabled hidden>Jumlah Tamu</option>
               <option value="1">1 Orang</option>
@@ -76,12 +82,14 @@ export default function Rsvp({ isOpen, onClose }: RsvpPopupProps) {
             value={ucapan}
             onChange={(e) => setUcapan(e.target.value)}
             rows={4}
-            className="w-full p-4 bg-white/70 border border-[#00C2CB]/30 rounded-2xl text-sm placeholder-gray-400 focus:outline-none focus:border-[#00C2CB] focus:bg-white transition resize-none"
+            style={{ borderColor: `${warnaBg}`, backgroundColor: `${warnaBg}10`, color: `${warnaBorder}` }}
+            className="w-full p-4 border rounded-2xl text-sm focus:outline-none transition resize-none"
           />
 
           <button
             type="submit"
-            className="w-full h-12 mt-2 bg-[#9BF2F6] hover:bg-[#00C2CB] text-[#1A4345] hover:text-white font-bold tracking-wide rounded-2xl border border-[#00C2CB] shadow-[0_3px_10px_rgba(0,194,203,0.2)] transition active:scale-98"
+            style={{ backgroundColor: `${warnaBg}`, borderColor: `${warnaBorder}` }}
+            className="w-full h-12 mt-2 text-white font-bold tracking-wide rounded-2xl border shadow-[0_3px_10px_rgba(0,194,203,0.2)] transition active:scale-98"
           >
             Kirim Konfirmasi
           </button>
