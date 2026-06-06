@@ -14,9 +14,9 @@ import Navbar from '@/src/elements-aruma/Navbar';
 import Popup from '@/src/elements-aruma/Popup';
 import MessagesModal from '@/src/elements-aruma/MessageModal';
 
-type ActivePage = 'intro' | 'menu' | 'galeri' | 'rsvp' | 'gift' | 'love-story' | 'date' | 'dresscode' | 'about';
+type ActivePage = 'intro' | 'welcome' | 'menu' | 'galeri' | 'rsvp' | 'gift' | 'love-story' | 'date' | 'dresscode' | 'about';
 
-const validPages: ActivePage[] = ['intro', 'menu', 'galeri', 'rsvp', 'gift', 'love-story', 'date', 'dresscode', 'about'];
+const validPages: ActivePage[] = ['intro', 'welcome', 'menu', 'galeri', 'rsvp', 'gift', 'love-story', 'date', 'dresscode', 'about'];
 
 const listFotoGallery = [
   "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=600",
@@ -47,7 +47,8 @@ const Page = () => {
   const [activePage, setActivePage] = useState<ActivePage>('intro');
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isLightOn, setIsLightOn] = useState(true);
+  const [isLightOn, setIsLightOn] = useState(false);
+  const [showLightTooltip, setShowLightTooltip] = useState(true);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
@@ -140,7 +141,7 @@ const Page = () => {
     'about': 'About Us',
   };
 
-  const isSectionPage = activePage !== 'intro' && activePage !== 'menu';
+  const isSectionPage = activePage !== 'intro' && activePage !== 'welcome' && activePage !== 'menu';
 
   return (
     <div className='w-full max-w-[380px] h-screen mx-auto relative bg-[#E6F9FA] overflow-x-hidden'>
@@ -163,6 +164,42 @@ const Page = () => {
               height={50}
               id='button-start'
               className='hover:scale-90 cursor-pointer transition-transform duration-200'
+              onClick={() => { playMusic(); navigateTo('welcome'); }}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* WELCOME SCREEN */}
+      {activePage === 'welcome' && (
+        <div
+          className={`absolute overflow-hidden inset-0 z-10 transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
+        >
+          <Image src="/assets/themes/aruma-jepangv2/bg.png" alt="bg-game" width={380} height={800} className='h-full relative' />
+          <div className='w-full h-full bg-black/50 absolute top-0 left-0 right-0 z-10'></div>
+          <div className='absolute top-[55%] text-center -left-3 right-0 text-[#6b2e1d] z-999'>
+            <p className='text-center text-[10px]'>Kepada Yth</p>
+            <p className='font-angin-senja text-center text-4xl'>Jimly Assidqi</p>
+          </div>
+          <div className='absolute bottom-0 -left-5 right-0 text-center flex justify-center z-99'>
+            <Image
+              src="/assets/themes/aruma-jepangv2/welcome2.png"
+              alt="Open Invitation"
+              width={350}
+              height={50}
+              id='button-start'
+              className='cursor-pointer transition-transform duration-200 w-full'
+              onClick={() => { playMusic(); navigateTo('menu'); }}
+            />
+          </div>
+          <div className='absolute animate-custom-pulse bottom-25 -left-5 right-0 text-center flex justify-center z-999'>
+            <Image
+              src="/assets/themes/aruma-jepangv2/button.png"
+              alt="Open Invitation"
+              width={150}
+              height={50}
+              id='button-start'
+              className='cursor-pointer transition-transform duration-200'
               onClick={() => { playMusic(); navigateTo('menu'); }}
             />
           </div>
@@ -191,13 +228,64 @@ const Page = () => {
           </div>
           <div
             className='w-[40px] h-[40px] z-99 rounded-lg border-2 absolute right-3 top-16 flex items-center justify-center cursor-pointer hover:scale-95 transition-transform'
-            onClick={() => setIsLightOn(!isLightOn)}
+            onClick={() => {
+              setIsLightOn(!isLightOn);
+              setShowLightTooltip(false);
+            }}
             style={{ backgroundColor: warnaBg, borderColor: warnaBorder }}
           >
             <div className='w-[80%] h-[80%] rounded-xl bg-white border flex items-center justify-center' style={{ borderColor: warnaBorder, color: warnaBorder }}>
               {isLightOn ? <LightbulbOff size={18} /> : <Lightbulb size={18} />}
             </div>
           </div>
+          
+          {showLightTooltip && (
+            <div
+              className="w-[200px] h-[92px] z-50 rounded-lg border-2 py-2 absolute right-16 top-3 cursor-pointer hover:scale-95 transition-transform"
+              onClick={() => {
+                setIsLightOn(!isLightOn);
+                setShowLightTooltip(false);
+              }}
+              style={{
+                backgroundColor: warnaBg,
+                borderColor: warnaBorder,
+              }}
+            >
+              {/* Border panah */}
+              <div
+                className="absolute -right-[12px] bottom-[10px]"
+                style={{
+                  width: 0,
+                  height: 0,
+                  borderTop: "9px solid transparent",
+                  borderBottom: "9px solid transparent",
+                  borderLeft: `12px solid ${warnaBorder}`,
+                }}
+              />
+
+              {/* Isi panah */}
+              <div
+                className="absolute -right-[9px] bottom-[11px]"
+                style={{
+                  width: 0,
+                  height: 0,
+                  borderTop: "8px solid transparent",
+                  borderBottom: "8px solid transparent",
+                  borderLeft: `10px solid ${warnaBg}`,
+                }}
+              />
+
+              <p className="text-white text-xs px-2 font-semibold mb-1">
+                Efek Cahaya
+              </p>
+              <p className="text-white text-[11px] px-2 mb-1">
+                Klik tombol ini untuk mematikan atau menyalakan efek cahaya
+              </p>
+              <p className="text-white text-[10px] px-2 underline">
+                Klik disini untuk menutup
+              </p>
+            </div>
+          )}
 
           {isPromptVisible && (
             <div className='w-[200px] z-99 rounded-lg bg-white border-2 absolute left-3 bottom-16 flex items-center justify-center p-1' style={{ borderColor: warnaBorder }}><div className='w-full h-full rounded-lg border-dashed bg-white border p-2 text-xs' style={{ borderColor: warnaBorder, color: warnaBorder }}>
