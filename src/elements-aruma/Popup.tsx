@@ -7,9 +7,11 @@ interface PopupProps {
   onClose: () => void;
   warnaBg: string;
   warnaBorder: string;
+  imgIcon?: Record<string, string>;
+  onMenuClick?: (id: string) => void;
 }
 
-export default function Popup({ isOpen, onClose, warnaBg, warnaBorder }: PopupProps) {
+export default function Popup({ isOpen, onClose, warnaBg, warnaBorder, imgIcon, onMenuClick }: PopupProps) {
   // Jika state isOpen false, modal tidak akan dirender
   if (!isOpen) return null;
 
@@ -19,43 +21,43 @@ export default function Popup({ isOpen, onClose, warnaBg, warnaBorder }: PopupPr
       id: 'about',
       title: 'Tentang Kami',
       desc: 'Lihat momen spesial kami sebagai pasangan yang sedang berbahagia.',
-      icon: '/assets/themes/aruma-jepang/about.webp', // Ganti dengan path ikon Anda
+      icon: imgIcon?.about || '/assets/themes/aruma-jepang/about.webp', // Ganti dengan path ikon Anda
     },
     {
       id: 'dresscode',
       title: 'Busana & Nuansa',
       desc: 'Kenali warna pilihan kami agar kamu bisa tampil serasi di hari istimewa.',
-      icon: '/assets/themes/aruma-jepang/dresscode.webp',
+      icon: imgIcon?.dresscode || '/assets/themes/aruma-jepang/dresscode.webp',
     },
     {
       id: 'lovestory',
       title: 'Kisah Cinta Kami',
       desc: 'Ikuti kisah kami dari pertemuan pertama hingga jadi satu tujuan.',
-      icon: '/assets/themes/aruma-jepang/love-story.webp',
+      icon: imgIcon?.loveStory || '/assets/themes/aruma-jepang/love-story.webp',
     },
     {
       id: 'gallery',
       title: 'Galeri Cerita Kami',
       desc: 'Kumpulan momen indah perjalanan cinta kami yang ingin kami bagikan.',
-      icon: '/assets/themes/aruma-jepang/gallery.webp',
+      icon: imgIcon?.gallery || '/assets/themes/aruma-jepang/gallery.webp',
     },
     {
       id: 'gift',
       title: 'Doa & Hadiah',
       desc: 'Mohon doa restu dan jika berkenan dapat memberikan hadiah.',
-      icon: '/assets/themes/aruma-jepang/gift.webp',
+      icon: imgIcon?.gift || '/assets/themes/aruma-jepang/gift.webp',
     },
     {
       id: 'date',
       title: 'Tanggal & Lokasi',
       desc: 'Informasi lengkap mengenai waktu dan tempat pelaksanaan acara.',
-      icon: '/assets/themes/aruma-jepang/date.webp',
+      icon: imgIcon?.date || '/assets/themes/aruma-jepang/date.webp',
     },
     {
       id: 'rsvp',
       title: 'Konfirmasi Kehadiran',
       desc: 'Mohon kesediaan Bapak/Ibu/Saudara/i untuk memberikan konfirmasi kehadiran.',
-      icon: '/assets/themes/aruma-jepang/rsvp.webp',
+      icon: imgIcon?.rsvp || '/assets/themes/aruma-jepang/rsvp.webp',
     },
   ];
 
@@ -70,8 +72,9 @@ export default function Popup({ isOpen, onClose, warnaBg, warnaBorder }: PopupPr
             <button
               key={item.id}
               onClick={() => {
-                // Tambahkan fungsi navigasi atau action di sini jika di-klik
-                console.log(`Menu ${item.id} diklik`);
+                if (onMenuClick) {
+                  onMenuClick(item.id);
+                }
               }}
               className="w-full mb-3 bg-white border rounded-2xl p-3 flex items-center gap-3 shadow-sm transition text-left active:scale-[0.99] group"
               style={{ borderColor: warnaBg }}

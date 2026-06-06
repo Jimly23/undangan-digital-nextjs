@@ -18,6 +18,19 @@ type ActivePage = 'intro' | 'welcome' | 'menu' | 'galeri' | 'rsvp' | 'gift' | 'l
 
 const validPages: ActivePage[] = ['intro', 'welcome', 'menu', 'galeri', 'rsvp', 'gift', 'love-story', 'date', 'dresscode', 'about'];
 
+const imgIcon = {
+  intro: "/assets/themes/aruma-jepangv2/intro.png",
+  welcome: "/assets/themes/aruma-jepangv2/welcome2.png",
+  menu: "/assets/themes/aruma-jepangv2/bg.png",
+  gallery: "/assets/themes/aruma-jepangv2/gallery.png",
+  gift: "/assets/themes/aruma-jepangv2/gift.png",
+  loveStory: "/assets/themes/aruma-jepangv2/love-story.png",
+  about: "/assets/themes/aruma-jepangv2/about.png",
+  date: "/assets/themes/aruma-jepangv2/date.png",
+  dresscode: "/assets/themes/aruma-jepangv2/dresscode.png",
+  rsvp: "/assets/themes/aruma-jepangv2/rsvp.png",
+}
+
 const listFotoGallery = [
   "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=600",
   "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600",
@@ -60,6 +73,7 @@ const Page = () => {
   const [isDateOpen, setIsDateOpen] = useState(false);
   const [isDresscodeOpen, setIsDresscodeOpen] = useState(false);
   const [isRsvpOpen, setIsRsvpOpen] = useState(false);
+  const [openedFromPopup, setOpenedFromPopup] = useState(false);
 
   const playMusic = useCallback(() => {
     if (!audioRef.current) {
@@ -151,7 +165,7 @@ const Page = () => {
         <div
           className={`absolute overflow-hidden inset-0 z-10 transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
         >
-          <Image src="/assets/themes/aruma-jepangv2/intro.png" alt="bg-game" width={380} height={800} className='h-full relative' />
+          <Image src={imgIcon.intro} alt="bg-game" width={380} height={800} className='h-full relative' />
           <div className='font-angin-senja absolute top-[33%] text-center left-0 right-0 text-[#6b2e1d]'>
             <p className='text-center text-4xl'>The Wedding Of</p>
             <p className='text-center text-6xl'>Ahmad & Laras</p>
@@ -175,21 +189,21 @@ const Page = () => {
         <div
           className={`absolute overflow-hidden inset-0 z-10 transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
         >
-          <Image src="/assets/themes/aruma-jepangv2/bg.png" alt="bg-game" width={380} height={800} className='h-full relative' />
+          <Image src={imgIcon.menu} alt="bg-game" width={380} height={800} className='h-full relative' />
           <div className='w-full h-full bg-black/50 absolute top-0 left-0 right-0 z-10'></div>
-          <div className='absolute top-[55%] text-center -left-3 right-0 text-[#6b2e1d] z-999'>
+          <div className='absolute bottom-[37%] text-center -left-3 right-0 text-[#6b2e1d] z-999'>
             <p className='text-center text-[10px]'>Kepada Yth</p>
             <p className='font-angin-senja text-center text-4xl'>Jimly Assidqi</p>
           </div>
           <div className='absolute bottom-0 -left-5 right-0 text-center flex justify-center z-99'>
             <Image
-              src="/assets/themes/aruma-jepangv2/welcome2.png"
+              src={imgIcon.welcome}
               alt="Open Invitation"
               width={350}
               height={50}
               id='button-start'
               className='cursor-pointer transition-transform duration-200 w-full'
-              onClick={() => { playMusic(); navigateTo('menu'); }}
+              onClick={() => { playMusic(); navigateTo('menu'); setTimeout(() => setIsModalOpen(true), 350); }}
             />
           </div>
           <div className='absolute animate-custom-pulse bottom-25 -left-5 right-0 text-center flex justify-center z-999'>
@@ -200,7 +214,7 @@ const Page = () => {
               height={50}
               id='button-start'
               className='cursor-pointer transition-transform duration-200'
-              onClick={() => { playMusic(); navigateTo('menu'); }}
+              onClick={() => { playMusic(); navigateTo('menu'); setTimeout(() => setIsModalOpen(true), 350); }}
             />
           </div>
         </div>
@@ -211,7 +225,7 @@ const Page = () => {
         <div
           className={`absolute inset-0 z-10 transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'} ${!isLightOn ? 'bg-black' : ''}`}
         >
-          <Image src="/assets/themes/aruma-jepangv2/bg.png" alt="bg-game" width={380} height={800} className={`h-full relative transition-[filter] duration-500 ${!isLightOn ? 'brightness-50' : 'brightness-100'}`} />
+          <Image src={imgIcon.menu} alt="bg-game" width={380} height={800} className={`h-full relative transition-[filter] duration-500 ${!isLightOn ? 'brightness-50' : 'brightness-100'}`} />
           <div onClick={() => setIsModalOpen(true)} className='w-[40px] h-[40px] z-99 rounded-lg border-2 absolute left-3 top-3 flex items-center justify-center cursor-pointer hover:scale-95 transition-transform' style={{ backgroundColor: warnaBg, borderColor: warnaBorder }}>
             <div className='w-[80%] h-[80%] rounded-xl bg-white border flex items-center justify-center' style={{ borderColor: warnaBorder }}>
               <CircleAlert size={18} style={{ color: warnaBorder }} />
@@ -238,7 +252,7 @@ const Page = () => {
               {isLightOn ? <LightbulbOff size={18} /> : <Lightbulb size={18} />}
             </div>
           </div>
-          
+
           {showLightTooltip && (
             <div
               className="w-[200px] h-[92px] z-50 rounded-lg border-2 py-2 absolute right-16 top-3 cursor-pointer hover:scale-95 transition-transform"
@@ -300,34 +314,34 @@ const Page = () => {
           </div>
           </div>
 
-          <div id='gallery' className={`w-[75px] h-[75px] absolute left-[60px] top-[20%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse cursor-pointer`} onClick={() => setIsGaleriOpen(true)}>
+          <div id='gallery' className={`w-[75px] h-[75px] absolute left-[60px] top-[20%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsGaleriOpen(true); }}>
             <Image
-              src="/assets/themes/aruma-jepangv2/gallery.png"
+              src={imgIcon.gallery}
               alt='Gallery'
               width={75}
               height={75}
               className="object-contain" // Memastikan gambar tidak terpotong
             />
           </div>
-          <div id='gift' className={`w-[100px] h-[100px] absolute right-[7px] bottom-[20px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse [animation-delay:200ms] cursor-pointer`} onClick={() => setIsGiftOpen(true)}>
-            <Image src="/assets/themes/aruma-jepangv2/gift.png" alt='Date & Venue' width={120} height={120} />
+          <div id='gift' className={`w-[100px] h-[100px] absolute right-[7px] bottom-[20px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse [animation-delay:200ms] cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsGiftOpen(true); }}>
+            <Image src={imgIcon.gift} alt='Date & Venue' width={120} height={120} />
           </div>
 
-          <div id='love-story' className={`w-[60px] h-[60px] absolute left-1/2 top-[50px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center cursor-pointer`} onClick={() => setIsLoveStoryOpen(true)}>
-            <Image src="/assets/themes/aruma-jepangv2/love-story.png" alt='Love Story' width={150} height={150} />
+          <div id='love-story' className={`w-[60px] h-[60px] absolute left-1/2 top-[50px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsLoveStoryOpen(true); }}>
+            <Image src={imgIcon.loveStory} alt='Love Story' width={150} height={150} />
           </div>
-          <div id='about-us' className={`w-[120px] h-[120px] absolute left-[160px] bottom-[42%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center [animation-delay:400ms] cursor-pointer`} onClick={() => setIsAboutOpen(true)}>
-            <Image src="/assets/themes/aruma-jepangv2/about.png" alt='About Us' width={150} height={150} />
+          <div id='about-us' className={`w-[120px] h-[120px] absolute left-[160px] bottom-[42%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center [animation-delay:400ms] cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsAboutOpen(true); }}>
+            <Image src={imgIcon.about} alt='About Us' width={150} height={150} />
           </div>
 
-          <div id='date-venue' className={`w-[80px] h-[80px] absolute right-[70px] top-[80px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse [animation-delay:300ms] cursor-pointer`} onClick={() => setIsDateOpen(true)}>
-            <Image src="/assets/themes/aruma-jepangv2/date.png" alt='Date & Venue' width={90} height={90} />
+          <div id='date-venue' className={`w-[80px] h-[80px] absolute right-[70px] top-[80px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse [animation-delay:300ms] cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsDateOpen(true); }}>
+            <Image src={imgIcon.date} alt='Date & Venue' width={90} height={90} />
           </div>
-          <div id='dresscode' className={`w-[70px] h-[70px] absolute right-[70px] top-[210px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse [animation-delay:500ms] cursor-pointer`} onClick={() => setIsDresscodeOpen(true)}>
-            <Image src="/assets/themes/aruma-jepangv2/dresscode.png" alt='Dresscode' width={120} height={120} />
+          <div id='dresscode' className={`w-[70px] h-[70px] absolute right-[70px] top-[210px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse [animation-delay:500ms] cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsDresscodeOpen(true); }}>
+            <Image src={imgIcon.dresscode} alt='Dresscode' width={120} height={120} />
           </div>
-          <div id='rsvp' className={`w-[90px] h-[90px] absolute right-[25px] bottom-[35%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center [animation-delay:150ms] cursor-pointer`} onClick={() => setIsRsvpOpen(true)}>
-            <Image src="/assets/themes/aruma-jepangv2/rsvp.png" alt='RSVP' width={170} height={170} />
+          <div id='rsvp' className={`w-[90px] h-[90px] absolute right-[25px] bottom-[35%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center [animation-delay:150ms] cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsRsvpOpen(true); }}>
+            <Image src={imgIcon.rsvp} alt='RSVP' width={170} height={170} />
           </div>
         </div>
       )}
@@ -351,6 +365,18 @@ const Page = () => {
         onClose={() => setIsModalOpen(false)}
         warnaBg={warnaBg}
         warnaBorder={warnaBorder}
+        imgIcon={imgIcon}
+        onMenuClick={(id) => {
+          setOpenedFromPopup(true);
+          if (id === 'about') setIsAboutOpen(true);
+          if (id === 'dresscode') setIsDresscodeOpen(true);
+          if (id === 'lovestory') setIsLoveStoryOpen(true);
+          if (id === 'gallery') setIsGaleriOpen(true);
+          if (id === 'gift') setIsGiftOpen(true);
+          if (id === 'date') setIsDateOpen(true);
+          if (id === 'rsvp') setIsRsvpOpen(true);
+          setIsModalOpen(false);
+        }}
       />
       <MessagesModal
         isOpen={isMessageModalOpen}
@@ -360,27 +386,27 @@ const Page = () => {
       />
       <Galeri
         isOpen={isGaleriOpen}
-        onClose={() => setIsGaleriOpen(false)}
+        onClose={() => { setIsGaleriOpen(false); if (openedFromPopup) setIsModalOpen(true); }}
         fotoGallery={listFotoGallery}
         warnaBg={warnaBg}
         warnaBorder={warnaBorder}
       />
       <Gift
         isOpen={isGiftOpen}
-        onClose={() => setIsGiftOpen(false)}
+        onClose={() => { setIsGiftOpen(false); if (openedFromPopup) setIsModalOpen(true); }}
         icon="/assets/themes/aruma-jawa/gift.png"
         warnaBg={warnaBg}
         warnaBorder={warnaBorder}
       />
       <About
         isOpen={isAboutOpen}
-        onClose={() => setIsAboutOpen(false)}
+        onClose={() => { setIsAboutOpen(false); if (openedFromPopup) setIsModalOpen(true); }}
         fotoWanita={"https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600&auto=format&fit=crop"} fotoPria={"https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600&auto=format&fit=crop"} namaWanita={"Elina Clarissa"} namaPria={"Adelio Nugroho"} ayahWanita={"Reynaldi"} ibuWanita={"Cantika"} ayahPria={"Budi Sentosa"} ibuPria={"Siti Amanah"} instagramWanita={"elinaclarissa"} instagramPria={"adelionugroho"}
         warnaBg={warnaBg} warnaBorder={warnaBorder}
       />
       <Date
         isOpen={isDateOpen}
-        onClose={() => setIsDateOpen(false)}
+        onClose={() => { setIsDateOpen(false); if (openedFromPopup) setIsModalOpen(true); }}
         tanggal="Kamis, 31 Desember 2026"
         waktu="02:00 PM - 04:00 PM"
         namaTempat="Masjid Istiqlal"
@@ -392,21 +418,21 @@ const Page = () => {
       />
       <Dresscode
         isOpen={isDresscodeOpen}
-        onClose={() => setIsDresscodeOpen(false)}
+        onClose={() => { setIsDresscodeOpen(false); if (openedFromPopup) setIsModalOpen(true); }}
         icon="/assets/themes/aruma-jepangv2/dresscode.png"
         warnaBg={warnaBg}
         warnaBorder={warnaBorder}
       />
       <LoveStory
         isOpen={isLoveStoryOpen}
-        onClose={() => setIsLoveStoryOpen(false)}
+        onClose={() => { setIsLoveStoryOpen(false); if (openedFromPopup) setIsModalOpen(true); }}
         stories={ceritaKita}
         warnaBg={warnaBg}
         warnaBorder={warnaBorder}
       />
       <Rsvp
         isOpen={isRsvpOpen}
-        onClose={() => setIsRsvpOpen(false)}
+        onClose={() => { setIsRsvpOpen(false); if (openedFromPopup) setIsModalOpen(true); }}
         icon="/assets/themes/aruma-jawa/rsvp.png"
         warnaBg={warnaBg}
         warnaBorder={warnaBorder}
