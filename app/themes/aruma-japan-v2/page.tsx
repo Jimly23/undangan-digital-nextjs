@@ -19,16 +19,18 @@ type ActivePage = 'intro' | 'welcome' | 'menu' | 'galeri' | 'rsvp' | 'gift' | 'l
 const validPages: ActivePage[] = ['intro', 'welcome', 'menu', 'galeri', 'rsvp', 'gift', 'love-story', 'date', 'dresscode', 'about'];
 
 const imgIcon = {
-  intro: "/assets/themes/aruma-jepangv2/intro.png",
-  welcome: "/assets/themes/aruma-jepangv2/welcome2.png",
-  menu: "/assets/themes/aruma-jepangv2/bg.png",
-  gallery: "/assets/themes/aruma-jepangv2/gallery.png",
-  gift: "/assets/themes/aruma-jepangv2/gift.png",
-  loveStory: "/assets/themes/aruma-jepangv2/love-story.png",
-  about: "/assets/themes/aruma-jepangv2/about.png",
-  date: "/assets/themes/aruma-jepangv2/date.png",
-  dresscode: "/assets/themes/aruma-jepangv2/dresscode.png",
-  rsvp: "/assets/themes/aruma-jepangv2/rsvp.png",
+  intro: "/assets/themes/aruma-jepangv2/intro.webp",
+  btn: "/assets/themes/aruma-chinese/btn.webp",
+  next: "/assets/themes/aruma-chinese/next.webp",
+  welcome: "/assets/themes/aruma-jepangv2/welcome2.webp",
+  menu: "/assets/themes/aruma-jepangv2/bg.webp",
+  gallery: "/assets/themes/aruma-jepangv2/gallery.webp",
+  gift: "/assets/themes/aruma-jepangv2/gift.webp",
+  loveStory: "/assets/themes/aruma-jepangv2/love-story.webp",
+  about: "/assets/themes/aruma-jepangv2/about.webp",
+  date: "/assets/themes/aruma-jepangv2/date.webp",
+  dresscode: "/assets/themes/aruma-jepangv2/dresscode.webp",
+  rsvp: "/assets/themes/aruma-jepangv2/rsvp.webp",
 }
 
 const listFotoGallery = [
@@ -172,7 +174,7 @@ const Page = () => {
           </div>
           <div className='absolute bottom-20 left-0 right-0 text-center flex justify-center'>
             <Image
-              src="/assets/themes/aruma-jepang/btn.webp"
+              src={imgIcon.btn}
               alt="Open Invitation"
               width={150}
               height={50}
@@ -206,9 +208,9 @@ const Page = () => {
               onClick={() => { playMusic(); navigateTo('menu'); setTimeout(() => setIsModalOpen(true), 350); }}
             />
           </div>
-          <div className='absolute animate-custom-pulse bottom-25 -left-5 right-0 text-center flex justify-center z-999'>
+          <div className='absolute animate-custom-pulse bottom-15 -left-5 right-0 text-center flex justify-center z-999'>
             <Image
-              src="/assets/themes/aruma-jepangv2/button.png"
+              src={imgIcon.next}
               alt="Open Invitation"
               width={150}
               height={50}
