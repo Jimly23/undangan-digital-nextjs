@@ -56,7 +56,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className={`min-h-full flex flex-col ${anginSenja.variable} antialiased`}>
+      <body className={`h-full flex flex-col ${anginSenja.variable} antialiased`}>
         {children}
         <AOSInit />
       </body>

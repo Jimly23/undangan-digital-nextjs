@@ -160,7 +160,7 @@ const Page = () => {
   const isSectionPage = activePage !== 'intro' && activePage !== 'welcome' && activePage !== 'menu';
 
   return (
-    <div className='w-full max-w-[380px] h-screen mx-auto relative bg-[#E6F9FA] overflow-x-hidden'>
+    <div className='w-full max-w-[380px] h-[100dvh] mx-auto relative bg-[#E6F9FA] overflow-x-hidden'>
 
       {/* INTRO SCREEN */}
       {activePage === 'intro' && (
