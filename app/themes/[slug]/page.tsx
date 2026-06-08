@@ -268,7 +268,7 @@ const Page = () => {
               height={50}
               id='button-start'
               className='cursor-pointer transition-transform duration-200 w-full'
-              onClick={() => { playMusic(); navigateTo('menu'); setTimeout(() => setIsModalOpen(true), 350); }}
+              onClick={() => { playMusic(); navigateTo('menu');}}
             />
           </div>
           <div className='absolute animate-custom-pulse bottom-15 -left-5 right-0 text-center flex justify-center z-999'>
@@ -279,7 +279,7 @@ const Page = () => {
               height={50}
               id='button-start'
               className='cursor-pointer transition-transform duration-200'
-              onClick={() => { playMusic(); navigateTo('menu'); setTimeout(() => setIsModalOpen(true), 350); }}
+              onClick={() => { playMusic(); navigateTo('menu');}}
             />
           </div>
         </div>
