@@ -25,13 +25,10 @@ export default function Galeri({ isOpen, onClose, fotoGallery = [], warnaBg, war
       {/* Kondisi jika array memiliki minimal 1 foto (Foto Utama) */}
       {fotoGallery.length > 0 && (
         <div className="w-full aspect-[16/10] mb-5 rounded-2xl overflow-hidden relative shadow-sm border border-gray-100 shrink-0">
-          <Image
+          <img
             src={fotoGallery[0]}
             alt="Foto Utama Galeri"
-            fill
-            sizes="(max-w-md) 100vw"
-            className="object-cover"
-            priority
+            className="w-full h-full object-cover"
           />
         </div>
       )}
@@ -45,12 +42,10 @@ export default function Galeri({ isOpen, onClose, fotoGallery = [], warnaBg, war
               key={index} 
               className="w-full aspect-square rounded-2xl overflow-hidden relative shadow-sm border border-gray-100"
             >
-              <Image
+              <img
                 src={srcUrl}
                 alt={`Galeri foto tambahan ke-${index + 1}`}
-                fill
-                sizes="(max-w-md) 50vw"
-                className="object-cover"
+                className="w-full h-full object-cover"
               />
             </div>
           ))}

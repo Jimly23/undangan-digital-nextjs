@@ -46,13 +46,10 @@ export default function About({ isOpen, onClose, fotoWanita, fotoPria, namaWanit
         <section style={{ borderColor: `${warnaBg}` }} className="w-full bg-white rounded-3xl border-2  p-4 flex flex-col items-center justify-center relative overflow-hidden shadow-[0_4px_15px_rgba(0,194,203,0.08)] mb-2">
           <div style={{ borderColor: `${warnaBg}80` }} className="absolute inset-2 border border-dashed rounded-2xl pointer-events-none" />
           <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-sm z-10">
-            <Image
+            <img
               src={fotoWanita}
               alt="Foto Mempelai Wanita"
-              fill
-              priority
-              sizes="(max-width:768px) 100vw"
-              className="object-cover"
+              className="w-full h-full object-cover"
             />
           </div>
           <div className="flex flex-col items-center mt-5 mb-4 z-10 text-center">
@@ -80,13 +77,10 @@ export default function About({ isOpen, onClose, fotoWanita, fotoPria, namaWanit
         <section style={{ borderColor: `${warnaBg}` }} className="w-full bg-white rounded-3xl border-2  p-4 flex flex-col items-center justify-center relative overflow-hidden shadow-[0_4px_15px_rgba(0,194,203,0.08)] mb-2">
           <div style={{ borderColor: `${warnaBg}80` }} className="absolute inset-2 border border-dashed rounded-2xl pointer-events-none" />
           <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-sm z-10">
-            <Image
+            <img
               src={fotoPria}
               alt="Foto Mempelai Pria"
-              fill
-              priority
-              sizes="(max-width:768px) 100vw"
-              className="object-cover"
+              className="w-full h-full object-cover"
             />
           </div>
           <div className="flex flex-col items-center mt-5 mb-4 z-10 text-center">

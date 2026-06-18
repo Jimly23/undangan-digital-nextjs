@@ -5,12 +5,16 @@ import Template from "./Template";
 interface DatePopupProps {
   isOpen: boolean;
   onClose: () => void;
-  tanggal: string;     // Contoh: "Kamis, 31 Desember 2026"
-  waktu: string;       // Contoh: "02:00 PM - 04:00 PM"
-  namaTempat: string;  // Contoh: "Masjid Istiqlal"
+  tanggal: string;
+  waktu: string;
+  tanggalResepsi?: string;
+  waktuResepsi?: string;
+  namaTempat: string;
   alamatTempat: string;
+  alamatResepsi?: string;
   fotoTempat: string;
   googleMaps: string;
+  googleMapsResepsi?: string;
   warnaBg: string;
   warnaBorder: string;
 }
@@ -27,10 +31,14 @@ export default function DateComponent({
   onClose,
   tanggal,
   waktu,
+  tanggalResepsi,
+  waktuResepsi,
   namaTempat,
   alamatTempat,
+  alamatResepsi,
   fotoTempat,
   googleMaps,
+  googleMapsResepsi,
   warnaBg,
   warnaBorder,
 }: DatePopupProps) {
@@ -51,9 +59,9 @@ export default function DateComponent({
         // 1. Bersihkan Nama Hari. "Kamis, 31 Desember 2026" -> "31 Desember 2026"
         const cleanDate = dateStr.includes(",") ? dateStr.split(",")[1].trim() : dateStr.trim();
         const dateParts = cleanDate.split(" ");
-        
+
         if (dateParts.length !== 3) return null;
-        
+
         const day = dateParts[0].padStart(2, "0");
         const monthName = dateParts[1].toLowerCase();
         const year = dateParts[2];
@@ -67,11 +75,11 @@ export default function DateComponent({
 
         // 2. Ambil jam mulai dari range waktu. "02:00 PM - 04:00 PM" -> "02:00 PM"
         const startTimeStr = timeRangeStr.split("-")[0].trim();
-        
+
         // Konversi format AM/PM ke format 24 jam untuk kebutuhan ISO standard
         let [time, modifier] = startTimeStr.split(" ");
         let [hours, minutes] = time.split(":");
-        
+
         if (hours === "12") hours = "00";
         if (modifier === "PM") hours = (parseInt(hours, 10) + 12).toString();
 
@@ -108,7 +116,7 @@ export default function DateComponent({
     const timer = setInterval(calculateTimeLeft, 1000);
 
     return () => clearInterval(timer);
-  }, [isOpen, tanggal, waktu]); // Menambahkan 'waktu' ke dependency array agar sinkron
+  }, [isOpen, tanggal, waktu]);
 
   if (!isOpen) return null;
 
@@ -128,7 +136,7 @@ export default function DateComponent({
           </p>
         </div>
         <div className="grid grid-cols-4 gap-2 w-full z-10 px-1">
-          <div style={{ borderColor: `${warnaBg}`}} className="border rounded-xl p-2 flex flex-col items-center justify-center shadow-sm relative">
+          <div style={{ borderColor: `${warnaBg}` }} className="border rounded-xl p-2 flex flex-col items-center justify-center shadow-sm relative">
             <div style={{ borderColor: `${warnaBg}80` }} className="absolute inset-0.5 border border-dashed rounded-lg pointer-events-none" />
             <span className="font-bold text-xl text-[#1A4345]">{formatNumber(timeLeft.hari)}</span>
             <span className="text-[10px] font-bold tracking-wider text-[#557577] mt-0.5 uppercase">HARI</span>
@@ -189,15 +197,58 @@ export default function DateComponent({
               </p>
             </div>
           </div>
+          
           <a
             href={googleMaps}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full h-11 text-white font-bold text-sm tracking-wide rounded-full border-2 shadow-[0_3px_10px_rgba(0,194,203,0.15)] flex items-center justify-center transition active:scale-98"
+            className="w-full h-11 text-white font-bold text-xs md:text-sm tracking-wide rounded-full border-2 shadow-[0_3px_10px_rgba(0,194,203,0.15)] flex items-center justify-center transition active:scale-98 mt-1 mb-2"
             style={{ borderColor: warnaBorder, backgroundColor: warnaBg }}
           >
-            Buka di Google Maps
+            Buka di Google Maps (Akad)
           </a>
+
+          {tanggalResepsi && (
+            <>
+              <h2 className="font-bold tracking-widest text-[#1A4345] text-sm md:text-base uppercase mt-2">
+                RESEPSI
+              </h2>
+              <div style={{ borderColor: `${warnaBg}80` }} className="w-full bg-white rounded-2xl border overflow-hidden shadow-sm">
+                <div className="w-full h-11 border-b flex items-center justify-center">
+                  <p className="font-bold text-xs md:text-sm text-[#1A4345]">
+                    {tanggalResepsi}
+                  </p>
+                </div>
+                <div className="w-full h-11 flex items-center justify-center">
+                  <p className="font-bold text-xs md:text-sm text-[#1A4345]">
+                    {waktuResepsi}
+                  </p>
+                </div>
+              </div>
+
+
+              {alamatResepsi && alamatResepsi !== alamatTempat && (
+                <div style={{ borderColor: `${warnaBg}80` }} className="w-full bg-white rounded-2xl border text-center p-3 mt-1 shadow-sm">
+                  <p className="text-[#557577] text-xs font-medium leading-relaxed">
+                    <span className="font-bold text-[#1A4345] block mb-1">Lokasi Resepsi</span>
+                    {alamatResepsi}
+                  </p>
+                </div>
+              )}
+
+              {googleMapsResepsi && (
+                <a
+                  href={googleMapsResepsi}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full h-11 text-white font-bold text-xs md:text-sm tracking-wide rounded-full border-2 shadow-[0_3px_10px_rgba(0,194,203,0.15)] flex items-center justify-center transition active:scale-98 mt-2"
+                  style={{ borderColor: warnaBorder, backgroundColor: warnaBg }}
+                >
+                  Buka di Google Maps (Resepsi)
+                </a>
+              )}
+            </>
+          )}
         </div>
       </div>
     </Template>

@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Walimatul ID - Undangan Pernikahan Digital Modern</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Inter:wght@300;400;500;600&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-container": "#785a14",
+            "on-primary-container": "#d5e2cc",
+            "gold-leaf": "#E0B96A",
+            "linen": "#F4F1ED",
+            "secondary-fixed-dim": "#e9c171",
+            "background": "#fcf9f5",
+            "surface-bright": "#fcf9f5",
+            "sage-deep": "#4D544A",
+            "surface-container": "#f0ede9",
+            "surface": "#fcf9f5",
+            "primary-container": "#596554",
+            "secondary-fixed": "#ffdea1",
+            "secondary-container": "#fed583",
+            "on-background": "#1c1c19",
+            "tertiary-fixed-dim": "#c2c9bc",
+            "surface-container-highest": "#e5e2de",
+            "surface-container-low": "#f6f3ef",
+            "on-primary-fixed-variant": "#3e4a3a",
+            "surface-variant": "#e5e2de",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-fixed": "#171d15",
+            "tertiary": "#454c42",
+            "surface-container-high": "#ebe8e4",
+            "on-surface-variant": "#444841",
+            "on-error-container": "#93000a",
+            "error": "#ba1a1a",
+            "on-tertiary": "#ffffff",
+            "surface-tint": "#566251",
+            "on-secondary-fixed": "#261900",
+            "primary-fixed": "#d9e7d1",
+            "tertiary-fixed": "#dee5d7",
+            "on-tertiary-container": "#d9e0d3",
+            "secondary": "#775a13",
+            "paper-white": "#FFFFFF",
+            "on-secondary": "#ffffff",
+            "inverse-surface": "#31302e",
+            "on-tertiary-fixed-variant": "#42493f",
+            "primary": "#414d3d",
+            "surface-dim": "#dcdad6",
+            "on-surface": "#1c1c19",
+            "tertiary-container": "#5d645a",
+            "primary-fixed-dim": "#bdcab6",
+            "on-primary": "#ffffff",
+            "on-error": "#ffffff",
+            "on-secondary-fixed-variant": "#5c4300",
+            "error-container": "#ffdad6",
+            "outline-variant": "#c5c8bf",
+            "on-primary-fixed": "#141e11",
+            "inverse-on-surface": "#f3f0ec",
+            "outline": "#757871",
+            "inverse-primary": "#bdcab6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "gutter": "24px",
+            "unit": "8px",
+            "container-max": "1200px",
+            "margin-desktop": "64px",
+            "margin-mobile": "20px"
+          },
+          "fontFamily": {
+            "display-lg": ["ebGaramond"],
+            "body-lg": ["inter"],
+            "body-md": ["inter"],
+            "headline-sm": ["ebGaramond"],
+            "interactive": ["outfit"],
+            "headline-md": ["ebGaramond"],
+            "display-lg-mobile": ["ebGaramond"],
+            "label-caps": ["outfit"]
+          },
+          "fontSize": {
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+            "interactive": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "400" }],
+            "display-lg-mobile": ["36px", { "lineHeight": "44px", "fontWeight": "500" }],
+            "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .bg-glass {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+
+    .accordion-open .accordion-content {
+      max-height: 500px;
+    }
+
+    .premium-shadow {
+      box-shadow: 0 20px 40px rgba(89, 101, 84, 0.05);
+    }
+  </style>
+</head>
+
+<body class="bg-background text-on-background font-body-md">
+  <!-- Top Navigation -->
+  <header class="docked full-width top-0 sticky z-50 bg-paper-white/80 dark:bg-surface/80 backdrop-blur-md shadow-sm">
+    <nav
+      class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+      <div class="flex items-center gap-4">
+        <img alt="Walimatul ID Logo" class="h-8 md:h-10"
+          src="https://lh3.googleusercontent.com/aida/AP1WRLs_Xb7AXqhIP9N7I0Kf10-5BM1Ro0Ks0UrnkQM9521bvej9wexI4k2lO4mkZ6Sc1VfFDUizMWQYyHPu_x6ZRgM-4Gr2VjsAsUHIyaVBBbiCSM_raAr-75H1r-9NhJ_mI_iXKvx2Oh_Lk9FIDwSlH7Q3E8J2ZlE3a1xOG8lJpe-YnDcEaj1NHxrgqK3K-JYvCfPAfCQhtYbKlmEpSvFYZXrI683XAkfeqVU7VfRrneEIZEa6KjQ5QgFzXL2M" />
+      </div>
+      <div class="hidden md:flex items-center gap-8">
+        <a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-gold-leaf pb-1 font-label-caps text-label-caps"
+          href="#">Beranda</a>
+        <a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-label-caps text-label-caps"
+          href="#themes">Tema</a>
+        <a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-label-caps text-label-caps"
+          href="#pricing">Harga</a>
+        <a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-label-caps text-label-caps"
+          href="#faq">FAQ</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <button
+          class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-caps text-label-caps hover:bg-sage-deep transition-all transform active:scale-95">Masuk</button>
+      </div>
+    </nav>
+  </header>
+  <!-- Hero Section -->
+  <section class="relative bg-primary-container overflow-hidden pt-16 pb-24 md:py-32">
+    <div
+      class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
+      <div class="text-on-primary-container space-y-6">
+        <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-white">Buat Undangan Pernikahan
+          Digital</h1>
+        <p class="font-body-lg text-body-lg text-white/80 max-w-lg">
+          Jasa pembuatan undangan digital pernikahan modern dan praktis. Dapatkan undangan online yang unik, interaktif,
+          dan mudah dibagikan kepada seluruh tamu Anda.
+        </p>
+        <div class="flex flex-wrap gap-4 pt-4">
+          <button
+            class="bg-gold-leaf text-sage-deep px-8 py-3 rounded-full font-label-caps text-label-caps hover:opacity-90 transition-all">Buat
+            Undangan</button>
+          <button
+            class="bg-transparent border border-white/30 text-white px-8 py-3 rounded-full font-label-caps text-label-caps hover:bg-white/10 transition-all flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm">play_circle</span>
+            Coba Gratis
+          </button>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="absolute -top-10 -right-10 w-64 h-64 bg-gold-leaf/20 rounded-full blur-3xl"></div>
+        <img alt="Digital Invitations Showcase" class="w-full h-auto drop-shadow-2xl animate-pulse-slow"
+          src="https://lh3.googleusercontent.com/aida/AP1WRLtQgtc7wg8iiOkvGNkWHpGf7IEh8wNsLAZh_2FbnNA53QXO9K6Wtx3R_CFClhQrzlStIDNhZeUZTJUwgzHe_PFL6Xj3CsWWQLDHiPW36WY3onR-yiRr2omNBd7HyawxGgLrlaDBJWRggTvR4_FqO_Qhcrwe7DVbYyLPdZOvOPicIr67yFGZ4KKDHie14_LNICpkfzvQWjvqmxTCcGiW2nrTpO0mVneGTP5jM3QCxE1v1n91cvtsDGiWqpA" />
+      </div>
+    </div>
+  </section>
+  <!-- Partners Row -->
+  <section class="bg-linen py-12 border-b border-outline-variant">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
+      <p class="font-label-caps text-label-caps text-on-surface-variant mb-8 uppercase tracking-widest">Telah Dipercaya
+        500+ Pasangan di Seluruh Indonesia</p>
+      <div class="flex flex-wrap justify-center gap-6 md:gap-12 opacity-60 grayscale hover:grayscale-0 transition-all">
+        <span class="font-display-lg text-headline-sm">RAI &amp; EKI</span>
+        <span class="font-display-lg text-headline-sm">LAA &amp; HAR</span>
+        <span class="font-display-lg text-headline-sm">A &amp; FAD</span>
+        <span class="font-display-lg text-headline-sm">NRA &amp; RAR</span>
+      </div>
+    </div>
+  </section>
+  <!-- Theme Selection -->
+  <section class="py-24 bg-background" id="themes">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+      <div class="text-center mb-16 space-y-4">
+        <h2 class="font-display-lg text-display-lg text-primary">Pilihan Tema Undangan</h2>
+        <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">
+          Kami memiliki puluhan tema undangan pernikahan digital. Silahkan pilih tema dibawah, jika butuh tema custom
+          bisa langsung hubungi admin.
+        </p>
+        <div class="flex justify-center gap-4 mt-8">
+          <button class="px-6 py-2 bg-primary text-white rounded-full font-label-caps text-label-caps">Semua</button>
+          <button
+            class="px-6 py-2 bg-surface-container-high text-primary rounded-full font-label-caps text-label-caps hover:bg-primary/10 transition-all">Dengan
+            Foto</button>
+          <button
+            class="px-6 py-2 bg-surface-container-high text-primary rounded-full font-label-caps text-label-caps hover:bg-primary/10 transition-all">Non-Foto</button>
+        </div>
+      </div>
+      <!-- Bento-ish Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Theme Card 1 -->
+        <div class="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2">
+          <div class="relative overflow-hidden aspect-square">
+            <img alt="Floral 05 Theme"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              src="https://lh3.googleusercontent.com/aida/AP1WRLtiAFA2vECLI5Sh3Gy0b4snkj5d7AyleWt04Tt_8DUWutiCc0nivS_P48Y0yIopWFhqcV-WU5aqs3KZkqJhfthkg9bq8To17un6MhIubiqMjzBmb4UzOUgJlknq9yGztpkewzaivmj1Kw-QS9ggdpjbfPhyURTevEeSMhiNPePYfNROyGGUk2j4j9oRC280QrNoCpCSOkwbgx6zvnME6PXEc_uLtBcgT7sEIv48GxVAkyJ4hPtmZPvjifUi" />
+            <div class="absolute top-3 left-3 bg-gold-leaf text-sage-deep text-[10px] px-3 py-1 font-bold rounded-full">
+              NEW</div>
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="font-display-lg text-headline-sm text-primary">Floral - 05</h3>
+            <div class="flex items-center gap-3">
+              <span class="text-on-surface-variant line-through text-xs">Rp 198.000</span>
+              <span class="text-primary font-bold">Rp 99.000</span>
+              <span class="bg-red-100 text-red-600 text-[10px] px-2 py-0.5 rounded font-bold">50%</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 pt-2">
+              <button
+                class="border border-outline py-2 text-xs font-label-caps hover:bg-primary hover:text-white transition-all">LIHAT
+                TEMA</button>
+              <button class="bg-primary text-white py-2 text-xs font-label-caps hover:bg-sage-deep transition-all">PILIH
+                TEMA</button>
+            </div>
+          </div>
+        </div>
+        <!-- Theme Card 2 -->
+        <div class="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2">
+          <div class="relative overflow-hidden aspect-square">
+            <img alt="Luxury 02 Theme"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              src="https://lh3.googleusercontent.com/aida/AP1WRLs7RepROjeiRvJKk-WahBqRP7Tnk4DGIwp9uImWWVYc9hb5af_OCG-8E1G3DbvKjh8oEXJvlz4pQWomsWxX_bv7D2fQXUZ5o0oPDoz8Mx2Fo8xEFVVkh6njwF2y74iVyzgG6O4KXLvRslzAdiAgulaPdcfz9lDQaFITUgnzhH0AqFEy0GzIYiV8WP7hJBOr1Gn85QhL09xrXZ6pg0ruQqITorUVIk-6LRCyvnodUyMpjaEM57ncJWuN-SFS" />
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="font-display-lg text-headline-sm text-primary">Luxury - 02</h3>
+            <div class="flex items-center gap-3">
+              <span class="text-on-surface-variant line-through text-xs">Rp 198.000</span>
+              <span class="text-primary font-bold">Rp 99.000</span>
+              <span class="bg-red-100 text-red-600 text-[10px] px-2 py-0.5 rounded font-bold">50%</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 pt-2">
+              <button
+                class="border border-outline py-2 text-xs font-label-caps hover:bg-primary hover:text-white transition-all">LIHAT
+                TEMA</button>
+              <button class="bg-primary text-white py-2 text-xs font-label-caps hover:bg-sage-deep transition-all">PILIH
+                TEMA</button>
+            </div>
+          </div>
+        </div>
+        <!-- Theme Card 3 -->
+        <div class="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2">
+          <div class="relative overflow-hidden aspect-square">
+            <img alt="Luxury 04 Theme"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              src="https://lh3.googleusercontent.com/aida/AP1WRLsP8YC5w-M0bsAjbONnCh9Z78zL7c8-pBNLkslBs_jHs7inrQxYWYU3u00k2xLj5Sp99Z8R1Y-XiJXYQG6Z29YFai6U3zkG-XBhZWQyrEJcHnmzma6yySizbWAGUfvJsiOZH0H807E6B_Cu1v4IItqZAyO8Q_PYiqpKzkUXxLHuI_z1PltJ2dx7RQH0ePr26ux73NGHowgAErtY-puq-uYmPN50K3-JemTy6JBWPwR1LART5j0jNiekYR4" />
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="font-display-lg text-headline-sm text-primary">Luxury - 04</h3>
+            <div class="flex items-center gap-3">
+              <span class="text-on-surface-variant line-through text-xs">Rp 198.000</span>
+              <span class="text-primary font-bold">Rp 99.000</span>
+              <span class="bg-red-100 text-red-600 text-[10px] px-2 py-0.5 rounded font-bold">50%</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 pt-2">
+              <button
+                class="border border-outline py-2 text-xs font-label-caps hover:bg-primary hover:text-white transition-all">LIHAT
+                TEMA</button>
+              <button class="bg-primary text-white py-2 text-xs font-label-caps hover:bg-sage-deep transition-all">PILIH
+                TEMA</button>
+            </div>
+          </div>
+        </div>
+        <!-- Theme Card 4 -->
+        <div class="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2">
+          <div class="relative overflow-hidden aspect-square">
+            <img alt="Floral 07 Theme"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              src="https://lh3.googleusercontent.com/aida/AP1WRLvRt-Uk0QDdZuJP5nG9IQHTq4Z26fm2gfinoGWzYbc8yU3HMvWxsfu9JxrEj3Em-Sask0BmQ_CnazmljeS3bhi3r85ErcCB-qH_dkOti3GkHL0o0W9pWfQGjB41MRE1ciAUmKgVEbfBdzS5NXFOhXVbk_mMDBpfLQwdWx_oOd8xmYv1A3hS-a_gXQvqFltqWTO9Rkk0ml7Pts0lCFM6D22qhf50XwxKZJTS5a5OUMVYqM8VBlA8mztGHcSV" />
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="font-display-lg text-headline-sm text-primary">Floral - 07</h3>
+            <div class="flex items-center gap-3">
+              <span class="text-on-surface-variant line-through text-xs">Rp 198.000</span>
+              <span class="text-primary font-bold">Rp 99.000</span>
+              <span class="bg-red-100 text-red-600 text-[10px] px-2 py-0.5 rounded font-bold">50%</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 pt-2">
+              <button
+                class="border border-outline py-2 text-xs font-label-caps hover:bg-primary hover:text-white transition-all">LIHAT
+                TEMA</button>
+              <button class="bg-primary text-white py-2 text-xs font-label-caps hover:bg-sage-deep transition-all">PILIH
+                TEMA</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Pricing Section -->
+  <section class="py-24 bg-linen" id="pricing">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+      <div class="text-center mb-16">
+        <h2 class="font-display-lg text-display-lg text-primary mb-4">Mau Coba Dulu? <span
+            class="italic text-gold-leaf underline decoration-1 underline-offset-8">Silakan, Gratis!</span></h2>
+        <p class="font-body-lg text-on-surface-variant">Mulai dari paket trial 2 hari — rasakan sendiri kemudahannya
+          sebelum memutuskan.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        <!-- Free Trial -->
+        <div
+          class="bg-paper-white p-10 rounded-2xl premium-shadow border-t-4 border-gold-leaf relative transition-transform hover:scale-105">
+          <div class="mb-8">
+            <h3 class="font-display-lg text-headline-sm text-primary mb-2">Free Trial</h3>
+            <p class="text-on-surface-variant text-xs line-through">Rp 19.000</p>
+            <div class="flex items-baseline gap-2">
+              <span class="font-display-lg text-4xl text-primary">Rp 0</span>
+              <span
+                class="bg-green-100 text-green-700 text-[10px] px-2 py-0.5 rounded font-bold uppercase">GRATISSS</span>
+            </div>
+          </div>
+          <ul class="space-y-4 mb-10 text-sm">
+            <li class="flex items-center gap-3"><span
+                class="material-symbols-outlined text-green-500 text-sm">check_circle</span> Akses tema non-foto
+              (terbatas)</li>
+            <li class="flex items-center gap-3"><span
+                class="material-symbols-outlined text-green-500 text-sm">check_circle</span> Aktif 2 hari</li>
+            <li class="flex items-center gap-3"><span
+                class="material-symbols-outlined text-green-500 text-sm">check_circle</span> Detail mempelai &amp; acara
+            </li>
+            <li class="flex items-center gap-3"><span
+                class="material-symbols-outlined text-green-500 text-sm">check_circle</span> RSVP &amp; Ucapan</li>
+            <li class="flex items-center gap-3 text-on-surface-variant/40 line-through"><span
+                class="material-symbols-outlined text-sm">cancel</span> Ganti lagu</li>
+            <li class="flex items-center gap-3 text-on-surface-variant/40 line-through"><span
+                class="material-symbols-outlined text-sm">cancel</span> Galeri foto &amp; Video</li>
+          </ul>
+          <button
+            class="w-full border-2 border-dashed border-gold-leaf py-4 rounded-xl font-label-caps text-label-caps text-primary hover:bg-gold-leaf/10 transition-all">COBA
+            GRATIS</button>
+        </div>
+        <!-- Non Foto -->
+        <div
+          class="bg-paper-white p-10 rounded-2xl premium-shadow border-t-4 border-primary relative transition-transform hover:scale-105 z-10 md:scale-110">
+          <div
+            class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] px-4 py-1 rounded-full font-bold">
+            BEST SELLER</div>
+          <div class="mb-8">
+            <h3 class="font-display-lg text-headline-sm text-primary mb-2">Non Foto</h3>
+            <p class="text-on-surface-variant text-xs line-through">Rp 99.000</p>
+            <div class="flex items-baseline gap-2">
+              <span class="font-display-lg text-4xl text-primary">Rp 59.000</span>
+              <span class="bg-red-100 text-red-700 text-[10px] px-2 py-0.5 rounded font-bold uppercase">40% OFF</span>
+            </div>
+          </div>
+          <ul class="space-y-4 mb-10 text-sm">
+            <li class="flex items-center gap-3"><span
+                class="material-symbols-outlined text-green-500 text-sm">check_circle</span> Akses SEMUA tema non-foto
+            </li>
+            <li class="flex items-center gap-3"><span
+                class="material-symbols-outlined text-green-500 text-sm">check_circle</span> Aktif 1 Tahun</li>
+            <li class="flex items-center gap-3"><span
+                class="material-symbols-outlined text-green-500 text-sm">check_circle</span> Love Story &amp; Live
+              Streaming</li>
+            <li class="flex items-center gap-3"><span
+                class="material-symbols-outlined text-green-500 text-sm">check_circle</span> Ganti lagu favorit</li>
+            <li class="flex items-center gap-3"><span
+                class="material-symbols-outlined text-green-500 text-sm">check_circle</span> Bebas Revisi</li>
+            <li class="flex items-center gap-3 text-on-surface-variant/40 line-through"><span
+                class="material-symbols-outlined text-sm">cancel</span> Galeri foto</li>
+          </ul>
+          <button
+            class="w-full bg-primary text-white py-4 rounded-xl font-label-caps text-label-caps hover:bg-sage-deep transition-all shadow-lg">PILIH
+            PAKET</button>
+        </div>
+        <!-- Dengan Foto -->
+        <div
+          class="bg-paper-white p-10 rounded-2xl premium-shadow border-t-4 border-gold-leaf relative transition-transform hover:scale-105">
+          <div class="mb-8">
+            <h3 class="font-display-lg text-headline-sm text-primary mb-2">Dengan Foto</h3>
+            <p class="text-on-surface-variant text-xs line-through">Rp 198.000</p>
+            <div class="flex items-baseline gap-2">
+              <span class="font-display-lg text-4xl text-primary">Rp 99.000</span>
+              <span class="bg-red-100 text-red-700 text-[10px] px-2 py-0.5 rounded font-bold uppercase">50% OFF</span>
+            </div>
+          </div>
+          <ul class="space-y-4 mb-10 text-sm">
+            <li class="flex items-center gap-3"><span
+                class="material-symbols-outlined text-green-500 text-sm">check_circle</span> Akses SEMUA tema (Premium)
+            </li>
+            <li class="flex items-center gap-3"><span
+                class="material-symbols-outlined text-green-500 text-sm">check_circle</span> Aktif 1 Tahun</li>
+            <li class="flex items-center gap-3"><span
+                class="material-symbols-outlined text-green-500 text-sm">check_circle</span> Galeri Foto &amp; Video
+              Prewed</li>
+            <li class="flex items-center gap-3"><span
+                class="material-symbols-outlined text-green-500 text-sm">check_circle</span> Custom Nama Tamu</li>
+            <li class="flex items-center gap-3"><span
+                class="material-symbols-outlined text-green-500 text-sm">check_circle</span> Musik Latar Bebas</li>
+            <li class="flex items-center gap-3"><span
+                class="material-symbols-outlined text-green-500 text-sm">check_circle</span> Unlimited Share</li>
+          </ul>
+          <button
+            class="w-full bg-sage-deep text-white py-4 rounded-xl font-label-caps text-label-caps hover:opacity-90 transition-all shadow-lg">PILIH
+            PAKET</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- General Features Grid -->
+  <section class="py-24 bg-background">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+      <div class="text-center mb-16">
+        <h2 class="font-display-lg text-display-lg text-primary">Fitur Ungkulan Kami</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+        <!-- Feature Box -->
+        <div
+          class="bg-paper-white p-8 rounded-xl premium-shadow text-center flex flex-col items-center gap-4 group hover:bg-primary transition-all duration-500">
+          <div
+            class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-white group-hover:text-primary transition-all">
+            <span class="material-symbols-outlined">photo_library</span>
+          </div>
+          <span
+            class="font-label-caps text-[10px] tracking-widest text-on-surface-variant group-hover:text-white">GALLERY
+            POTO</span>
+        </div>
+        <div
+          class="bg-paper-white p-8 rounded-xl premium-shadow text-center flex flex-col items-center gap-4 group hover:bg-primary transition-all duration-500">
+          <div
+            class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-white group-hover:text-primary transition-all">
+            <span class="material-symbols-outlined">schedule</span>
+          </div>
+          <span
+            class="font-label-caps text-[10px] tracking-widest text-on-surface-variant group-hover:text-white">HITUNG
+            MUNDUR</span>
+        </div>
+        <div
+          class="bg-paper-white p-8 rounded-xl premium-shadow text-center flex flex-col items-center gap-4 group hover:bg-primary transition-all duration-500">
+          <div
+            class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-white group-hover:text-primary transition-all">
+            <span class="material-symbols-outlined">map</span>
+          </div>
+          <span
+            class="font-label-caps text-[10px] tracking-widest text-on-surface-variant group-hover:text-white">NAVIGASI
+            LOKASI</span>
+        </div>
+        <div
+          class="bg-paper-white p-8 rounded-xl premium-shadow text-center flex flex-col items-center gap-4 group hover:bg-primary transition-all duration-500">
+          <div
+            class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-white group-hover:text-primary transition-all">
+            <span class="material-symbols-outlined">payments</span>
+          </div>
+          <span
+            class="font-label-caps text-[10px] tracking-widest text-on-surface-variant group-hover:text-white">AMPLOP
+            DIGITAL</span>
+        </div>
+        <div
+          class="bg-paper-white p-8 rounded-xl premium-shadow text-center flex flex-col items-center gap-4 group hover:bg-primary transition-all duration-500">
+          <div
+            class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-white group-hover:text-primary transition-all">
+            <span class="material-symbols-outlined">person_add</span>
+          </div>
+          <span
+            class="font-label-caps text-[10px] tracking-widest text-on-surface-variant group-hover:text-white">CUSTOM
+            TAMU</span>
+        </div>
+        <div
+          class="bg-paper-white p-8 rounded-xl premium-shadow text-center flex flex-col items-center gap-4 group hover:bg-primary transition-all duration-500">
+          <div
+            class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-white group-hover:text-primary transition-all">
+            <span class="material-symbols-outlined">live_tv</span>
+          </div>
+          <span class="font-label-caps text-[10px] tracking-widest text-on-surface-variant group-hover:text-white">FITUR
+            LIVE</span>
+        </div>
+        <div
+          class="bg-paper-white p-8 rounded-xl premium-shadow text-center flex flex-col items-center gap-4 group hover:bg-primary transition-all duration-500">
+          <div
+            class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-white group-hover:text-primary transition-all">
+            <span class="material-symbols-outlined">event_available</span>
+          </div>
+          <span class="font-label-caps text-[10px] tracking-widest text-on-surface-variant group-hover:text-white">FITUR
+            RSVP</span>
+        </div>
+        <div
+          class="bg-paper-white p-8 rounded-xl premium-shadow text-center flex flex-col items-center gap-4 group hover:bg-primary transition-all duration-500">
+          <div
+            class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-white group-hover:text-primary transition-all">
+            <span class="material-symbols-outlined">favorite</span>
+          </div>
+          <span class="font-label-caps text-[10px] tracking-widest text-on-surface-variant group-hover:text-white">LOVE
+            STORY</span>
+        </div>
+        <div
+          class="bg-paper-white p-8 rounded-xl premium-shadow text-center flex flex-col items-center gap-4 group hover:bg-primary transition-all duration-500">
+          <div
+            class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-white group-hover:text-primary transition-all">
+            <span class="material-symbols-outlined">share</span>
+          </div>
+          <span
+            class="font-label-caps text-[10px] tracking-widest text-on-surface-variant group-hover:text-white">UNLIMITED
+            SHARE</span>
+        </div>
+        <div
+          class="bg-paper-white p-8 rounded-xl premium-shadow text-center flex flex-col items-center gap-4 group hover:bg-primary transition-all duration-500">
+          <div
+            class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-white group-hover:text-primary transition-all">
+            <span class="material-symbols-outlined">music_note</span>
+          </div>
+          <span class="font-label-caps text-[10px] tracking-widest text-on-surface-variant group-hover:text-white">MUSIK
+            LATAR</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- FAQ Section -->
+  <section class="py-24 bg-linen" id="faq">
+    <div class="max-w-3xl mx-auto px-margin-mobile">
+      <h2 class="font-display-lg text-display-lg text-primary text-center mb-12">Pertanyaan Seputar <span
+          class="italic">Undangan Digital</span></h2>
+      <div class="space-y-4">
+        <!-- FAQ Item 1 -->
+        <div class="bg-paper-white rounded-xl overflow-hidden premium-shadow">
+          <button
+            class="w-full p-6 text-left flex justify-between items-center transition-colors hover:bg-surface-container-low"
+            onclick="toggleAccordion(this)">
+            <span class="font-headline-sm text-primary text-lg">Apa itu paket Trial Gratis?</span>
+            <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="accordion-content">
+            <div class="p-6 pt-0 text-on-surface-variant text-sm border-t border-linen">
+              Paket Trial adalah kesempatan untuk mencoba platform Walimatul.id secara gratis selama 2 × 24 jam. Kamu
+              bisa isi data acara, pilih tema tanpa foto (terbatas), dan melihat preview undangan secara live.
+            </div>
+          </div>
+        </div>
+        <!-- FAQ Item 2 -->
+        <div class="bg-paper-white rounded-xl overflow-hidden premium-shadow">
+          <button
+            class="w-full p-6 text-left flex justify-between items-center transition-colors hover:bg-surface-container-low"
+            onclick="toggleAccordion(this)">
+            <span class="font-headline-sm text-primary text-lg">Berapa lama undangan saya aktif?</span>
+            <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="accordion-content">
+            <div class="p-6 pt-0 text-on-surface-variant text-sm border-t border-linen">
+              Undangan aktif selama 1 tahun sejak tanggal pembelian. Lebih dari cukup untuk semua rangkaian acara
+              pernikahan kamu.
+            </div>
+          </div>
+        </div>
+        <!-- FAQ Item 3 -->
+        <div class="bg-paper-white rounded-xl overflow-hidden premium-shadow">
+          <button
+            class="w-full p-6 text-left flex justify-between items-center transition-colors hover:bg-surface-container-low"
+            onclick="toggleAccordion(this)">
+            <span class="font-headline-sm text-primary text-lg">Bisakah saya ganti tema setelah membeli?</span>
+            <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="accordion-content">
+            <div class="p-6 pt-0 text-on-surface-variant text-sm border-t border-linen">
+              Bisa! Semua tema tersedia setelah checkout dan kamu bebas mengganti tema kapan saja tanpa biaya tambahan.
+            </div>
+          </div>
+        </div>
+        <!-- FAQ Item 4 -->
+        <div class="bg-paper-white rounded-xl overflow-hidden premium-shadow">
+          <button
+            class="w-full p-6 text-left flex justify-between items-center transition-colors hover:bg-surface-container-low"
+            onclick="toggleAccordion(this)">
+            <span class="font-headline-sm text-primary text-lg">Bagaimana cara membayar?</span>
+            <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="accordion-content">
+            <div class="p-6 pt-0 text-on-surface-variant text-sm border-t border-linen">
+              Pembayaran tersedia via QRIS, transfer bank (BCA, Mandiri, BNI, BRI), ShopeePay, GoPay, dan OVO. Semua
+              aman dan terverifikasi otomatis.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Final CTA -->
+  <section class="py-24 bg-sage-deep relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="grid grid-cols-6 gap-4 transform -rotate-12 scale-150">
+        <div class="h-64 bg-white/20 rounded-xl"></div>
+        <div class="h-64 bg-white/20 rounded-xl mt-12"></div>
+        <div class="h-64 bg-white/20 rounded-xl"></div>
+        <div class="h-64 bg-white/20 rounded-xl mt-12"></div>
+        <div class="h-64 bg-white/20 rounded-xl"></div>
+        <div class="h-64 bg-white/20 rounded-xl mt-12"></div>
+      </div>
+    </div>
+    <div class="max-w-container-max mx-auto px-margin-mobile text-center relative z-10">
+      <h2 class="font-display-lg text-4xl md:text-5xl text-white mb-6">Masih Ragu? <span
+          class="italic text-gold-leaf">Coba Dulu, Gratis 2 Hari!</span></h2>
+      <p class="font-body-lg text-white/70 max-w-2xl mx-auto mb-10">Tidak perlu bayar dulu — coba sendiri, rasakan
+        kemudahannya, lihat hasilnya. Kalau cocok, baru upgrade. Ratusan pasangan sudah membuktikannya.</p>
+      <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+        <button
+          class="w-full md:w-auto bg-gold-leaf text-sage-deep px-10 py-4 rounded-full font-label-caps text-label-caps font-bold shadow-xl hover:scale-105 transition-all">MULAI
+          TRIAL GRATIS SEKARANG</button>
+        <button
+          class="w-full md:w-auto border border-white/30 text-white px-10 py-4 rounded-full font-label-caps text-label-caps hover:bg-white/10 transition-all">LANGSUNG
+          PILIH PAKET</button>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-surface-container-lowest dark:bg-surface-dim border-t border-outline-variant">
+    <div
+      class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-16 max-w-container-max mx-auto">
+      <!-- Brand & Contact -->
+      <div class="space-y-6">
+        <img alt="Walimatul ID Logo" class="h-10"
+          src="https://lh3.googleusercontent.com/aida/AP1WRLs_Xb7AXqhIP9N7I0Kf10-5BM1Ro0Ks0UrnkQM9521bvej9wexI4k2lO4mkZ6Sc1VfFDUizMWQYyHPu_x6ZRgM-4Gr2VjsAsUHIyaVBBbiCSM_raAr-75H1r-9NhJ_mI_iXKvx2Oh_Lk9FIDwSlH7Q3E8J2ZlE3a1xOG8lJpe-YnDcEaj1NHxrgqK3K-JYvCfPAfCQhtYbKlmEpSvFYZXrI683XAkfeqVU7VfRrneEIZEa6KjQ5QgFzXL2M" />
+        <p class="font-body-md text-on-surface-variant">Walimatul ID adalah platform untuk membuat website undangan
+          digital dengan layanan lengkap. Solusi impian untuk momen spesial Anda.</p>
+        <div class="flex gap-4">
+          <a class="w-10 h-10 rounded-full border border-outline flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
+            href="#"><span class="material-symbols-outlined text-sm">face_nod</span></a>
+          <a class="w-10 h-10 rounded-full border border-outline flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
+            href="#"><span class="material-symbols-outlined text-sm">alternate_email</span></a>
+          <a class="w-10 h-10 rounded-full border border-outline flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
+            href="#"><span class="material-symbols-outlined text-sm">public</span></a>
+        </div>
+      </div>
+      <!-- Contact Details -->
+      <div class="space-y-4">
+        <h4 class="font-label-caps text-label-caps text-primary uppercase">Informasi Kontak</h4>
+        <ul class="space-y-3 font-body-md text-on-surface-variant">
+          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-sm mt-1">call</span> 0851 2800
+            2066</li>
+          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-sm mt-1">mail</span>
+            walimatul@gmail.com</li>
+          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-sm mt-1">location_on</span>
+            Tanggeung, Cianjur, Jawa Barat</li>
+        </ul>
+      </div>
+      <!-- Theme Options -->
+      <div class="space-y-4">
+        <h4 class="font-label-caps text-label-caps text-primary uppercase">Pilihan Tema</h4>
+        <ul class="space-y-2 font-body-md text-on-surface-variant">
+          <li><a class="hover:text-gold-leaf transition-all" href="#">Tema Basic</a></li>
+          <li><a class="hover:text-gold-leaf transition-all" href="#">Tema Standar</a></li>
+          <li><a class="hover:text-gold-leaf transition-all" href="#">Tema Premium</a></li>
+          <li><a class="hover:text-gold-leaf transition-all" href="#">Tema Non-Wedding</a></li>
+        </ul>
+      </div>
+      <!-- Other Links -->
+      <div class="space-y-4">
+        <h4 class="font-label-caps text-label-caps text-primary uppercase">Menu Lainnya</h4>
+        <ul class="space-y-2 font-body-md text-on-surface-variant">
+          <li><a class="hover:text-gold-leaf transition-all" href="#">Tentang Kami</a></li>
+          <li><a class="hover:text-gold-leaf transition-all" href="#">Blog</a></li>
+          <li><a class="hover:text-gold-leaf transition-all" href="#">Pendaftaran Reseller</a></li>
+          <li><a class="hover:text-gold-leaf transition-all" href="#">Kebijakan Privasi</a></li>
+          <li><a class="hover:text-gold-leaf transition-all" href="#">Syarat dan Ketentuan</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Copyright Row -->
+    <div class="border-t border-outline-variant/30 py-8 px-margin-mobile text-center">
+      <p class="font-body-md text-sm text-on-surface-variant/60">Copyright © 2024 Walimatul ID All Rights Reserved.</p>
+    </div>
+  </footer>
+  <!-- Floating WhatsApp -->
+  <a class="fixed bottom-8 right-8 bg-green-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform active:scale-95 z-50"
+    href="#">
+    <span class="material-symbols-outlined">chat</span>
+  </a>
+  <!-- Promo Modal (Auto show logic can be added) -->
+  <div class="fixed inset-0 z-[100] flex items-center justify-center px-4 hidden" id="promoModal">
+    <div class="absolute inset-0 bg-sage-deep/80 backdrop-blur-sm" onclick="closePromo()"></div>
+    <div class="relative bg-white w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl transform transition-all">
+      <div class="bg-primary p-8 text-center text-white relative">
+        <button class="absolute top-4 right-4 text-white/60 hover:text-white" onclick="closePromo()"><span
+            class="material-symbols-outlined">close</span></button>
+        <div
+          class="inline-block px-4 py-1 bg-gold-leaf text-sage-deep text-[10px] font-bold rounded-full mb-4 uppercase">
+          Promo Terbatas</div>
+        <h2 class="font-display-lg text-3xl mb-2">Diskon Spesial 10%</h2>
+        <p class="text-white/80 text-sm">Rayakan hari bahagiamu dengan undangan digital mewah</p>
+      </div>
+      <div class="p-8 text-center bg-paper-white">
+        <p class="text-on-surface-variant text-xs mb-4">Gunakan kode kupon ini untuk 20 orang pertama:</p>
+        <div
+          class="flex items-center justify-between bg-linen p-4 rounded-xl border-2 border-dashed border-gold-leaf mb-6">
+          <span class="font-display-lg text-2xl tracking-widest text-primary">SPESIAL10</span>
+          <button class="bg-gold-leaf text-sage-deep px-4 py-2 rounded-lg font-label-caps text-[10px]">SALIN
+            KODE</button>
+        </div>
+        <!-- Countdown -->
+        <div class="flex justify-center gap-6">
+          <div class="text-center">
+            <div class="text-2xl font-display-lg text-primary">03</div>
+            <div class="text-[10px] font-label-caps text-on-surface-variant">JAM</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-display-lg text-primary">37</div>
+            <div class="text-[10px] font-label-caps text-on-surface-variant">MENIT</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-display-lg text-primary">27</div>
+            <div class="text-[10px] font-label-caps text-on-surface-variant">DETIK</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function toggleAccordion(element) {
+      const container = element.parentElement;
+      const icon = element.querySelector('.material-symbols-outlined');
+
+      // Toggle current
+      const isOpen = container.classList.contains('accordion-open');
+
+      // Close all others
+      document.querySelectorAll('.accordion-open').forEach(item => {
+        item.classList.remove('accordion-open');
+        item.querySelector('.material-symbols-outlined').style.transform = 'rotate(0deg)';
+      });
+
+      if (!isOpen) {
+        container.classList.add('accordion-open');
+        icon.style.transform = 'rotate(180deg)';
+      }
+    }
+
+    function closePromo() {
+      document.getElementById('promoModal').classList.add('hidden');
+    }
+
+    // Show promo after 5 seconds for impact
+    setTimeout(() => {
+      document.getElementById('promoModal').classList.remove('hidden');
+    }, 5000);
+  </script>
+</body>
+
+</html>
