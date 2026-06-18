@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://127.0.0.1:8000/api/undangan';
-const INVITATION_URL = 'http://127.0.0.1:8000/api/invitation';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000/api';
+const BASE_URL = `${API_URL}/undangan`;
+const INVITATION_URL = `${API_URL}/invitation`;
 
 export const api = {
   getUndangan: () => axios.get(BASE_URL),
@@ -22,22 +23,22 @@ export const api = {
 
   // RSVP APIs
   storeRsvp: (slug: string, data: { nama: string; nomor_telepon: string; email?: string; status: string; pesan?: string }) =>
-    axios.post(`http://127.0.0.1:8000/api/rsvps/${slug}`, data),
+    axios.post(`${API_URL}/rsvps/${slug}`, data),
   getRsvpsBySlug: (slug: string) =>
-    axios.get(`http://127.0.0.1:8000/api/rsvps/${slug}`),
+    axios.get(`${API_URL}/rsvps/${slug}`),
 
   // Client (Magic Link) APIs
-  clientUpdateUndangan: (id: number, data: FormData, token: string) => axios.post(`http://127.0.0.1:8000/api/client/undangan/${id}?_method=PUT`, data, {
+  clientUpdateUndangan: (id: number, data: FormData, token: string) => axios.post(`${API_URL}/client/undangan/${id}?_method=PUT`, data, {
     headers: { 'Content-Type': 'multipart/form-data', 'X-Client-Token': token }
   }),
-  clientGetGuests: (slug: string, token: string) => axios.get(`http://127.0.0.1:8000/api/undangan/${slug}/guests`), // Public GET, token not strictly required but we can use it, in my routes the GET is public!
-  clientCreateGuest: (slug: string, data: { nama_tamu: string }, token: string) => axios.post(`http://127.0.0.1:8000/api/client/undangan/${slug}/guests`, data, {
+  clientGetGuests: (slug: string, token: string) => axios.get(`${BASE_URL}/${slug}/guests`), // Public GET, token not strictly required but we can use it, in my routes the GET is public!
+  clientCreateGuest: (slug: string, data: { nama_tamu: string }, token: string) => axios.post(`${API_URL}/client/undangan/${slug}/guests`, data, {
     headers: { 'X-Client-Token': token }
   }),
-  clientUpdateGuest: (slug: string, guestId: number, data: { nama_tamu: string }, token: string) => axios.put(`http://127.0.0.1:8000/api/client/undangan/${slug}/guests/${guestId}`, data, {
+  clientUpdateGuest: (slug: string, guestId: number, data: { nama_tamu: string }, token: string) => axios.put(`${API_URL}/client/undangan/${slug}/guests/${guestId}`, data, {
     headers: { 'X-Client-Token': token }
   }),
-  clientDeleteGuest: (slug: string, guestId: number, token: string) => axios.delete(`http://127.0.0.1:8000/api/client/undangan/${slug}/guests/${guestId}`, {
+  clientDeleteGuest: (slug: string, guestId: number, token: string) => axios.delete(`${API_URL}/client/undangan/${slug}/guests/${guestId}`, {
     headers: { 'X-Client-Token': token }
   }),
 };
