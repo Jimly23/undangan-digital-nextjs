@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000/api';
-const BASE_URL = `${API_URL}/api/undangan`;
+const BASE_URL = `${API_URL}/undangan`;
 const INVITATION_URL = `${API_URL}/invitation`;
 
 export const api = {
