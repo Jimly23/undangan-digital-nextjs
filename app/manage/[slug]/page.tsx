@@ -17,6 +17,7 @@ export default function ManageDashboard() {
   const [activeId, setActiveId] = useState<number | null>(null)
   const [loading, setLoading] = useState(true)
   const [loadingSubmit, setLoadingSubmit] = useState(false)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [alertMsg, setAlertMsg] = useState<{ type: string, message: string } | null>(null)
 
   // Guest States
@@ -252,8 +253,9 @@ export default function ManageDashboard() {
   // Edit View
   if (view === 'edit') {
     return (
-      <div className="admin-layout">
-        <aside className="admin-sidebar" style={{ width: 250 }}>
+      <div className="admin-layout flex-col md:flex-row">
+        {isSidebarOpen && <div className="sidebar-overlay" onClick={() => setIsSidebarOpen(false)}></div>}
+        <aside className={`admin-sidebar ${isSidebarOpen ? 'open' : ''}`}>
           <div className="sidebar-header border-b pb-4 mb-4">
             <h2 className="text-xl">👩‍❤️‍👨 Portal Pasangan</h2>
             <p className="text-sm opacity-80 mt-1">Undangan: {slug}</p>
@@ -263,8 +265,12 @@ export default function ManageDashboard() {
           </nav>
         </aside>
 
-        <main className="admin-main p-8 bg-gray-50 overflow-y-auto w-full">
-          <div className="max-w-4xl mx-auto">
+        <main className="admin-main bg-gray-50 overflow-y-auto w-full">
+          <header className="admin-header md:hidden flex justify-between items-center w-full px-4 py-3 bg-white border-b">
+            <h1 className="font-bold">Portal Pasangan</h1>
+            <button className="menu-toggle block" onClick={() => setIsSidebarOpen(true)}>☰</button>
+          </header>
+          <div className="max-w-4xl mx-auto p-4 md:p-8">
             <h1 className="text-3xl font-bold mb-6">Edit Detail Undangan</h1>
             {alertMsg && <div className={`alert alert-${alertMsg.type} mb-4`}>{alertMsg.message}</div>}
 
@@ -468,9 +474,10 @@ export default function ManageDashboard() {
 
   // Dashboard / Tamu View
   return (
-    <div className="admin-layout">
+    <div className="admin-layout flex-col md:flex-row">
+      {isSidebarOpen && <div className="sidebar-overlay" onClick={() => setIsSidebarOpen(false)}></div>}
       {/* SIDEBAR */}
-      <aside className="admin-sidebar" style={{ width: 250 }}>
+      <aside className={`admin-sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-header border-b pb-4 mb-4">
           <h2 className="text-xl flex gap-2 items-center"><Heart size={20} color="#e84aa9"/> Portal Pasangan</h2>
           <p className="text-sm opacity-80 mt-1 truncate">Undangan: {slug}</p>
@@ -481,7 +488,13 @@ export default function ManageDashboard() {
         </nav>
       </aside>
 
-      <main className="admin-main p-8 bg-gray-50 flex-1 w-full overflow-auto">
+      <main className="admin-main bg-gray-50 flex-1 w-full overflow-auto">
+        <header className="admin-header md:hidden flex items-center justify-between w-full px-4 py-3 bg-white border-b">
+          <h1 className="font-bold flex gap-2 items-center"><Heart size={20} color="#e84aa9"/> Portal Pasangan</h1>
+          <button className="menu-toggle block" onClick={() => setIsSidebarOpen(true)}>☰</button>
+        </header>
+        
+        <div className="p-4 md:p-8">
         {view === 'dashboard' && (
           <div className="max-w-4xl">
             <h1 className="text-2xl font-bold mb-6">Manajemen Akses Client</h1>
@@ -571,6 +584,7 @@ export default function ManageDashboard() {
             </div>
           </div>
         )}
+        </div>
       </main>
     </div>
   )

@@ -9,6 +9,7 @@ import { api } from '../../api/api'
 export default function AdminPage() {
   const [view, setView] = useState<'dashboard' | 'daftar' | 'buat' | 'edit' | 'tamu'>('dashboard')
   const [activeId, setActiveId] = useState<number | null>(null)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
   const [list, setList] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
@@ -110,7 +111,7 @@ export default function AdminPage() {
   // --- END GUESTS HANDLERS ---
 
   const handleSendToClient = (undangan: any) => {
-    const previewUrl = `${window.location.origin}/themes/${undangan.tema}/${undangan.slug}/Nama Tamu`;
+    const previewUrl = `${window.location.origin}/themes/${undangan.tema}/${undangan.slug}/Nama`;
     const manageUrl = `${window.location.origin}/manage/${undangan.slug}?token=${undangan.client_token}`;
     
     const text = `Terima kasih telah mempercayakan undangan digital Anda kepada kami!\n\nBerikut adalah link undangan digital Anda:\n\nLink untuk manage undangan:\n${manageUrl}\n\nLink Undangan Preview:\n${previewUrl}\n\nSemoga undangan ini dapat menjadi bagian dari momen bahagia Anda. Jika ada yang perlu disesuaikan, kami dengan senang hati akan membantunya.\n\nYouvitation.`;
@@ -279,8 +280,9 @@ export default function AdminPage() {
 
   if (view === 'buat' || view === 'edit') {
     return (
-      <div className="admin-layout">
-        <aside className="admin-sidebar" style={{ width: 250 }}>
+      <div className="admin-layout flex-col md:flex-row">
+        {isSidebarOpen && <div className="sidebar-overlay" onClick={() => setIsSidebarOpen(false)}></div>}
+        <aside className={`admin-sidebar ${isSidebarOpen ? 'open' : ''}`}>
           <div className="sidebar-header">
             <h2>💍 Panel Admin</h2>
           </div>
@@ -289,8 +291,12 @@ export default function AdminPage() {
           </nav>
         </aside>
 
-        <main className="admin-main p-8 bg-white overflow-y-auto">
-          <div className="max-w-4xl mx-auto">
+        <main className="admin-main bg-white overflow-y-auto w-full">
+          <header className="admin-header md:hidden flex justify-between items-center w-full px-4 py-3 bg-white border-b">
+            <h1 className="font-bold">Panel Admin</h1>
+            <button className="menu-toggle block" onClick={() => setIsSidebarOpen(true)}>☰</button>
+          </header>
+          <div className="max-w-4xl mx-auto p-4 md:p-8">
             <h1 className="text-3xl font-bold mb-6">{view === 'buat' ? 'Form Pembuatan Undangan' : `Edit Undangan: ${formData.slug}`}</h1>
             {alertMsg && <div className={`alert alert-${alertMsg.type} mb-4`}>{alertMsg.message}</div>}
 
@@ -499,9 +505,10 @@ export default function AdminPage() {
 
   // === DASHBOARD & DAFTAR VIEWS ===
   return (
-    <div className="admin-layout">
+    <div className="admin-layout flex-col md:flex-row">
+      {isSidebarOpen && <div className="sidebar-overlay" onClick={() => setIsSidebarOpen(false)}></div>}
       {/* SIDEBAR MAIN */}
-      <aside className="admin-sidebar" style={{ width: 250 }}>
+      <aside className={`admin-sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
           <h2>💍 Panel Admin</h2>
         </div>
@@ -511,7 +518,13 @@ export default function AdminPage() {
         </nav>
       </aside>
 
-      <main className="admin-main p-8">
+      <main className="admin-main w-full">
+        <header className="admin-header md:hidden flex items-center justify-between w-full px-4 py-3 bg-white border-b">
+          <h1 className="font-bold">Panel Admin</h1>
+          <button className="menu-toggle block" onClick={() => setIsSidebarOpen(true)}>☰</button>
+        </header>
+
+        <div className="p-4 md:p-8">
         {view === 'dashboard' && (
           <div>
             <h1 className="text-2xl font-bold mb-6">Dashboard Insight</h1>
@@ -650,6 +663,7 @@ export default function AdminPage() {
             </div>
           </div>
         )}
+        </div>
       </main>
     </div>
   )
