@@ -340,20 +340,22 @@ const Page = () => {
         >
           <Image src={imgIcon.menu} alt="bg-game" width={380} height={800} className='h-full relative' />
           <div className='w-full h-full bg-black/50 absolute top-0 left-0 right-0 z-10'></div>
-          <div className='absolute bottom-[37%] text-center -left-3 right-0 text-[#6b2e1d] z-999'>
-            <p className='text-center text-[10px]'>Kepada Yth</p>
-            <p className='font-angin-senja text-center text-4xl px-4 line-clamp-2'>{guestName}</p>
-          </div>
           <div className='absolute bottom-0 -left-5 right-0 text-center flex justify-center z-99'>
-            <Image
-              src={imgIcon.welcome}
-              alt="Open Invitation"
-              width={350}
-              height={50}
-              id='button-start'
-              className='cursor-pointer transition-transform duration-200 w-full'
-              onClick={() => { playMusic(); navigateTo('menu'); }}
-            />
+            <div className='relative w-full'>
+              <Image
+                src={imgIcon.welcome}
+                alt="Open Invitation"
+                width={350}
+                height={50}
+                id='button-start'
+                className='cursor-pointer transition-transform duration-200 w-full'
+                onClick={() => { playMusic(); navigateTo('menu'); }}
+              />
+              <div className='absolute bottom-[40%] left-2 right-0 text-center text-[#6b2e1d] z-999 pointer-events-none'>
+                <p className='text-center text-[10px]'>Kepada Yth</p>
+                <p className='font-angin-senja text-center text-4xl px-4 line-clamp-2'>{guestName}</p>
+              </div>
+            </div>
           </div>
           <div className='absolute animate-custom-pulse bottom-15 -left-5 right-0 text-center flex justify-center z-999'>
             <Image
