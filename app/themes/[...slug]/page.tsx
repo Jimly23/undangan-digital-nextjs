@@ -95,6 +95,21 @@ const arumaChinese = {
   rsvp: "/assets/themes/aruma-chinese/rsvp.webp",
 }
 
+const arumaBali = {
+  intro: "/assets/themes/aruma-bali/intro.webp",
+  btn: "/assets/themes/aruma-chinese/btn.webp",
+  next: "/assets/themes/aruma-chinese/next.webp",
+  welcome: "/assets/themes/aruma-bali/welcome.webp",
+  menu: "/assets/themes/aruma-bali/bg.webp",
+  gallery: "/assets/themes/aruma-bali/galery.webp",
+  gift: "/assets/themes/aruma-bali/gift.webp",
+  loveStory: "/assets/themes/aruma-bali/love-story.webp",
+  about: "/assets/themes/aruma-bali/about.webp",
+  date: "/assets/themes/aruma-bali/date.webp",
+  dresscode: "/assets/themes/aruma-bali/dresscode.webp",
+  rsvp: "/assets/themes/aruma-bali/rsvp.webp",
+}
+
 const listFotoGallery = [
   "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=600",
   "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600",
@@ -105,6 +120,7 @@ const listFotoGallery = [
 const themeColors: Record<string, { warnaBg: string; warnaBorder: string }> = {
   'aruma-japan': { warnaBg: '#f5b3be', warnaBorder: '#fb8a9c' },
   'aruma-japan-v2': { warnaBg: '#cbc157', warnaBorder: '#514716' },
+  'aruma-bali': { warnaBg: '#cbc157', warnaBorder: '#514716' },
   'aruma-jawa': { warnaBg: '#e1b87e', warnaBorder: '#603310' },
   'aruma-chinese': { warnaBg: '#fa8c84', warnaBorder: '#9e332b' },
   'aruma-korea': { warnaBg: '#eeb4b3', warnaBorder: '#d9848a' },
@@ -174,6 +190,7 @@ const Page = () => {
   const imgIconMap: Record<string, typeof arumaJepangV2> = {
     'aruma-japan': arumaJepang,
     'aruma-japan-v2': arumaJepangV2,
+    'aruma-bali': arumaBali,
     'aruma-jawa': arumaJawa,
     'aruma-chinese': arumaChinese,
     'aruma-korea': arumaKorea,

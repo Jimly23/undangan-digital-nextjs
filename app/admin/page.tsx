@@ -407,6 +407,7 @@ export default function AdminPage() {
                       <option value="aruma-japan-v2">Aruma Japan v2</option>
                       <option value="aruma-chinese">Aruma Chinese</option>
                       <option value="aruma-korea">Aruma Korea</option>
+                      <option value="aruma-bali">Aruma Bali</option>
                     </select>
                   </div>
                 </div>
