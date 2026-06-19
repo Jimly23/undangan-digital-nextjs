@@ -50,6 +50,21 @@ const arumaJepangV2 = {
   rsvp: "/assets/themes/aruma-jepangv2/rsvp.webp",
 }
 
+const arumaKorea = {
+  intro: "/assets/themes/aruma-korea/intro.webp",
+  btn: "/assets/themes/aruma-chinese/btn.webp",
+  next: "/assets/themes/aruma-chinese/next.webp",
+  welcome: "/assets/themes/aruma-korea/welcome.webp",
+  menu: "/assets/themes/aruma-korea/bg.webp",
+  gallery: "/assets/themes/aruma-korea/galery.webp",
+  gift: "/assets/themes/aruma-korea/gift.webp",
+  loveStory: "/assets/themes/aruma-korea/love-story.webp",
+  about: "/assets/themes/aruma-korea/about.webp",
+  date: "/assets/themes/aruma-korea/date.webp",
+  dresscode: "/assets/themes/aruma-korea/dresscode.webp",
+  rsvp: "/assets/themes/aruma-korea/rsvp.webp",
+}
+
 const arumaJawa = {
   intro: "/assets/themes/aruma-jawa/intro.webp",
   btn: "/assets/themes/aruma-chinese/btn.webp",
@@ -92,6 +107,7 @@ const themeColors: Record<string, { warnaBg: string; warnaBorder: string }> = {
   'aruma-japan-v2': { warnaBg: '#cbc157', warnaBorder: '#514716' },
   'aruma-jawa': { warnaBg: '#e1b87e', warnaBorder: '#603310' },
   'aruma-chinese': { warnaBg: '#fa8c84', warnaBorder: '#9e332b' },
+  'aruma-korea': { warnaBg: '#eeb4b3', warnaBorder: '#d9848a' },
 };
 
 const ceritaKita = [
@@ -160,6 +176,7 @@ const Page = () => {
     'aruma-japan-v2': arumaJepangV2,
     'aruma-jawa': arumaJawa,
     'aruma-chinese': arumaChinese,
+    'aruma-korea': arumaKorea,
   };
 
   const currentTheme = dataUndangan?.tema || temaUrl || 'aruma-japan-v2';
