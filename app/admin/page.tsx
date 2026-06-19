@@ -7,6 +7,40 @@ import './admin.css'
 import { api } from '../../api/api'
 
 export default function AdminPage() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [loginForm, setLoginForm] = useState({ email: '', password: '' })
+  const [loginError, setLoginError] = useState('')
+  const [loginLoading, setLoginLoading] = useState(false)
+
+  useEffect(() => {
+    const auth = sessionStorage.getItem('admin_auth')
+    if (auth === 'true') setIsAuthenticated(true)
+  }, [])
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoginLoading(true)
+    setLoginError('')
+
+    setTimeout(() => {
+      if (
+        loginForm.email === 'youvitationdotnet@gmail.com' &&
+        loginForm.password === 'Hardiansyah_23'
+      ) {
+        sessionStorage.setItem('admin_auth', 'true')
+        setIsAuthenticated(true)
+      } else {
+        setLoginError('Email atau password salah!')
+      }
+      setLoginLoading(false)
+    }, 600)
+  }
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('admin_auth')
+    setIsAuthenticated(false)
+  }
+
   const [view, setView] = useState<'dashboard' | 'daftar' | 'buat' | 'edit' | 'tamu'>('dashboard')
   const [activeId, setActiveId] = useState<number | null>(null)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
@@ -53,10 +87,66 @@ export default function AdminPage() {
   }
 
   useEffect(() => {
-    if (view === 'dashboard' || view === 'daftar') {
+    if (isAuthenticated && (view === 'dashboard' || view === 'daftar')) {
       loadData()
     }
-  }, [view])
+  }, [view, isAuthenticated])
+
+  if (!isAuthenticated) {
+    return (
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)' }}>
+        <div style={{ width: '100%', maxWidth: '420px', padding: '0 16px' }}>
+          <div style={{ background: '#fff', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 25px 50px rgba(0,0,0,0.25)' }}>
+            <div style={{ background: 'linear-gradient(135deg, #7c5cf0, #6c63ff)', padding: '32px', textAlign: 'center', color: '#fff' }}>
+              <div style={{ fontSize: '40px', marginBottom: '8px' }}>💍</div>
+              <h1 style={{ fontSize: '24px', fontWeight: 700, margin: 0 }}>Admin Panel</h1>
+              <p style={{ fontSize: '14px', opacity: 0.8, margin: '4px 0 0' }}>Youvitation Dashboard</p>
+            </div>
+            <form onSubmit={handleLogin} style={{ padding: '32px' }}>
+              {loginError && (
+                <div style={{ background: '#fef2f2', color: '#dc2626', padding: '12px 16px', borderRadius: '8px', fontSize: '14px', marginBottom: '16px', border: '1px solid #fecaca' }}>
+                  {loginError}
+                </div>
+              )}
+              <div style={{ marginBottom: '20px' }}>
+                <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#374151', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Email</label>
+                <input
+                  type="email"
+                  required
+                  placeholder="Masukkan email admin"
+                  value={loginForm.email}
+                  onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
+                  style={{ width: '100%', padding: '12px 16px', border: '2px solid #e5e7eb', borderRadius: '10px', fontSize: '15px', outline: 'none', transition: 'border 0.2s', boxSizing: 'border-box' }}
+                  onFocus={(e) => e.target.style.borderColor = '#7c5cf0'}
+                  onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
+                />
+              </div>
+              <div style={{ marginBottom: '28px' }}>
+                <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#374151', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Password</label>
+                <input
+                  type="password"
+                  required
+                  placeholder="Masukkan password"
+                  value={loginForm.password}
+                  onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
+                  style={{ width: '100%', padding: '12px 16px', border: '2px solid #e5e7eb', borderRadius: '10px', fontSize: '15px', outline: 'none', transition: 'border 0.2s', boxSizing: 'border-box' }}
+                  onFocus={(e) => e.target.style.borderColor = '#7c5cf0'}
+                  onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={loginLoading}
+                style={{ width: '100%', padding: '14px', background: loginLoading ? '#9ca3af' : 'linear-gradient(135deg, #7c5cf0, #6c63ff)', color: '#fff', border: 'none', borderRadius: '10px', fontSize: '16px', fontWeight: 700, cursor: loginLoading ? 'not-allowed' : 'pointer', transition: 'opacity 0.2s', textTransform: 'uppercase', letterSpacing: '0.05em' }}
+              >
+                {loginLoading ? 'Memverifikasi...' : 'Masuk'}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   // --- GUESTS HANDLERS ---
   const openGuests = (slug: string) => {
@@ -515,6 +605,7 @@ export default function AdminPage() {
         <nav className="sidebar-nav">
           <button className={`nav-item ${view === 'dashboard' ? 'active' : ''}`} onClick={() => setView('dashboard')}><Activity size={18} /> Dashboard</button>
           <button className={`nav-item ${view === 'daftar' ? 'active' : ''}`} onClick={() => setView('daftar')}><Users size={18} /> Daftar Undangan</button>
+          <button className="nav-item text-red-500 mt-4" onClick={handleLogout}><ArrowLeft size={18} /> Keluar</button>
         </nav>
       </aside>
 
