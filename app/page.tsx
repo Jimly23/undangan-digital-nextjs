@@ -5,6 +5,16 @@ import React, { useState, useEffect } from 'react';
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showPromo, setShowPromo] = useState(false);
+  const [orderModal, setOrderModal] = useState<{name: string, price: string} | null>(null);
+  const [orderForm, setOrderForm] = useState({ name: '', phone: '' });
+
+  const handleOrder = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!orderModal) return;
+    const text = `Halo Youvitation,%0ASaya ingin memesan tema undangan.%0A%0A*Detail Pesanan:*%0ATema: ${orderModal.name}%0AHarga: ${orderModal.price}%0A%0A*Data Pemesan:*%0ANama Lengkap: ${orderForm.name}%0ANo. WhatsApp: ${orderForm.phone}%0A%0AMohon informasi lebih lanjut terkait pemesanan tema ini.`;
+    const waNumber = '6282329322353';
+    window.open(`https://wa.me/${waNumber}?text=${text}`, '_blank');
+  };
 
   useEffect(() => {
     // Show promo after 5 seconds for impact
@@ -25,7 +35,8 @@ export default function Home() {
   return (
     <>
       <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-      <script dangerouslySetInnerHTML={{ __html: `
+      <script dangerouslySetInnerHTML={{
+        __html: `
         tailwind.config = {
           darkMode: "class",
           theme: {
@@ -120,7 +131,8 @@ export default function Home() {
           },
         }
       ` }} />
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .material-symbols-outlined {
           font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
@@ -139,6 +151,13 @@ export default function Home() {
         .premium-shadow {
           box-shadow: 0 20px 40px rgba(89, 101, 84, 0.05);
         }
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          animation: marquee 30s linear infinite;
+        }
       ` }} />
       <link
         href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap"
@@ -148,54 +167,28 @@ export default function Home() {
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet"
       />
-      
+
       <main className="bg-background text-on-background font-body-md overflow-x-hidden min-h-screen">
         {/* Top Navigation */}
-        <header className="docked full-width top-0 sticky z-50 bg-paper-white/80 dark:bg-surface/80 backdrop-blur-md shadow-sm">
+        <header className="full-width z-50 bg-primary-container">
           <nav className="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
             <div className="flex items-center gap-4">
               <img
                 alt="Walimatul ID Logo"
-                className="h-8 md:h-10"
-                src="https://lh3.googleusercontent.com/aida/AP1WRLs_Xb7AXqhIP9N7I0Kf10-5BM1Ro0Ks0UrnkQM9521bvej9wexI4k2lO4mkZ6Sc1VfFDUizMWQYyHPu_x6ZRgM-4Gr2VjsAsUHIyaVBBbiCSM_raAr-75H1r-9NhJ_mI_iXKvx2Oh_Lk9FIDwSlH7Q3E8J2ZlE3a1xOG8lJpe-YnDcEaj1NHxrgqK3K-JYvCfPAfCQhtYbKlmEpSvFYZXrI683XAkfeqVU7VfRrneEIZEa6KjQ5QgFzXL2M"
+                className="h-8 md:h-12"
+                src="/logo-header.png"
               />
             </div>
-            <div className="hidden md:flex items-center gap-8">
-              <a
-                className="text-primary dark:text-primary-fixed font-bold border-b-2 border-gold-leaf pb-1 font-label-caps text-label-caps"
-                href="#"
-              >
-                Beranda
-              </a>
-              <a
-                className="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-label-caps text-label-caps"
-                href="#themes"
-              >
-                Tema
-              </a>
-              <a
-                className="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-label-caps text-label-caps"
-                href="#pricing"
-              >
-                Harga
-              </a>
-              <a
-                className="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-label-caps text-label-caps"
-                href="#faq"
-              >
-                FAQ
-              </a>
-            </div>
             <div className="flex items-center gap-4">
-              <button className="bg-primary text-on-primary px-6 py-2 rounded-full font-label-caps text-label-caps hover:bg-sage-deep transition-all transform active:scale-95">
-                Masuk
+              <button className="bg-gold-leaf text-on-primary px-6 py-2 rounded-full font-label-caps text-label-caps hover:bg-sage-deep transition-all transform active:scale-95">
+                Lihat Tema
               </button>
             </div>
           </nav>
         </header>
 
         {/* Hero Section */}
-        <section className="relative bg-primary-container overflow-hidden pt-16 pb-24 md:py-32">
+        <section className="relative bg-primary-container overflow-hidden pt-12 pb-24 md:pt-20 md:pb-32">
           <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
             <div className="text-on-primary-container space-y-6">
               <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg text-white">
@@ -206,7 +199,7 @@ export default function Home() {
                 Dapatkan undangan online yang unik, interaktif, dan mudah dibagikan kepada seluruh tamu Anda.
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
-                <button className="bg-gold-leaf text-sage-deep px-8 py-3 rounded-full font-label-caps text-label-caps hover:opacity-90 transition-all">
+                <button className="bg-gold-leaf text-white px-8 py-3 rounded-full font-label-caps text-label-caps hover:opacity-90 transition-all">
                   Buat Undangan
                 </button>
                 <button className="bg-transparent border border-white/30 text-white px-8 py-3 rounded-full font-label-caps text-label-caps hover:bg-white/10 transition-all flex items-center gap-2">
@@ -216,7 +209,6 @@ export default function Home() {
               </div>
             </div>
             <div className="relative">
-              <div className="absolute -top-10 -right-10 w-64 h-64 bg-gold-leaf/20 rounded-full blur-3xl"></div>
               <img
                 alt="Digital Invitations Showcase"
                 className="w-full h-auto drop-shadow-2xl animate-pulse-slow"
@@ -227,16 +219,45 @@ export default function Home() {
         </section>
 
         {/* Partners Row */}
-        <section className="bg-linen py-12 border-b border-outline-variant">
-          <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
-            <p className="font-label-caps text-label-caps text-on-surface-variant mb-8 uppercase tracking-widest">
+        <section className="bg-linen py-12 border-b border-outline-variant overflow-hidden">
+          <div className="max-w-container-max mx-auto text-center relative">
+            <h3 className="font-display-lg text-primary mb-10 px-margin-mobile">
               Telah Dipercaya 500+ Pasangan di Seluruh Indonesia
-            </p>
-            <div className="flex flex-wrap justify-center gap-6 md:gap-12 opacity-60 grayscale hover:grayscale-0 transition-all">
-              <span className="font-display-lg text-headline-sm">RAI & EKI</span>
-              <span className="font-display-lg text-headline-sm">LAA & HAR</span>
-              <span className="font-display-lg text-headline-sm">A & FAD</span>
-              <span className="font-display-lg text-headline-sm">NRA & RAR</span>
+            </h3>
+            
+            <div className="relative w-full overflow-hidden flex">
+              {/* Fade masks for smooth edges */}
+              <div className="absolute top-0 left-0 w-16 md:w-32 h-full bg-gradient-to-r from-linen to-transparent z-10 pointer-events-none"></div>
+              <div className="absolute top-0 right-0 w-16 md:w-32 h-full bg-gradient-to-l from-linen to-transparent z-10 pointer-events-none"></div>
+              
+              <div className="flex animate-marquee w-max gap-8 md:gap-12 hover:[animation-play-state:paused]">
+                {[
+                  { img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=200&h=200&auto=format&fit=crop', initials: '&' },
+                  { img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=200&h=200&auto=format&fit=crop', initials: 'F & D' },
+                  { img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=200&h=200&auto=format&fit=crop', initials: 'N & A' },
+                  { img: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=200&h=200&auto=format&fit=crop', initials: 'R & R' },
+                  { img: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=200&h=200&auto=format&fit=crop', initials: 'H & I' },
+                  { img: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=200&h=200&auto=format&fit=crop', initials: 'R & I' },
+                  { img: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=200&h=200&auto=format&fit=crop', initials: 'R & I' },
+                  { img: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=200&h=200&auto=format&fit=crop', initials: 'R & A' },
+                  // Duplicated for seamless loop
+                  { img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=200&h=200&auto=format&fit=crop', initials: '&' },
+                  { img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=200&h=200&auto=format&fit=crop', initials: 'F & D' },
+                  { img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=200&h=200&auto=format&fit=crop', initials: 'N & A' },
+                  { img: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=200&h=200&auto=format&fit=crop', initials: 'R & R' },
+                  { img: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=200&h=200&auto=format&fit=crop', initials: 'H & I' },
+                  { img: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=200&h=200&auto=format&fit=crop', initials: 'R & I' },
+                  { img: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=200&h=200&auto=format&fit=crop', initials: 'R & I' },
+                  { img: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=200&h=200&auto=format&fit=crop', initials: 'R & A' }
+                ].map((partner, idx) => (
+                  <div key={idx} className="flex flex-col items-center gap-3 w-20 shrink-0 transition-transform cursor-pointer">
+                    <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-white shadow-md">
+                      <img src={partner.img} alt={partner.initials} className="w-full h-full object-cover" />
+                    </div>
+                    <span className="font-label-caps text-[10px] md:text-xs text-on-surface-variant font-bold tracking-widest">{partner.initials}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -250,106 +271,137 @@ export default function Home() {
                 Kami memiliki puluhan tema undangan pernikahan digital. Silahkan pilih tema dibawah, jika butuh tema custom bisa langsung hubungi admin.
               </p>
               <div className="flex justify-center gap-4 mt-8">
-                <button className="px-6 py-2 bg-primary text-white rounded-full font-label-caps text-label-caps">Semua</button>
+                {/* <button className="px-6 py-2 bg-primary text-white rounded-full font-label-caps text-label-caps">Semua</button>
                 <button className="px-6 py-2 bg-surface-container-high text-primary rounded-full font-label-caps text-label-caps hover:bg-primary/10 transition-all">Dengan Foto</button>
-                <button className="px-6 py-2 bg-surface-container-high text-primary rounded-full font-label-caps text-label-caps hover:bg-primary/10 transition-all">Non-Foto</button>
+                <button className="px-6 py-2 bg-surface-container-high text-primary rounded-full font-label-caps text-label-caps hover:bg-primary/10 transition-all">Non-Foto</button> */}
               </div>
             </div>
 
             {/* Bento-ish Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
               {/* Theme Card 1 */}
-              <div className="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2">
-                <div className="relative overflow-hidden aspect-square">
+              <div className="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2 flex flex-col">
+                <div className="relative overflow-hidden aspect-[4/5] bg-[#9f9a4b]">
                   <img
-                    alt="Floral 05 Theme"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    src="https://lh3.googleusercontent.com/aida/AP1WRLtiAFA2vECLI5Sh3Gy0b4snkj5d7AyleWt04Tt_8DUWutiCc0nivS_P48Y0yIopWFhqcV-WU5aqs3KZkqJhfthkg9bq8To17un6MhIubiqMjzBmb4UzOUgJlknq9yGztpkewzaivmj1Kw-QS9ggdpjbfPhyURTevEeSMhiNPePYfNROyGGUk2j4j9oRC280QrNoCpCSOkwbgx6zvnME6PXEc_uLtBcgT7sEIv48GxVAkyJ4hPtmZPvjifUi"
+                    alt="Japan Theme"
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
+                    src="/assets/landing/japan.jpeg"
                   />
-                  <div className="absolute top-3 left-3 bg-gold-leaf text-sage-deep text-[10px] px-3 py-1 font-bold rounded-full">NEW</div>
+                  <div className="absolute top-3 left-3 bg-gold-leaf text-sage-deep text-[10px] px-3 py-1 font-bold rounded-full z-10">NEW</div>
                 </div>
-                <div className="p-6 space-y-3">
-                  <h3 className="font-display-lg text-headline-sm text-primary">Floral - 05</h3>
-                  <div className="flex items-center gap-3">
-                    <span className="text-on-surface-variant line-through text-xs">Rp 198.000</span>
-                    <span className="text-primary font-bold">Rp 99.000</span>
-                    <span className="bg-red-100 text-red-600 text-[10px] px-2 py-0.5 rounded font-bold">50%</span>
+                <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-display-lg text-headline-sm text-primary">Japan Theme</h3>
+                    <div className="flex items-center gap-2 mt-1 flex-wrap">
+                      <span className="text-on-surface-variant line-through text-[10px]">Rp 689k</span>
+                      <span className="text-primary font-bold text-sm">Rp 349.000</span>
+                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">50%</span>
+                    </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-2 pt-2">
-                    <button className="border border-outline py-2 text-xs font-label-caps hover:bg-primary hover:text-white transition-all">LIHAT TEMA</button>
-                    <button className="bg-primary text-white py-2 text-xs font-label-caps hover:bg-sage-deep transition-all">PILIH TEMA</button>
+                  <div className="grid grid-cols-1 gap-2 pt-2">
+                    <a href="https://youvitation.net/themes/aruma-japan-v2/adelio-elina/Tamu%20Undangan" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
+                    <button onClick={() => { setOrderModal({ name: 'Japan Theme', price: 'Rp 349.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
                   </div>
                 </div>
               </div>
 
               {/* Theme Card 2 */}
-              <div className="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2">
-                <div className="relative overflow-hidden aspect-square">
+              <div className="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2 flex flex-col">
+                <div className="relative overflow-hidden aspect-[4/5] bg-[#f0ce81]">
                   <img
-                    alt="Luxury 02 Theme"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    src="https://lh3.googleusercontent.com/aida/AP1WRLs7RepROjeiRvJKk-WahBqRP7Tnk4DGIwp9uImWWVYc9hb5af_OCG-8E1G3DbvKjh8oEXJvlz4pQWomsWxX_bv7D2fQXUZ5o0oPDoz8Mx2Fo8xEFVVkh6njwF2y74iVyzgG6O4KXLvRslzAdiAgulaPdcfz9lDQaFITUgnzhH0AqFEy0GzIYiV8WP7hJBOr1Gn85QhL09xrXZ6pg0ruQqITorUVIk-6LRCyvnodUyMpjaEM57ncJWuN-SFS"
+                    alt="Jawa Theme"
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
+                    src="/assets/landing/jawa.jpeg"
                   />
                 </div>
-                <div className="p-6 space-y-3">
-                  <h3 className="font-display-lg text-headline-sm text-primary">Luxury - 02</h3>
-                  <div className="flex items-center gap-3">
-                    <span className="text-on-surface-variant line-through text-xs">Rp 198.000</span>
-                    <span className="text-primary font-bold">Rp 99.000</span>
-                    <span className="bg-red-100 text-red-600 text-[10px] px-2 py-0.5 rounded font-bold">50%</span>
+                <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-display-lg text-headline-sm text-primary">Jawa Theme</h3>
+                    <div className="flex items-center gap-2 mt-1 flex-wrap">
+                      <span className="text-on-surface-variant line-through text-[10px]">Rp 689k</span>
+                      <span className="text-primary font-bold text-sm">Rp 349.000</span>
+                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">50%</span>
+                    </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-2 pt-2">
-                    <button className="border border-outline py-2 text-xs font-label-caps hover:bg-primary hover:text-white transition-all">LIHAT TEMA</button>
-                    <button className="bg-primary text-white py-2 text-xs font-label-caps hover:bg-sage-deep transition-all">PILIH TEMA</button>
+                  <div className="grid grid-cols-1 gap-2 pt-2">
+                    <a href="https://youvitation.net/themes/aruma-jawa/adelio-elina/Tamu%20Undangan" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
+                    <button onClick={() => { setOrderModal({ name: 'Jawa Theme', price: 'Rp 349.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
                   </div>
                 </div>
               </div>
 
               {/* Theme Card 3 */}
-              <div className="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2">
-                <div className="relative overflow-hidden aspect-square">
+              <div className="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2 flex flex-col">
+                <div className="relative overflow-hidden aspect-[4/5] bg-[#df4021]">
                   <img
-                    alt="Luxury 04 Theme"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    src="https://lh3.googleusercontent.com/aida/AP1WRLsP8YC5w-M0bsAjbONnCh9Z78zL7c8-pBNLkslBs_jHs7inrQxYWYU3u00k2xLj5Sp99Z8R1Y-XiJXYQG6Z29YFai6U3zkG-XBhZWQyrEJcHnmzma6yySizbWAGUfvJsiOZH0H807E6B_Cu1v4IItqZAyO8Q_PYiqpKzkUXxLHuI_z1PltJ2dx7RQH0ePr26ux73NGHowgAErtY-puq-uYmPN50K3-JemTy6JBWPwR1LART5j0jNiekYR4"
+                    alt="Chinese Theme"
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
+                    src="/assets/landing/chinese.jpeg"
                   />
                 </div>
-                <div className="p-6 space-y-3">
-                  <h3 className="font-display-lg text-headline-sm text-primary">Luxury - 04</h3>
-                  <div className="flex items-center gap-3">
-                    <span className="text-on-surface-variant line-through text-xs">Rp 198.000</span>
-                    <span className="text-primary font-bold">Rp 99.000</span>
-                    <span className="bg-red-100 text-red-600 text-[10px] px-2 py-0.5 rounded font-bold">50%</span>
+                <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-display-lg text-headline-sm text-primary">Chinese Theme</h3>
+                    <div className="flex items-center gap-2 mt-1 flex-wrap">
+                      <span className="text-on-surface-variant line-through text-[10px]">Rp 689k</span>
+                      <span className="text-primary font-bold text-sm">Rp 349.000</span>
+                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">50%</span>
+                    </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-2 pt-2">
-                    <button className="border border-outline py-2 text-xs font-label-caps hover:bg-primary hover:text-white transition-all">LIHAT TEMA</button>
-                    <button className="bg-primary text-white py-2 text-xs font-label-caps hover:bg-sage-deep transition-all">PILIH TEMA</button>
+                  <div className="grid grid-cols-1 gap-2 pt-2">
+                    <a href="https://youvitation.net/themes/aruma-chinese/adelio-elina/Tamu%20Undangan" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
+                    <button onClick={() => { setOrderModal({ name: 'Chinese Theme', price: 'Rp 349.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
                   </div>
                 </div>
               </div>
 
-              {/* Theme Card 4 */}
-              <div className="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2">
-                <div className="relative overflow-hidden aspect-square">
+              {/* <div className="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2 flex flex-col">
+                <div className="relative overflow-hidden aspect-[4/5] bg-surface-container-low">
                   <img
                     alt="Floral 07 Theme"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
                     src="https://lh3.googleusercontent.com/aida/AP1WRLvRt-Uk0QDdZuJP5nG9IQHTq4Z26fm2gfinoGWzYbc8yU3HMvWxsfu9JxrEj3Em-Sask0BmQ_CnazmljeS3bhi3r85ErcCB-qH_dkOti3GkHL0o0W9pWfQGjB41MRE1ciAUmKgVEbfBdzS5NXFOhXVbk_mMDBpfLQwdWx_oOd8xmYv1A3hS-a_gXQvqFltqWTO9Rkk0ml7Pts0lCFM6D22qhf50XwxKZJTS5a5OUMVYqM8VBlA8mztGHcSV"
                   />
                 </div>
-                <div className="p-6 space-y-3">
-                  <h3 className="font-display-lg text-headline-sm text-primary">Floral - 07</h3>
-                  <div className="flex items-center gap-3">
-                    <span className="text-on-surface-variant line-through text-xs">Rp 198.000</span>
-                    <span className="text-primary font-bold">Rp 99.000</span>
-                    <span className="bg-red-100 text-red-600 text-[10px] px-2 py-0.5 rounded font-bold">50%</span>
+                <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-display-lg text-headline-sm text-primary">Floral - 07</h3>
+                    <div className="flex items-center gap-2 mt-1 flex-wrap">
+                      <span className="text-on-surface-variant line-through text-[10px]">Rp 689k</span>
+                      <span className="text-primary font-bold text-sm">Rp 349.000</span>
+                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">50%</span>
+                    </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-2 pt-2">
-                    <button className="border border-outline py-2 text-xs font-label-caps hover:bg-primary hover:text-white transition-all">LIHAT TEMA</button>
-                    <button className="bg-primary text-white py-2 text-xs font-label-caps hover:bg-sage-deep transition-all">PILIH TEMA</button>
+                  <div className="grid grid-cols-1 gap-2 pt-2">
+                    <button className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all">LIHAT TEMA</button>
+                    <button className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all">PILIH TEMA</button>
                   </div>
                 </div>
               </div>
+
+              <div className="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2 flex flex-col">
+                <div className="relative overflow-hidden aspect-[4/5] bg-surface-container-low">
+                  <img
+                    alt="Luxury 02 Theme"
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
+                    src="https://lh3.googleusercontent.com/aida/AP1WRLs7RepROjeiRvJKk-WahBqRP7Tnk4DGIwp9uImWWVYc9hb5af_OCG-8E1G3DbvKjh8oEXJvlz4pQWomsWxX_bv7D2fQXUZ5o0oPDoz8Mx2Fo8xEFVVkh6njwF2y74iVyzgG6O4KXLvRslzAdiAgulaPdcfz9lDQaFITUgnzhH0AqFEy0GzIYiV8WP7hJBOr1Gn85QhL09xrXZ6pg0ruQqITorUVIk-6LRCyvnodUyMpjaEM57ncJWuN-SFS"
+                  />
+                </div>
+                <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-display-lg text-headline-sm text-primary">Luxury - 02</h3>
+                    <div className="flex items-center gap-2 mt-1 flex-wrap">
+                      <span className="text-on-surface-variant line-through text-[10px]">Rp 689k</span>
+                      <span className="text-primary font-bold text-sm">Rp 349.000</span>
+                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">50%</span>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 gap-2 pt-2">
+                    <button className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all">LIHAT TEMA</button>
+                    <button className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all">PILIH TEMA</button>
+                  </div>
+                </div>
+              </div> */}
             </div>
           </div>
         </section>
@@ -365,13 +417,13 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
               {/* Free Trial */}
-              <div className="bg-paper-white p-10 rounded-2xl premium-shadow border-t-4 border-gold-leaf relative transition-transform hover:scale-105">
+              <div className="bg-paper-white p-10 rounded-2xl premium-shadow border-t-4 border-gold-leaf relative transition-transform">
                 <div className="mb-8">
-                  <h3 className="font-display-lg text-headline-sm text-primary mb-2">Free Trial</h3>
-                  <p className="text-on-surface-variant text-xs line-through">Rp 19.000</p>
+                  <h3 className="font-display-lg text-headline-sm text-primary mb-2">Style Reguler</h3>
+                  <p className="text-on-surface-variant text-xs line-through">Rp 349.000</p>
                   <div className="flex items-baseline gap-2">
-                    <span className="font-display-lg text-4xl text-primary">Rp 0</span>
-                    <span className="bg-green-100 text-green-700 text-[10px] px-2 py-0.5 rounded font-bold uppercase">GRATISSS</span>
+                    <span className="font-display-lg text-4xl text-primary">Rp 99.000</span>
+                    <span className="bg-red-100 text-red-700 text-[10px] px-2 py-0.5 rounded font-bold uppercase">40% Off</span>
                   </div>
                 </div>
                 <ul className="space-y-4 mb-10 text-sm">
@@ -386,13 +438,13 @@ export default function Home() {
               </div>
 
               {/* Non Foto */}
-              <div className="bg-paper-white p-10 rounded-2xl premium-shadow border-t-4 border-primary relative transition-transform hover:scale-105 z-10 md:scale-110">
+              <div className="bg-paper-white p-10 rounded-2xl premium-shadow border-t-4 border-primary relative transition-transform  z-10 ">
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] px-4 py-1 rounded-full font-bold">BEST SELLER</div>
                 <div className="mb-8">
-                  <h3 className="font-display-lg text-headline-sm text-primary mb-2">Non Foto</h3>
-                  <p className="text-on-surface-variant text-xs line-through">Rp 99.000</p>
+                  <h3 className="font-display-lg text-headline-sm text-primary mb-2">Style Game</h3>
+                  <p className="text-on-surface-variant text-xs line-through">Rp 689.000</p>
                   <div className="flex items-baseline gap-2">
-                    <span className="font-display-lg text-4xl text-primary">Rp 59.000</span>
+                    <span className="font-display-lg text-4xl text-primary">Rp 349.000</span>
                     <span className="bg-red-100 text-red-700 text-[10px] px-2 py-0.5 rounded font-bold uppercase">40% OFF</span>
                   </div>
                 </div>
@@ -408,12 +460,12 @@ export default function Home() {
               </div>
 
               {/* Dengan Foto */}
-              <div className="bg-paper-white p-10 rounded-2xl premium-shadow border-t-4 border-gold-leaf relative transition-transform hover:scale-105">
+              <div className="bg-paper-white p-10 rounded-2xl premium-shadow border-t-4 border-gold-leaf relative transition-transform">
                 <div className="mb-8">
-                  <h3 className="font-display-lg text-headline-sm text-primary mb-2">Dengan Foto</h3>
-                  <p className="text-on-surface-variant text-xs line-through">Rp 198.000</p>
+                  <h3 className="font-display-lg text-headline-sm text-primary mb-2">Premium Full Akses</h3>
+                  <p className="text-on-surface-variant text-xs line-through">Rp 889.000</p>
                   <div className="flex items-baseline gap-2">
-                    <span className="font-display-lg text-4xl text-primary">Rp 99.000</span>
+                    <span className="font-display-lg text-4xl text-primary">Rp 449.000</span>
                     <span className="bg-red-100 text-red-700 text-[10px] px-2 py-0.5 rounded font-bold uppercase">50% OFF</span>
                   </div>
                 </div>
@@ -635,10 +687,10 @@ export default function Home() {
               <img
                 alt="Walimatul ID Logo"
                 className="h-10"
-                src="https://lh3.googleusercontent.com/aida/AP1WRLs_Xb7AXqhIP9N7I0Kf10-5BM1Ro0Ks0UrnkQM9521bvej9wexI4k2lO4mkZ6Sc1VfFDUizMWQYyHPu_x6ZRgM-4Gr2VjsAsUHIyaVBBbiCSM_raAr-75H1r-9NhJ_mI_iXKvx2Oh_Lk9FIDwSlH7Q3E8J2ZlE3a1xOG8lJpe-YnDcEaj1NHxrgqK3K-JYvCfPAfCQhtYbKlmEpSvFYZXrI683XAkfeqVU7VfRrneEIZEa6KjQ5QgFzXL2M"
+                src="/logo.png"
               />
               <p className="font-body-md text-on-surface-variant">
-                Walimatul ID adalah platform untuk membuat website undangan digital dengan layanan lengkap. Solusi impian untuk momen spesial Anda.
+                Youvitation adalah platform untuk membuat website undangan digital dengan layanan lengkap. Solusi impian untuk momen spesial Anda.
               </p>
               <div className="flex gap-4">
                 <a className="w-10 h-10 rounded-full border border-outline flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#">
@@ -658,13 +710,13 @@ export default function Home() {
               <h4 className="font-label-caps text-label-caps text-primary uppercase">Informasi Kontak</h4>
               <ul className="space-y-3 font-body-md text-on-surface-variant">
                 <li className="flex items-start gap-2">
-                  <span className="material-symbols-outlined text-sm mt-1">call</span> 0851 2800 2066
+                  <span className="material-symbols-outlined text-sm mt-1">call</span> 0823 2932 2353
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="material-symbols-outlined text-sm mt-1">mail</span> walimatul@gmail.com
+                  <span className="material-symbols-outlined text-sm mt-1">mail</span> youvitation@gmail.com
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="material-symbols-outlined text-sm mt-1">location_on</span> Tanggeung, Cianjur, Jawa Barat
+                  <span className="material-symbols-outlined text-sm mt-1">location_on</span> Purwokerto, Banyumas, Jawa Tengah
                 </li>
               </ul>
             </div>
@@ -709,47 +761,46 @@ export default function Home() {
           <span className="material-symbols-outlined">chat</span>
         </a>
 
-        {/* Promo Modal */}
-        {showPromo && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center px-4" id="promoModal">
-            <div className="absolute inset-0 bg-sage-deep/80 backdrop-blur-sm" onClick={closePromo}></div>
-            <div className="relative bg-white w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl transform transition-all">
-              <div className="bg-primary p-8 text-center text-white relative">
+        {/* Order Modal */}
+        {orderModal && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center px-4" id="orderModal">
+            <div className="absolute inset-0 bg-sage-deep/80 backdrop-blur-sm" onClick={() => setOrderModal(null)}></div>
+            <div className="relative bg-white w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl transform transition-all flex flex-col max-h-[90vh]">
+              <div className="bg-primary p-6 text-center text-white relative shrink-0">
                 <button
                   className="absolute top-4 right-4 text-white/60 hover:text-white"
-                  onClick={closePromo}
+                  onClick={() => setOrderModal(null)}
                 >
                   <span className="material-symbols-outlined">close</span>
                 </button>
-                <div className="inline-block px-4 py-1 bg-gold-leaf text-sage-deep text-[10px] font-bold rounded-full mb-4 uppercase">
-                  Promo Terbatas
-                </div>
-                <h2 className="font-display-lg text-3xl mb-2">Diskon Spesial 10%</h2>
-                <p className="text-white/80 text-sm">Rayakan hari bahagiamu dengan undangan digital mewah</p>
+                <h2 className="font-display-lg text-2xl">Form Pemesanan</h2>
+                <p className="text-white/80 text-sm">Lengkapi data untuk memesan tema</p>
               </div>
-              <div className="p-8 text-center bg-paper-white">
-                <p className="text-on-surface-variant text-xs mb-4">Gunakan kode kupon ini untuk 20 orang pertama:</p>
-                <div className="flex items-center justify-between bg-linen p-4 rounded-xl border-2 border-dashed border-gold-leaf mb-6">
-                  <span className="font-display-lg text-2xl tracking-widest text-primary">SPESIAL10</span>
-                  <button className="bg-gold-leaf text-sage-deep px-4 py-2 rounded-lg font-label-caps text-[10px]">
-                    SALIN KODE
-                  </button>
-                </div>
-                {/* Countdown */}
-                <div className="flex justify-center gap-6">
-                  <div className="text-center">
-                    <div className="text-2xl font-display-lg text-primary">03</div>
-                    <div className="text-[10px] font-label-caps text-on-surface-variant">JAM</div>
+              <div className="p-6 bg-paper-white overflow-y-auto">
+                <form onSubmit={handleOrder} className="space-y-4 text-left">
+                  <div>
+                    <label className="block text-xs font-label-caps text-on-surface-variant mb-1 uppercase">Tema Pilihan</label>
+                    <input type="text" readOnly value={orderModal.name} className="w-full bg-surface-container-low border border-outline-variant rounded-lg p-3 text-sm text-on-surface font-semibold focus:outline-none" />
                   </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-display-lg text-primary">37</div>
-                    <div className="text-[10px] font-label-caps text-on-surface-variant">MENIT</div>
+                  <div>
+                    <label className="block text-xs font-label-caps text-on-surface-variant mb-1 uppercase">Harga Tema</label>
+                    <input type="text" readOnly value={orderModal.price} className="w-full bg-surface-container-low border border-outline-variant rounded-lg p-3 text-sm text-primary font-bold focus:outline-none" />
                   </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-display-lg text-primary">27</div>
-                    <div className="text-[10px] font-label-caps text-on-surface-variant">DETIK</div>
+                  <div>
+                    <label className="block text-xs font-label-caps text-on-surface-variant mb-1 uppercase">Nama Lengkap</label>
+                    <input type="text" required placeholder="Masukkan nama lengkap Anda" value={orderForm.name} onChange={(e) => setOrderForm({...orderForm, name: e.target.value})} className="w-full border border-outline rounded-lg p-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" />
                   </div>
-                </div>
+                  <div>
+                    <label className="block text-xs font-label-caps text-on-surface-variant mb-1 uppercase">Nomor WhatsApp</label>
+                    <input type="tel" required placeholder="Contoh: 08123456789" value={orderForm.phone} onChange={(e) => setOrderForm({...orderForm, phone: e.target.value})} className="w-full border border-outline rounded-lg p-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" />
+                  </div>
+                  <div className="pt-4">
+                    <button type="submit" className="w-full bg-[#25D366] text-white py-4 rounded-xl font-label-caps text-label-caps hover:bg-[#128C7E] transition-all flex items-center justify-center gap-2 shadow-lg">
+                      <span className="material-symbols-outlined text-xl">send</span>
+                      PESAN VIA WHATSAPP
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
