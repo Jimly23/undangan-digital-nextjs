@@ -281,11 +281,11 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
               {/* Theme Card 1 */}
               <div className="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2 flex flex-col">
-                <div className="relative overflow-hidden aspect-[4/5] bg-[#9f9a4b]">
+                <div className="relative overflow-hidden aspect-square bg-[#9f9a4b]">
                   <img
                     alt="Japan Theme"
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
-                    src="/assets/landing/japan.jpeg"
+                    src="/assets/landing/jepang.webp"
                   />
                   <div className="absolute top-3 left-3 bg-gold-leaf text-sage-deep text-[10px] px-3 py-1 font-bold rounded-full z-10">NEW</div>
                 </div>
@@ -307,11 +307,11 @@ export default function Home() {
 
               {/* Theme Card 2 */}
               <div className="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2 flex flex-col">
-                <div className="relative overflow-hidden aspect-[4/5] bg-[#f0ce81]">
+                <div className="relative overflow-hidden aspect-square bg-[#f0ce81]">
                   <img
                     alt="Jawa Theme"
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
-                    src="/assets/landing/jawa.jpeg"
+                    src="/assets/landing/jawa.webp"
                   />
                 </div>
                 <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
@@ -332,11 +332,11 @@ export default function Home() {
 
               {/* Theme Card 3 */}
               <div className="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2 flex flex-col">
-                <div className="relative overflow-hidden aspect-[4/5] bg-[#df4021]">
+                <div className="relative overflow-hidden aspect-square bg-[#df4021]">
                   <img
                     alt="Chinese Theme"
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
-                    src="/assets/landing/chinese.jpeg"
+                    src="/assets/landing/chinese.webp"
                   />
                 </div>
                 <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
@@ -355,8 +355,58 @@ export default function Home() {
                 </div>
               </div>
 
+              {/* Theme Card 4 */}
+              <div className="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2 flex flex-col">
+                <div className="relative overflow-hidden aspect-square bg-[#96b297]">
+                  <img
+                    alt="Bali Theme"
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
+                    src="/assets/landing/bali.webp"
+                  />
+                </div>
+                <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-display-lg text-headline-sm text-primary">Bali Theme</h3>
+                    <div className="flex items-center gap-2 mt-1 flex-wrap">
+                      <span className="text-on-surface-variant line-through text-[10px]">Rp 689k</span>
+                      <span className="text-primary font-bold text-sm">Rp 349.000</span>
+                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">50%</span>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 gap-2 pt-2">
+                    <a href="https://youvitation.net/themes/aruma-bali/adelio-eli/" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
+                    <button onClick={() => { setOrderModal({ name: 'Bali Theme', price: 'Rp 349.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Theme Card 5 */}
+              <div className="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2 flex flex-col">
+                <div className="relative overflow-hidden aspect-square bg-[#f0ce81]">
+                  <img
+                    alt="Jawa Theme V2"
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
+                    src="/assets/landing/jawa.webp"
+                  />
+                </div>
+                <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-display-lg text-headline-sm text-primary">Jawa Theme V2</h3>
+                    <div className="flex items-center gap-2 mt-1 flex-wrap">
+                      <span className="text-on-surface-variant line-through text-[10px]">Rp 689k</span>
+                      <span className="text-primary font-bold text-sm">Rp 349.000</span>
+                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">50%</span>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 gap-2 pt-2">
+                    <a href="https://youvitation.net/themes/aruma-jawa/adel-elina/" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
+                    <button onClick={() => { setOrderModal({ name: 'Jawa Theme V2', price: 'Rp 349.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
+                  </div>
+                </div>
+              </div>
+
               {/* <div className="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2 flex flex-col">
-                <div className="relative overflow-hidden aspect-[4/5] bg-surface-container-low">
+                <div className="relative overflow-hidden aspect-square bg-surface-container-low">
                   <img
                     alt="Floral 07 Theme"
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
@@ -380,7 +430,7 @@ export default function Home() {
               </div>
 
               <div className="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2 flex flex-col">
-                <div className="relative overflow-hidden aspect-[4/5] bg-surface-container-low">
+                <div className="relative overflow-hidden aspect-square bg-surface-container-low">
                   <img
                     alt="Luxury 02 Theme"
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
