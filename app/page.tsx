@@ -382,16 +382,16 @@ export default function Home() {
 
               {/* Theme Card 5 */}
               <div className="group bg-paper-white rounded-xl overflow-hidden premium-shadow transition-all hover:-translate-y-2 flex flex-col">
-                <div className="relative overflow-hidden aspect-square bg-[#f0ce81]">
+                <div className="relative overflow-hidden aspect-square bg-surface-container-low">
                   <img
-                    alt="Jawa Theme V2"
+                    alt="Korea Theme"
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
-                    src="/assets/landing/jawa.webp"
+                    src="/assets/landing/korea.webp"
                   />
                 </div>
                 <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
                   <div>
-                    <h3 className="font-display-lg text-headline-sm text-primary">Jawa Theme V2</h3>
+                    <h3 className="font-display-lg text-headline-sm text-primary">Korea Theme</h3>
                     <div className="flex items-center gap-2 mt-1 flex-wrap">
                       <span className="text-on-surface-variant line-through text-[10px]">Rp 689k</span>
                       <span className="text-primary font-bold text-sm">Rp 349.000</span>
@@ -399,8 +399,8 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="grid grid-cols-1 gap-2 pt-2">
-                    <a href="https://youvitation.net/themes/aruma-jawa/adel-elina/" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
-                    <button onClick={() => { setOrderModal({ name: 'Jawa Theme V2', price: 'Rp 349.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
+                    <a href="https://youvitation.net/themes/aruma-korea/ade-elina/Nama" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
+                    <button onClick={() => { setOrderModal({ name: 'Korea Theme', price: 'Rp 349.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
                   </div>
                 </div>
               </div>
