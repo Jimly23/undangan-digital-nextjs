@@ -110,6 +110,21 @@ const arumaBali = {
   rsvp: "/assets/themes/aruma-bali/rsvp.webp",
 }
 
+const arumaAceh = {
+  intro: "/assets/themes/aruma-aceh/intro.webp",
+  btn: "/assets/themes/aruma-chinese/btn.webp",
+  next: "/assets/themes/aruma-chinese/next.webp",
+  welcome: "/assets/themes/aruma-aceh/welcome.webp",
+  menu: "/assets/themes/aruma-aceh/bg.webp",
+  gallery: "/assets/themes/aruma-aceh/galery.webp",
+  gift: "/assets/themes/aruma-aceh/gift.webp",
+  loveStory: "/assets/themes/aruma-aceh/love-story.webp",
+  about: "/assets/themes/aruma-aceh/about.webp",
+  date: "/assets/themes/aruma-aceh/date.webp",
+  dresscode: "/assets/themes/aruma-aceh/dresscode.webp",
+  rsvp: "/assets/themes/aruma-aceh/rsvp.webp",
+}
+
 const listFotoGallery = [
   "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=600",
   "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600",
@@ -192,6 +207,7 @@ const Page = () => {
     'aruma-japan-v2': arumaJepangV2,
     'aruma-bali': arumaBali,
     'aruma-jawa': arumaJawa,
+    'aruma-aceh': arumaAceh,
     'aruma-chinese': arumaChinese,
     'aruma-korea': arumaKorea,
   };
