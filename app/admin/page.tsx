@@ -404,6 +404,7 @@ export default function AdminPage() {
                     <label className="form-label">Tema</label>
                     <select className="form-select w-full" name="tema" value={formData.tema} onChange={handleChange}>
                       <option value="aruma-jawa">Aruma Jawa</option>
+                      <option value="aruma-aceh">Aruma Aceh</option>
                       <option value="aruma-japan-v2">Aruma Japan v2</option>
                       <option value="aruma-chinese">Aruma Chinese</option>
                       <option value="aruma-korea">Aruma Korea</option>
