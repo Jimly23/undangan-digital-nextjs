@@ -12,7 +12,6 @@ interface RsvpItem {
   email?: string;
   status: string;
   pesan?: string;
-  foto_url?: string;
   created_at: string;
 }
 
@@ -125,18 +124,9 @@ export default function MessagesModal({ isOpen, onClose, slug, warnaBg, warnaBor
                 </span>
               </div>
               {msg.pesan && (
-                <p className="text-xs text-[#557577] leading-relaxed pl-10 mt-1">
+                <p className="text-xs text-[#557577] leading-relaxed pl-10">
                   &ldquo;{msg.pesan}&rdquo;
                 </p>
-              )}
-              {msg.foto_url && (
-                <div className="pl-10 mt-2">
-                  <img 
-                    src={msg.foto_url} 
-                    alt={`Foto Kehadiran ${msg.nama}`} 
-                    className="w-full max-h-56 object-cover rounded-xl shadow-sm border border-black/5" 
-                  />
-                </div>
               )}
             </div>
           ))}

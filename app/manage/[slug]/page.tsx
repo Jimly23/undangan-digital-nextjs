@@ -218,7 +218,10 @@ export default function ManageDashboard() {
         if (formData[key] instanceof File) {
           fd.append(key, formData[key])
         } else {
-          fd.append(key, formData[key] as string)
+          const fileFields = ['foto_wanita', 'foto_pria', 'qr_code', 'musik'];
+          if (!fileFields.includes(key)) {
+            fd.append(key, formData[key] as string)
+          }
         }
       }
     })

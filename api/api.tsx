@@ -22,8 +22,10 @@ export const api = {
   deleteGuest: (slug: string, guestId: number) => axios.delete(`${BASE_URL}/${slug}/guests/${guestId}`),
 
   // RSVP APIs
-  storeRsvp: (slug: string, data: { nama: string; nomor_telepon: string; email?: string; status: string; pesan?: string }) =>
-    axios.post(`${API_URL}/rsvps/${slug}`, data),
+  storeRsvp: (slug: string, data: FormData | object) =>
+    axios.post(`${API_URL}/rsvps/${slug}`, data, {
+      headers: data instanceof FormData ? { 'Content-Type': 'multipart/form-data' } : undefined
+    }),
   getRsvpsBySlug: (slug: string) =>
     axios.get(`${API_URL}/rsvps/${slug}`),
 

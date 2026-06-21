@@ -2,7 +2,7 @@
 
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { api } from "@/api/api";
 import Template from "./Template";
 
@@ -23,9 +23,61 @@ export default function Rsvp({ isOpen, onClose, icon, warnaBg, warnaBorder, slug
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('');
   const [pesan, setPesan] = useState('');
+  const [foto, setFoto] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
+  
+  const [isCameraOpen, setIsCameraOpen] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  const startCamera = async () => {
+    setIsCameraOpen(true);
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+      }
+    } catch (err) {
+      console.error("Camera access error:", err);
+      setError("Gagal mengakses kamera. Pastikan izin kamera telah diberikan.");
+      setIsCameraOpen(false);
+    }
+  };
+
+  const stopCamera = () => {
+    if (videoRef.current && videoRef.current.srcObject) {
+      const stream = videoRef.current.srcObject as MediaStream;
+      stream.getTracks().forEach(track => track.stop());
+    }
+    setIsCameraOpen(false);
+  };
+
+  const capturePhoto = () => {
+    if (videoRef.current && canvasRef.current) {
+      const video = videoRef.current;
+      const canvas = canvasRef.current;
+      const context = canvas.getContext('2d');
+
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      if (context) {
+        // Mirrored drawing to match the mirrored selfie view
+        context.translate(canvas.width, 0);
+        context.scale(-1, 1);
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        
+        canvas.toBlob((blob) => {
+          if (blob) {
+            const file = new File([blob], `rsvp_photo_${Date.now()}.jpg`, { type: 'image/jpeg' });
+            setFoto(file);
+          }
+        }, 'image/jpeg', 0.8);
+      }
+      stopCamera();
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -40,13 +92,15 @@ export default function Rsvp({ isOpen, onClose, icon, warnaBg, warnaBorder, slug
 
     setIsSubmitting(true);
     try {
-      await api.storeRsvp(slug, {
-        nama,
-        nomor_telepon: nomorTelepon,
-        email: email || undefined,
-        status,
-        pesan: pesan || undefined,
-      });
+      const formData = new FormData();
+      formData.append('nama', nama);
+      formData.append('nomor_telepon', nomorTelepon);
+      formData.append('status', status);
+      if (email) formData.append('email', email);
+      if (pesan) formData.append('pesan', pesan);
+      if (foto) formData.append('foto', foto);
+
+      await api.storeRsvp(slug, formData);
       setIsSubmitted(true);
       if (onRsvpSubmitted) {
         onRsvpSubmitted();
@@ -151,6 +205,65 @@ export default function Rsvp({ isOpen, onClose, icon, warnaBg, warnaBorder, slug
               style={{ borderColor: `${warnaBg}`, backgroundColor: `${warnaBg}10`, color: `${warnaBorder}` }}
               className="w-full p-4 border rounded-2xl text-sm focus:outline-none transition resize-none"
             />
+
+            {/* Foto Daftar Kehadiran (Opsional) */}
+            <div className="w-full flex flex-col gap-1.5 mt-1">
+              <label className="text-[11px] font-semibold pl-2 tracking-wide uppercase" style={{ color: warnaBg }}>
+                Foto Kehadiran (Opsional)
+              </label>
+
+              {isCameraOpen ? (
+                <div className="w-full flex flex-col gap-2 p-2 rounded-2xl border shadow-sm" style={{ borderColor: `${warnaBg}40`, backgroundColor: `${warnaBg}08` }}>
+                  <div className="relative w-full h-48 rounded-xl overflow-hidden bg-black/10">
+                    <video ref={videoRef} autoPlay playsInline style={{ transform: 'scaleX(-1)' }} className="w-full h-full object-cover" />
+                    <canvas ref={canvasRef} className="hidden" />
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      type="button"
+                      onClick={stopCamera}
+                      className="flex-1 py-3 rounded-xl text-[11px] font-bold tracking-wide uppercase bg-red-50 text-red-600 transition active:scale-95"
+                    >
+                      Batal
+                    </button>
+                    <button
+                      type="button"
+                      onClick={capturePhoto}
+                      className="flex-[2] py-3 rounded-xl text-[11px] font-bold tracking-wide uppercase text-white transition active:scale-95 shadow-md"
+                      style={{ backgroundColor: warnaBorder, borderColor: warnaBorder }}
+                    >
+                      Jepret 📸
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div className="flex flex-col gap-2">
+                  <button
+                    type="button"
+                    onClick={startCamera}
+                    className="w-full flex items-center justify-center gap-2 h-12 px-3 py-2 border rounded-2xl text-sm font-bold cursor-pointer transition active:scale-95"
+                    style={{ borderColor: `${warnaBg}`, backgroundColor: `${warnaBg}10`, color: `${warnaBorder}` }}
+                  >
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                      <circle cx="12" cy="13" r="4"/>
+                    </svg>
+                    {foto ? 'Ambil Ulang Foto' : 'Ambil Foto Kehadiran 📸'}
+                  </button>
+
+                  {foto && (
+                    <div className="relative w-full h-40 mt-1 rounded-xl overflow-hidden border shadow-sm" style={{ borderColor: `${warnaBg}40` }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img 
+                        src={URL.createObjectURL(foto)} 
+                        alt="Preview Kehadiran" 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
 
             <button
               type="submit"
