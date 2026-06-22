@@ -285,9 +285,12 @@ export default function ManageDashboard() {
                   <div>
                      <label className="form-label">Tema</label>
                      <select className="form-select w-full" name="tema" value={formData.tema} onChange={handleChange}>
-                       <option value="mahara-jawa">mahara Jawa</option>
-                       <option value="mahara-japan-v2">mahara Japan v2</option>
-                       <option value="mahara-chinese">mahara Chinese</option>
+                       <option value="mahara-jawa">Mahara Jawa</option>
+                       <option value="mahara-japan-v2">Mahara Japan</option>
+                       <option value="mahara-chinese">Mahara Chinese</option>
+                       <option value="mahara-korea">Mahara Korea</option>
+                       <option value="mahara-bali">Mahara Bali</option>
+                       {/* <option value="mahara-aceh">mahara Aceh</option> */}
                      </select>
                   </div>
                 </div>
