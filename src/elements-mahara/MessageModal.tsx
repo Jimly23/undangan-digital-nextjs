@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { MessageSquare, Users } from 'lucide-react';
 import { api } from '@/api/api';
-import Template from '../sections-aruma/Template';
+import Template from '../sections-mahara/Template';
 
 interface RsvpItem {
   id: number;
@@ -131,10 +131,10 @@ export default function MessagesModal({ isOpen, onClose, slug, warnaBg, warnaBor
               )}
               {msg.foto_url && (
                 <div className="pl-10 mt-2">
-                  <img 
-                    src={msg.foto_url} 
-                    alt={`Foto Kehadiran ${msg.nama}`} 
-                    className="w-full max-h-56 object-cover rounded-xl shadow-sm border border-black/5" 
+                  <img
+                    src={msg.foto_url}
+                    alt={`Foto Kehadiran ${msg.nama}`}
+                    className="w-full max-h-56 object-cover rounded-xl shadow-sm border border-black/5"
                   />
                 </div>
               )}
@@ -147,7 +147,7 @@ export default function MessagesModal({ isOpen, onClose, slug, warnaBg, warnaBor
       <div className="w-full">
         <hr style={{ borderColor: warnaBg }} className="border-t mt-4 w-full" />
         <p className="text-[#557577] text-[11px] font-medium tracking-wide flex items-center justify-center gap-1">
-          Terima kasih atas ucapan dan doa yang telah diberikan 
+          Terima kasih atas ucapan dan doa yang telah diberikan
           <span role="img" aria-label="love-emoji" className="inline-block animate-pulse">💝</span>
         </p>
       </div>

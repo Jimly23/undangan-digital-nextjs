@@ -27,7 +27,7 @@ export default function ManageDashboard() {
   const [loadingGuests, setLoadingGuests] = useState(false)
 
   const initialForm = {
-    slug: '', tema: 'aruma-jawa',
+    slug: '', tema: 'mahara-jawa',
     foto_wanita: null as File | string | null, nama_lengkap_wanita: '', nama_panggilan_wanita: '', nama_ayah_wanita: '', nama_ibu_wanita: '', alamat_wanita: '', instagram_wanita: '', whatsapp_wanita: '',
     foto_pria: null as File | string | null, nama_lengkap_pria: '', nama_panggilan_pria: '', nama_ayah_pria: '', nama_ibu_pria: '', alamat_pria: '', instagram_pria: '', whatsapp_pria: '',
     alamat_akad: '', tanggal_akad: '', jam_mulai_akad: '', jam_selesai_akad: '',
@@ -285,9 +285,9 @@ export default function ManageDashboard() {
                   <div>
                      <label className="form-label">Tema</label>
                      <select className="form-select w-full" name="tema" value={formData.tema} onChange={handleChange}>
-                       <option value="aruma-jawa">Aruma Jawa</option>
-                       <option value="aruma-japan-v2">Aruma Japan v2</option>
-                       <option value="aruma-chinese">Aruma Chinese</option>
+                       <option value="mahara-jawa">mahara Jawa</option>
+                       <option value="mahara-japan-v2">mahara Japan v2</option>
+                       <option value="mahara-chinese">mahara Chinese</option>
                      </select>
                   </div>
                 </div>
@@ -552,7 +552,7 @@ export default function ManageDashboard() {
                           <td className="p-3">
                             <div className="flex gap-2">
                               {(() => {
-                                const tema = formData.tema || 'aruma-jawa';
+                                const tema = formData.tema || 'mahara-jawa';
                                 const constructedUrl = `${window.location.origin}/themes/${tema}/${slug}/${encodeURIComponent(g.nama_tamu)}`;
                                 return (
                                   <>

@@ -299,7 +299,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="grid grid-cols-1 gap-2 pt-2">
-                    <a href="https://youvitation.net/themes/aruma-japan-v2/adelio-elina/Tamu%20Undangan" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
+                    <a href="https://youvitation.net/themes/mahara-japan-v2/adelio-elina/Tamu%20Undangan" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
                     <button onClick={() => { setOrderModal({ name: 'Japan Theme', price: 'Rp 349.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
                   </div>
                 </div>
@@ -324,7 +324,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="grid grid-cols-1 gap-2 pt-2">
-                    <a href="https://youvitation.net/themes/aruma-jawa/adelio-elina/Tamu%20Undangan" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
+                    <a href="https://youvitation.net/themes/mahara-jawa/adel-elina/Tamu%20Undangan" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
                     <button onClick={() => { setOrderModal({ name: 'Jawa Theme', price: 'Rp 349.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
                   </div>
                 </div>
@@ -349,7 +349,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="grid grid-cols-1 gap-2 pt-2">
-                    <a href="https://youvitation.net/themes/aruma-chinese/adelio-elina/Tamu%20Undangan" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
+                    <a href="https://youvitation.net/themes/mahara-chinese/adelio-elaina/Tamu%20Undangan" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
                     <button onClick={() => { setOrderModal({ name: 'Chinese Theme', price: 'Rp 349.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
                   </div>
                 </div>
@@ -374,7 +374,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="grid grid-cols-1 gap-2 pt-2">
-                    <a href="https://youvitation.net/themes/aruma-bali/adelio-eli/" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
+                    <a href="https://youvitation.net/themes/mahara-bali/adelio-eli/" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
                     <button onClick={() => { setOrderModal({ name: 'Bali Theme', price: 'Rp 349.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
                   </div>
                 </div>
@@ -399,7 +399,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="grid grid-cols-1 gap-2 pt-2">
-                    <a href="https://youvitation.net/themes/aruma-korea/ade-elina/Nama" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
+                    <a href="https://youvitation.net/themes/mahara-korea/ade-elina/Nama" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
                     <button onClick={() => { setOrderModal({ name: 'Korea Theme', price: 'Rp 349.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
                   </div>
                 </div>

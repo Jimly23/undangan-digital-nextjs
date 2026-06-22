@@ -58,7 +58,7 @@ export default function AdminPage() {
   const [loadingGuests, setLoadingGuests] = useState(false)
 
   const initialForm = {
-    slug: '', tema: 'aruma-jawa',
+    slug: '', tema: 'mahara-jawa',
     foto_wanita: null as File | string | null, nama_lengkap_wanita: '', nama_panggilan_wanita: '', nama_ayah_wanita: '', nama_ibu_wanita: '', alamat_wanita: '', instagram_wanita: '', whatsapp_wanita: '',
     foto_pria: null as File | string | null, nama_lengkap_pria: '', nama_panggilan_pria: '', nama_ayah_pria: '', nama_ibu_pria: '', alamat_pria: '', instagram_pria: '', whatsapp_pria: '',
     alamat_akad: '', tanggal_akad: '', jam_mulai_akad: '', jam_selesai_akad: '',
@@ -406,12 +406,12 @@ export default function AdminPage() {
                   <div>
                     <label className="form-label">Tema</label>
                     <select className="form-select w-full" name="tema" value={formData.tema} onChange={handleChange}>
-                      <option value="aruma-jawa">Aruma Jawa</option>
-                      <option value="aruma-aceh">Aruma Aceh</option>
-                      <option value="aruma-japan-v2">Aruma Japan v2</option>
-                      <option value="aruma-chinese">Aruma Chinese</option>
-                      <option value="aruma-korea">Aruma Korea</option>
-                      <option value="aruma-bali">Aruma Bali</option>
+                      <option value="mahara-jawa">mahara Jawa</option>
+                      <option value="mahara-aceh">mahara Aceh</option>
+                      <option value="mahara-japan-v2">mahara Japan v2</option>
+                      <option value="mahara-chinese">mahara Chinese</option>
+                      <option value="mahara-korea">mahara Korea</option>
+                      <option value="mahara-bali">mahara Bali</option>
                     </select>
                   </div>
                 </div>
@@ -724,7 +724,7 @@ export default function AdminPage() {
                           <td>
                             {(() => {
                               const currentInv = list.find(l => l.slug === activeSlug);
-                              const tema = currentInv?.tema || 'aruma-jawa';
+                              const tema = currentInv?.tema || 'mahara-jawa';
                               // URL: /themes/{slug-tema}/{slug-mempelai}/{nama-tamu}
                               const constructedUrl = `${window.location.origin}/themes/${tema}/${activeSlug}/${encodeURIComponent(g.nama_tamu)}`;
                               return (
@@ -736,7 +736,7 @@ export default function AdminPage() {
                             <div className="flex gap-2 w-max">
                               <button className="btn btn-sm" style={{ borderColor: '#25D366', color: '#25D366', borderWidth: '1px' }} onClick={() => {
                                 const currentInv = list.find(l => l.slug === activeSlug);
-                                const tema = currentInv?.tema || 'aruma-jawa';
+                                const tema = currentInv?.tema || 'mahara-jawa';
                                 const namaPria = currentInv?.nama_panggilan_pria || 'Mempelai Pria';
                                 const namaWanita = currentInv?.nama_panggilan_wanita || 'Mempelai Wanita';
                                 const constructedUrl = `${window.location.origin}/themes/${tema}/${activeSlug}/${encodeURIComponent(g.nama_tamu)}`;

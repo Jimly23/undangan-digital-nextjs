@@ -5,124 +5,124 @@ import { useParams } from 'next/navigation';
 import { ArrowLeft, CircleAlert, Volume2, VolumeX, Lightbulb, LightbulbOff, MessageSquare, MessageSquareDashed } from 'lucide-react';
 import { useState, useEffect, useCallback, useRef, type ReactNode } from 'react';
 import { api } from '@/api/api';
-import Galeri from '@/src/sections-aruma/Galeri';
-import Rsvp from '@/src/sections-aruma/Rsvp';
-import Gift from '@/src/sections-aruma/Gift';
-import LoveStory from '@/src/sections-aruma/LoveStory';
-import Date from '@/src/sections-aruma/Date';
-import Dresscode from '@/src/sections-aruma/Dresscode';
-import About from '@/src/sections-aruma/About';
-import Navbar from '@/src/elements-aruma/Navbar';
-import Popup from '@/src/elements-aruma/Popup';
-import MessagesModal from '@/src/elements-aruma/MessageModal';
+import Galeri from '@/src/sections-mahara/Galeri';
+import Rsvp from '@/src/sections-mahara/Rsvp';
+import Gift from '@/src/sections-mahara/Gift';
+import LoveStory from '@/src/sections-mahara/LoveStory';
+import Date from '@/src/sections-mahara/Date';
+import Dresscode from '@/src/sections-mahara/Dresscode';
+import About from '@/src/sections-mahara/About';
+import Navbar from '@/src/elements-mahara/Navbar';
+import Popup from '@/src/elements-mahara/Popup';
+import MessagesModal from '@/src/elements-mahara/MessageModal';
 
 type ActivePage = 'intro' | 'welcome' | 'menu' | 'galeri' | 'rsvp' | 'gift' | 'love-story' | 'date' | 'dresscode' | 'about';
 
 const validPages: ActivePage[] = ['intro', 'welcome', 'menu', 'galeri', 'rsvp', 'gift', 'love-story', 'date', 'dresscode', 'about'];
 
-const arumaJepang = {
-  intro: "/assets/themes/aruma-jepang/intro.webp",
-  btn: "/assets/themes/aruma-jepang/btn.webp",
-  next: "/assets/themes/aruma-chinese/next.webp",
-  welcome: "/assets/themes/aruma-jepang/welcome.webp",
-  menu: "/assets/themes/aruma-jepang/bg.webp",
-  gallery: "/assets/themes/aruma-jepang/gallery.webp",
-  gift: "/assets/themes/aruma-jepang/gift.webp",
-  loveStory: "/assets/themes/aruma-jepang/love-story.webp",
-  about: "/assets/themes/aruma-jepang/about.webp",
-  date: "/assets/themes/aruma-jepang/date.webp",
-  dresscode: "/assets/themes/aruma-jepang/dresscode.webp",
-  rsvp: "/assets/themes/aruma-jepang/rsvp.webp",
+const maharaJepang = {
+  intro: "/assets/themes/mahara-jepang/intro.webp",
+  btn: "/assets/themes/mahara-jepang/btn.webp",
+  next: "/assets/themes/mahara-chinese/next.webp",
+  welcome: "/assets/themes/mahara-jepang/welcome.webp",
+  menu: "/assets/themes/mahara-jepang/bg.webp",
+  gallery: "/assets/themes/mahara-jepang/gallery.webp",
+  gift: "/assets/themes/mahara-jepang/gift.webp",
+  loveStory: "/assets/themes/mahara-jepang/love-story.webp",
+  about: "/assets/themes/mahara-jepang/about.webp",
+  date: "/assets/themes/mahara-jepang/date.webp",
+  dresscode: "/assets/themes/mahara-jepang/dresscode.webp",
+  rsvp: "/assets/themes/mahara-jepang/rsvp.webp",
 }
 
-const arumaJepangV2 = {
-  intro: "/assets/themes/aruma-jepangv2/intro.webp",
-  btn: "/assets/themes/aruma-chinese/btn.webp",
-  next: "/assets/themes/aruma-chinese/next.webp",
-  welcome: "/assets/themes/aruma-jepangv2/welcome2.webp",
-  menu: "/assets/themes/aruma-jepangv2/bg.webp",
-  gallery: "/assets/themes/aruma-jepangv2/gallery.webp",
-  gift: "/assets/themes/aruma-jepangv2/gift.webp",
-  loveStory: "/assets/themes/aruma-jepangv2/love-story.webp",
-  about: "/assets/themes/aruma-jepangv2/about.webp",
-  date: "/assets/themes/aruma-jepangv2/date.webp",
-  dresscode: "/assets/themes/aruma-jepangv2/dresscode.webp",
-  rsvp: "/assets/themes/aruma-jepangv2/rsvp.webp",
+const maharaJepangV2 = {
+  intro: "/assets/themes/mahara-jepangv2/intro.webp",
+  btn: "/assets/themes/mahara-chinese/btn.webp",
+  next: "/assets/themes/mahara-chinese/next.webp",
+  welcome: "/assets/themes/mahara-jepangv2/welcome2.webp",
+  menu: "/assets/themes/mahara-jepangv2/bg.webp",
+  gallery: "/assets/themes/mahara-jepangv2/gallery.webp",
+  gift: "/assets/themes/mahara-jepangv2/gift.webp",
+  loveStory: "/assets/themes/mahara-jepangv2/love-story.webp",
+  about: "/assets/themes/mahara-jepangv2/about.webp",
+  date: "/assets/themes/mahara-jepangv2/date.webp",
+  dresscode: "/assets/themes/mahara-jepangv2/dresscode.webp",
+  rsvp: "/assets/themes/mahara-jepangv2/rsvp.webp",
 }
 
-const arumaKorea = {
-  intro: "/assets/themes/aruma-korea/intro.webp",
-  btn: "/assets/themes/aruma-chinese/btn.webp",
-  next: "/assets/themes/aruma-chinese/next.webp",
-  welcome: "/assets/themes/aruma-korea/welcome.webp",
-  menu: "/assets/themes/aruma-korea/bg.webp",
-  gallery: "/assets/themes/aruma-korea/galery.webp",
-  gift: "/assets/themes/aruma-korea/gift.webp",
-  loveStory: "/assets/themes/aruma-korea/love-story.webp",
-  about: "/assets/themes/aruma-korea/about.webp",
-  date: "/assets/themes/aruma-korea/date.webp",
-  dresscode: "/assets/themes/aruma-korea/dresscode.webp",
-  rsvp: "/assets/themes/aruma-korea/rsvp.webp",
+const maharaKorea = {
+  intro: "/assets/themes/mahara-korea/intro.webp",
+  btn: "/assets/themes/mahara-chinese/btn.webp",
+  next: "/assets/themes/mahara-chinese/next.webp",
+  welcome: "/assets/themes/mahara-korea/welcome.webp",
+  menu: "/assets/themes/mahara-korea/bg.webp",
+  gallery: "/assets/themes/mahara-korea/galery.webp",
+  gift: "/assets/themes/mahara-korea/gift.webp",
+  loveStory: "/assets/themes/mahara-korea/love-story.webp",
+  about: "/assets/themes/mahara-korea/about.webp",
+  date: "/assets/themes/mahara-korea/date.webp",
+  dresscode: "/assets/themes/mahara-korea/dresscode.webp",
+  rsvp: "/assets/themes/mahara-korea/rsvp.webp",
 }
 
-const arumaJawa = {
-  intro: "/assets/themes/aruma-jawa/intro.webp",
-  btn: "/assets/themes/aruma-chinese/btn.webp",
-  next: "/assets/themes/aruma-chinese/next.webp",
-  welcome: "/assets/themes/aruma-jawa/welcome.webp",
-  menu: "/assets/themes/aruma-jawa/bg.webp",
-  gallery: "/assets/themes/aruma-jawa/gallery.webp",
-  gift: "/assets/themes/aruma-jawa/gift.webp",
-  loveStory: "/assets/themes/aruma-jawa/love-story.webp",
-  about: "/assets/themes/aruma-jawa/about.webp",
-  date: "/assets/themes/aruma-jawa/date.webp",
-  dresscode: "/assets/themes/aruma-jawa/dresscode.webp",
-  rsvp: "/assets/themes/aruma-jawa/rsvp.webp",
+const maharaJawa = {
+  intro: "/assets/themes/mahara-jawa/intro.webp",
+  btn: "/assets/themes/mahara-chinese/btn.webp",
+  next: "/assets/themes/mahara-chinese/next.webp",
+  welcome: "/assets/themes/mahara-jawa/welcome.webp",
+  menu: "/assets/themes/mahara-jawa/bg.webp",
+  gallery: "/assets/themes/mahara-jawa/gallery.webp",
+  gift: "/assets/themes/mahara-jawa/gift.webp",
+  loveStory: "/assets/themes/mahara-jawa/love-story.webp",
+  about: "/assets/themes/mahara-jawa/about.webp",
+  date: "/assets/themes/mahara-jawa/date.webp",
+  dresscode: "/assets/themes/mahara-jawa/dresscode.webp",
+  rsvp: "/assets/themes/mahara-jawa/rsvp.webp",
 }
 
-const arumaChinese = {
-  intro: "/assets/themes/aruma-chinese/intro.webp",
-  btn: "/assets/themes/aruma-chinese/btn.webp",
-  next: "/assets/themes/aruma-chinese/next.webp",
-  welcome: "/assets/themes/aruma-chinese/welcome.webp",
-  menu: "/assets/themes/aruma-chinese/bg.webp",
-  gallery: "/assets/themes/aruma-chinese/gallery.webp",
-  gift: "/assets/themes/aruma-chinese/gift.webp",
-  loveStory: "/assets/themes/aruma-chinese/love-story.webp",
-  about: "/assets/themes/aruma-chinese/about.webp",
-  date: "/assets/themes/aruma-chinese/date.webp",
-  dresscode: "/assets/themes/aruma-chinese/dresscode.webp",
-  rsvp: "/assets/themes/aruma-chinese/rsvp.webp",
+const maharaChinese = {
+  intro: "/assets/themes/mahara-chinese/intro.webp",
+  btn: "/assets/themes/mahara-chinese/btn.webp",
+  next: "/assets/themes/mahara-chinese/next.webp",
+  welcome: "/assets/themes/mahara-chinese/welcome.webp",
+  menu: "/assets/themes/mahara-chinese/bg.webp",
+  gallery: "/assets/themes/mahara-chinese/gallery.webp",
+  gift: "/assets/themes/mahara-chinese/gift.webp",
+  loveStory: "/assets/themes/mahara-chinese/love-story.webp",
+  about: "/assets/themes/mahara-chinese/about.webp",
+  date: "/assets/themes/mahara-chinese/date.webp",
+  dresscode: "/assets/themes/mahara-chinese/dresscode.webp",
+  rsvp: "/assets/themes/mahara-chinese/rsvp.webp",
 }
 
-const arumaBali = {
-  intro: "/assets/themes/aruma-bali/intro.webp",
-  btn: "/assets/themes/aruma-chinese/btn.webp",
-  next: "/assets/themes/aruma-chinese/next.webp",
-  welcome: "/assets/themes/aruma-bali/welcome.webp",
-  menu: "/assets/themes/aruma-bali/bg.webp",
-  gallery: "/assets/themes/aruma-bali/galery.webp",
-  gift: "/assets/themes/aruma-bali/gift.webp",
-  loveStory: "/assets/themes/aruma-bali/love-story.webp",
-  about: "/assets/themes/aruma-bali/about.webp",
-  date: "/assets/themes/aruma-bali/date.webp",
-  dresscode: "/assets/themes/aruma-bali/dresscode.webp",
-  rsvp: "/assets/themes/aruma-bali/rsvp.webp",
+const maharaBali = {
+  intro: "/assets/themes/mahara-bali/intro.webp",
+  btn: "/assets/themes/mahara-chinese/btn.webp",
+  next: "/assets/themes/mahara-chinese/next.webp",
+  welcome: "/assets/themes/mahara-bali/welcome.webp",
+  menu: "/assets/themes/mahara-bali/bg.webp",
+  gallery: "/assets/themes/mahara-bali/galery.webp",
+  gift: "/assets/themes/mahara-bali/gift.webp",
+  loveStory: "/assets/themes/mahara-bali/love-story.webp",
+  about: "/assets/themes/mahara-bali/about.webp",
+  date: "/assets/themes/mahara-bali/date.webp",
+  dresscode: "/assets/themes/mahara-bali/dresscode.webp",
+  rsvp: "/assets/themes/mahara-bali/rsvp.webp",
 }
 
-const arumaAceh = {
-  intro: "/assets/themes/aruma-aceh/intro.webp",
-  btn: "/assets/themes/aruma-chinese/btn.webp",
-  next: "/assets/themes/aruma-chinese/next.webp",
-  welcome: "/assets/themes/aruma-aceh/welcome.webp",
-  menu: "/assets/themes/aruma-aceh/bg.webp",
-  gallery: "/assets/themes/aruma-aceh/galery.webp",
-  gift: "/assets/themes/aruma-aceh/gift.webp",
-  loveStory: "/assets/themes/aruma-aceh/love-story.webp",
-  about: "/assets/themes/aruma-aceh/about.webp",
-  date: "/assets/themes/aruma-aceh/date.webp",
-  dresscode: "/assets/themes/aruma-aceh/dresscode.webp",
-  rsvp: "/assets/themes/aruma-aceh/rsvp.webp",
+const maharaAceh = {
+  intro: "/assets/themes/mahara-aceh/intro.webp",
+  btn: "/assets/themes/mahara-chinese/btn.webp",
+  next: "/assets/themes/mahara-chinese/next.webp",
+  welcome: "/assets/themes/mahara-aceh/welcome.webp",
+  menu: "/assets/themes/mahara-aceh/bg.webp",
+  gallery: "/assets/themes/mahara-aceh/galery.webp",
+  gift: "/assets/themes/mahara-aceh/gift.webp",
+  loveStory: "/assets/themes/mahara-aceh/love-story.webp",
+  about: "/assets/themes/mahara-aceh/about.webp",
+  date: "/assets/themes/mahara-aceh/date.webp",
+  dresscode: "/assets/themes/mahara-aceh/dresscode.webp",
+  rsvp: "/assets/themes/mahara-aceh/rsvp.webp",
 }
 
 const listFotoGallery = [
@@ -133,12 +133,12 @@ const listFotoGallery = [
 ];
 
 const themeColors: Record<string, { warnaBg: string; warnaBorder: string }> = {
-  'aruma-japan': { warnaBg: '#f5b3be', warnaBorder: '#fb8a9c' },
-  'aruma-japan-v2': { warnaBg: '#cbc157', warnaBorder: '#514716' },
-  'aruma-bali': { warnaBg: '#cbc157', warnaBorder: '#514716' },
-  'aruma-jawa': { warnaBg: '#e1b87e', warnaBorder: '#603310' },
-  'aruma-chinese': { warnaBg: '#fa8c84', warnaBorder: '#9e332b' },
-  'aruma-korea': { warnaBg: '#eeb4b3', warnaBorder: '#d9848a' },
+  'mahara-japan': { warnaBg: '#f5b3be', warnaBorder: '#fb8a9c' },
+  'mahara-japan-v2': { warnaBg: '#cbc157', warnaBorder: '#514716' },
+  'mahara-bali': { warnaBg: '#cbc157', warnaBorder: '#514716' },
+  'mahara-jawa': { warnaBg: '#e1b87e', warnaBorder: '#603310' },
+  'mahara-chinese': { warnaBg: '#fa8c84', warnaBorder: '#9e332b' },
+  'mahara-korea': { warnaBg: '#eeb4b3', warnaBorder: '#d9848a' },
 };
 
 const ceritaKita = [
@@ -202,19 +202,19 @@ const Page = () => {
     }
   }, [rsvps.length]);
 
-  const imgIconMap: Record<string, typeof arumaJepangV2> = {
-    'aruma-japan': arumaJepang,
-    'aruma-japan-v2': arumaJepangV2,
-    'aruma-bali': arumaBali,
-    'aruma-jawa': arumaJawa,
-    'aruma-aceh': arumaAceh,
-    'aruma-chinese': arumaChinese,
-    'aruma-korea': arumaKorea,
+  const imgIconMap: Record<string, typeof maharaJepangV2> = {
+    'mahara-japan': maharaJepang,
+    'mahara-japan-v2': maharaJepangV2,
+    'mahara-bali': maharaBali,
+    'mahara-jawa': maharaJawa,
+    'mahara-aceh': maharaAceh,
+    'mahara-chinese': maharaChinese,
+    'mahara-korea': maharaKorea,
   };
 
-  const currentTheme = dataUndangan?.tema || temaUrl || 'aruma-japan-v2';
-  const imgIcon = imgIconMap[currentTheme] || arumaJepangV2;
-  const { warnaBg, warnaBorder } = themeColors[currentTheme] || themeColors['aruma-japan-v2'];
+  const currentTheme = dataUndangan?.tema || temaUrl || 'mahara-japan-v2';
+  const imgIcon = imgIconMap[currentTheme] || maharaJepangV2;
+  const { warnaBg, warnaBorder } = themeColors[currentTheme] || themeColors['mahara-japan-v2'];
 
   const [activePage, setActivePage] = useState<ActivePage>('intro');
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -357,7 +357,7 @@ const Page = () => {
     : "10:00 AM - 01:00 PM";
 
   return (
-    <div className='w-full max-w-[380px] h-[100dvh] mx-auto relative bg-[#E6F9FA] overflow-x-hidden'>
+    <div className='w-full max-w-[380px] h-[100dvh] mx-auto relative bg-[#E6F9FA] overflow-hidden'>
 
       {/* INTRO SCREEN */}
       {activePage === 'intro' && (
@@ -531,19 +531,19 @@ const Page = () => {
               className="object-contain" // Memastikan gambar tidak terpotong
             />
           </div>
-          <div id='gift' className={`w-[100px] h-[100px] absolute right-[7px] bottom-[20px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse [animation-delay:200ms] cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsGiftOpen(true); }}>
-            <Image src={imgIcon.gift} alt='Date & Venue' width={120} height={120} />
+          <div id='gift' className={`w-[90px] h-[90px] absolute right-[7px] bottom-[20px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse [animation-delay:200ms] cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsGiftOpen(true); }}>
+            <Image src={imgIcon.gift} alt='Date & Venue' width={90} height={90} />
           </div>
 
-          <div id='love-story' className={`w-[60px] h-[60px] absolute left-1/2 top-[50px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsLoveStoryOpen(true); }}>
-            <Image src={imgIcon.loveStory} alt='Love Story' width={150} height={150} />
+          <div id='love-story' className={`w-[70px] h-[70px] absolute left-1/2 top-[50px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsLoveStoryOpen(true); }}>
+            <Image src={imgIcon.loveStory} alt='Love Story' width={70} height={70} />
           </div>
-          <div id='about-us' className={`w-[120px] h-[120px] absolute left-[160px] bottom-[42%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center [animation-delay:400ms] cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsAboutOpen(true); }}>
+          <div id='about-us' className={`w-[100px] h-[100px] absolute left-[165px] bottom-[44%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center [animation-delay:400ms] cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsAboutOpen(true); }}>
             <Image src={imgIcon.about} alt='About Us' width={150} height={150} />
           </div>
 
-          <div id='date-venue' className={`w-[80px] h-[80px] absolute right-[70px] top-[80px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse [animation-delay:300ms] cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsDateOpen(true); }}>
-            <Image src={imgIcon.date} alt='Date & Venue' width={90} height={90} />
+          <div id='date-venue' className={`w-[70px] h-[70px] absolute right-[70px] top-[80px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse [animation-delay:300ms] cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsDateOpen(true); }}>
+            <Image src={imgIcon.date} alt='Date & Venue' width={70} height={70} />
           </div>
           <div id='dresscode' className={`w-[70px] h-[70px] absolute right-[70px] top-[210px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse [animation-delay:500ms] cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsDresscodeOpen(true); }}>
             <Image src={imgIcon.dresscode} alt='Dresscode' width={120} height={120} />

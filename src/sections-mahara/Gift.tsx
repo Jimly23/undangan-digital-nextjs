@@ -114,7 +114,7 @@ export default function Gift({ isOpen, onClose, icon, warnaBg, warnaBorder, reke
           </div>
         )}
 
-        {qrCode && (
+        {/* {qrCode && (
           <div style={{ borderColor: warnaBorder }} className="w-full bg-white/90 backdrop-blur-sm rounded-3xl border-2 p-6 text-center flex flex-col items-center gap-1 shadow-sm relative overflow-hidden transition-all hover:shadow-md">
             <div className="absolute -right-8 -top-8 w-24 h-24 rounded-full opacity-[0.08]" style={{ backgroundColor: warnaBorder }}></div>
             <div className="absolute -left-8 -bottom-8 w-20 h-20 rounded-full opacity-[0.08]" style={{ backgroundColor: warnaBorder }}></div>
@@ -124,7 +124,7 @@ export default function Gift({ isOpen, onClose, icon, warnaBg, warnaBorder, reke
               <Image src={qrCode} alt="QR Code" width={200} height={200} className="object-contain rounded-xl" />
             </div>
           </div>
-        )}
+        )} */}
         
         {(!rekeningPria?.no && !rekeningWanita?.no && !qrCode) && (
           <div style={{ borderColor: warnaBorder, color: warnaBorder }} className="w-full bg-white/90 rounded-2xl border-2 py-8 px-4 text-center">
