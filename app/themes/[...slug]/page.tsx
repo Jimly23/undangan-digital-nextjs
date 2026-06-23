@@ -15,6 +15,7 @@ import About from '@/src/sections-mahara/About';
 import Navbar from '@/src/elements-mahara/Navbar';
 import Popup from '@/src/elements-mahara/Popup';
 import MessagesModal from '@/src/elements-mahara/MessageModal';
+import ThemeForestPage from '../../themes-forest/[...slug]/page';
 
 type ActivePage = 'intro' | 'welcome' | 'menu' | 'galeri' | 'rsvp' | 'gift' | 'love-story' | 'date' | 'dresscode' | 'about';
 
@@ -125,6 +126,21 @@ const maharaAceh = {
   rsvp: "/assets/themes/mahara-aceh/rsvp.webp",
 }
 
+const forestBeach = {
+  intro: "/assets/themes/mahara-aceh/intro.webp",
+  btn: "/assets/themes/mahara-chinese/btn.webp",
+  next: "/assets/themes/mahara-chinese/next.webp",
+  welcome: "/assets/themes/forest-beach/welcome.webp",
+  menu: "/assets/themes/forest-beach/bg.png",
+  gallery: "/assets/themes/forest-beach/galery.png",
+  gift: "/assets/themes/forest-beach/gift.png",
+  loveStory: "/assets/themes/forest-beach/love-story.png",
+  about: "/assets/themes/forest-beach/about.png",
+  date: "/assets/themes/forest-beach/date.png",
+  dresscode: "/assets/themes/forest-beach/dresscode.png",
+  rsvp: "/assets/themes/forest-beach/rsvp.png",
+}
+
 const listFotoGallery = [
   "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=600",
   "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600",
@@ -139,6 +155,7 @@ const themeColors: Record<string, { warnaBg: string; warnaBorder: string }> = {
   'mahara-jawa': { warnaBg: '#e1b87e', warnaBorder: '#603310' },
   'mahara-chinese': { warnaBg: '#fa8c84', warnaBorder: '#9e332b' },
   'mahara-korea': { warnaBg: '#eeb4b3', warnaBorder: '#d9848a' },
+  'forest-beach': { warnaBg: '#cbc157', warnaBorder: '#514716' },
 };
 
 const ceritaKita = [
@@ -210,6 +227,7 @@ const Page = () => {
     'mahara-aceh': maharaAceh,
     'mahara-chinese': maharaChinese,
     'mahara-korea': maharaKorea,
+    'forest-beach': forestBeach,
   };
 
   const currentTheme = dataUndangan?.tema || temaUrl || 'mahara-japan-v2';
@@ -355,6 +373,10 @@ const Page = () => {
   const resepsiTime = dataUndangan?.jam_mulai_resepsi
     ? (dataUndangan.jam_mulai_resepsi + " - " + (dataUndangan.jam_selesai_resepsi || "Selesai"))
     : "10:00 AM - 01:00 PM";
+
+  if (currentTheme === 'forest') {
+    return <ThemeForestPage />;
+  }
 
   return (
     <div className='w-full max-w-[380px] h-[100dvh] mx-auto relative bg-[#E6F9FA] overflow-hidden'>

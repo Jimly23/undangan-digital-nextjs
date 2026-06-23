@@ -290,6 +290,7 @@ export default function ManageDashboard() {
                        <option value="mahara-chinese">Mahara Chinese</option>
                        <option value="mahara-korea">Mahara Korea</option>
                        <option value="mahara-bali">Mahara Bali</option>
+                       <option value="forest">Forest</option>
                        {/* <option value="mahara-aceh">mahara Aceh</option> */}
                      </select>
                   </div>

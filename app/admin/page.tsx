@@ -412,6 +412,7 @@ export default function AdminPage() {
                       <option value="mahara-chinese">mahara Chinese</option>
                       <option value="mahara-korea">mahara Korea</option>
                       <option value="mahara-bali">mahara Bali</option>
+                      <option value="forest">forest</option>
                     </select>
                   </div>
                 </div>
