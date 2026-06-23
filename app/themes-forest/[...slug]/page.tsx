@@ -126,7 +126,7 @@ const maharaAceh = {
 }
 
 const forest = {
-  intro: "/assets/themes/mahara-aceh/intro.webp",
+  intro: "/assets/themes/forest/intro.webp",
   btn: "/assets/themes/mahara-chinese/btn.webp",
   next: "/assets/themes/mahara-chinese/next.webp",
   welcome: "/assets/themes/forest/welcome.webp",
