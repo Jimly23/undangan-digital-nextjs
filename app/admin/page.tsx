@@ -413,6 +413,7 @@ export default function AdminPage() {
                       <option value="mahara-korea">mahara Korea</option>
                       <option value="mahara-bali">mahara Bali</option>
                       <option value="forest">forest</option>
+                      <option value="khitan-boboboy">khitan boboboy</option>
                     </select>
                   </div>
                 </div>

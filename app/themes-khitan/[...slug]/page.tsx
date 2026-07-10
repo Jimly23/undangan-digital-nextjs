@@ -5,18 +5,16 @@ import { useParams } from 'next/navigation';
 import { ArrowLeft, CircleAlert, Volume2, VolumeX, Lightbulb, LightbulbOff, MessageSquare, MessageSquareDashed } from 'lucide-react';
 import { useState, useEffect, useCallback, useRef, type ReactNode } from 'react';
 import { api } from '@/api/api';
-import Galeri from '@/src/sections-mahara/Galeri';
-import Rsvp from '@/src/sections-mahara/Rsvp';
-import Gift from '@/src/sections-mahara/Gift';
-import LoveStory from '@/src/sections-mahara/LoveStory';
-import Date from '@/src/sections-mahara/Date';
-import Dresscode from '@/src/sections-mahara/Dresscode';
-import About from '@/src/sections-mahara/About';
-import Navbar from '@/src/elements-mahara/Navbar';
-import Popup from '@/src/elements-mahara/Popup';
-import MessagesModal from '@/src/elements-mahara/MessageModal';
-import ThemeForestPage from '../../themes-forest/[...slug]/page';
-import ThemeKhitanPage from '../../themes-khitan/[...slug]/page';
+import Galeri from '@/src/sections-khitan/Galeri';
+import Rsvp from '@/src/sections-khitan/Rsvp';
+import Gift from '@/src/sections-khitan/Gift';
+import LoveStory from '@/src/sections-khitan/LoveStory';
+import Date from '@/src/sections-khitan/Date';
+import Dresscode from '@/src/sections-khitan/Dresscode';
+import About from '@/src/sections-khitan/About';
+import Navbar from '@/src/elements-khitan/Navbar';
+import Popup from '@/src/elements-khitan/Popup';
+import MessagesModal from '@/src/elements-khitan/MessageModal';
 
 type ActivePage = 'intro' | 'welcome' | 'menu' | 'galeri' | 'rsvp' | 'gift' | 'love-story' | 'date' | 'dresscode' | 'about';
 
@@ -127,19 +125,34 @@ const maharaAceh = {
   rsvp: "/assets/themes/mahara-aceh/rsvp.webp",
 }
 
-const forestBeach = {
-  intro: "/assets/themes/mahara-aceh/intro.webp",
+const forest = {
+  intro: "/assets/themes/forest/intro.webp",
   btn: "/assets/themes/mahara-chinese/btn.webp",
   next: "/assets/themes/mahara-chinese/next.webp",
-  welcome: "/assets/themes/forest-beach/welcome.webp",
-  menu: "/assets/themes/forest-beach/bg.png",
-  gallery: "/assets/themes/forest-beach/galery.png",
-  gift: "/assets/themes/forest-beach/gift.png",
-  loveStory: "/assets/themes/forest-beach/love-story.png",
-  about: "/assets/themes/forest-beach/about.png",
-  date: "/assets/themes/forest-beach/date.png",
-  dresscode: "/assets/themes/forest-beach/dresscode.png",
-  rsvp: "/assets/themes/forest-beach/rsvp.png",
+  welcome: "/assets/themes/forest/welcome.webp",
+  menu: "/assets/themes/forest/bg.webp",
+  gallery: "/assets/themes/forest/galery.webp",
+  gift: "/assets/themes/forest/gift.webp",
+  loveStory: "/assets/themes/forest/love-story.webp",
+  about: "/assets/themes/forest/about.webp",
+  date: "/assets/themes/forest/date.webp",
+  dresscode: "/assets/themes/forest/dresscode.webp",
+  rsvp: "/assets/themes/forest/rsvp.webp",
+}
+
+const khitanBoboboy = {
+  intro: "/assets/themes/khitan-boboboy/intro.png",
+  btn: "/assets/themes/mahara-chinese/btn.webp",
+  next: "/assets/themes/mahara-chinese/next.webp",
+  welcome: "/assets/themes/khitan-boboboy/welcome.png",
+  menu: "/assets/themes/khitan-boboboy/bg.png",
+  gallery: "/assets/themes/khitan-boboboy/gallery.png",
+  gift: "/assets/themes/khitan-boboboy/gift.png",
+  loveStory: "/assets/themes/khitan-boboboy/love-story.png",
+  about: "/assets/themes/khitan-boboboy/about.png",
+  date: "/assets/themes/khitan-boboboy/date.png",
+  dresscode: "/assets/themes/khitan-boboboy/dresscode.png",
+  rsvp: "/assets/themes/khitan-boboboy/rsvp.png",
 }
 
 const listFotoGallery = [
@@ -156,7 +169,8 @@ const themeColors: Record<string, { warnaBg: string; warnaBorder: string }> = {
   'mahara-jawa': { warnaBg: '#e1b87e', warnaBorder: '#603310' },
   'mahara-chinese': { warnaBg: '#fa8c84', warnaBorder: '#9e332b' },
   'mahara-korea': { warnaBg: '#eeb4b3', warnaBorder: '#d9848a' },
-  'forest-beach': { warnaBg: '#cbc157', warnaBorder: '#514716' },
+  'forest': { warnaBg: '#cbc157', warnaBorder: '#514716' },
+  'khitan-boboboy': { warnaBg: '#4483a8', warnaBorder: '#333f65' },
 };
 
 const ceritaKita = [
@@ -228,7 +242,8 @@ const Page = () => {
     'mahara-aceh': maharaAceh,
     'mahara-chinese': maharaChinese,
     'mahara-korea': maharaKorea,
-    'forest-beach': forestBeach,
+    'forest': forest,
+    'khitan-boboboy': khitanBoboboy,
   };
 
   const currentTheme = dataUndangan?.tema || temaUrl || 'mahara-japan-v2';
@@ -375,14 +390,6 @@ const Page = () => {
     ? (dataUndangan.jam_mulai_resepsi + " - " + (dataUndangan.jam_selesai_resepsi || "Selesai"))
     : "10:00 AM - 01:00 PM";
 
-  if (currentTheme === 'forest') {
-    return <ThemeForestPage />;
-  }
-
-  if (currentTheme.startsWith('khitan-')) {
-    return <ThemeKhitanPage />;
-  }
-
   return (
     <div className='w-full max-w-[380px] h-[100dvh] mx-auto relative bg-[#E6F9FA] overflow-hidden'>
 
@@ -393,8 +400,8 @@ const Page = () => {
         >
           <Image src={imgIcon.intro} alt="bg-game" width={380} height={800} className='h-full relative' />
           <div className='font-angin-senja absolute top-[33%] text-center left-0 right-0 text-[#6b2e1d]'>
-            <p className='text-center text-4xl'>The Wedding Of</p>
-            <p className='text-center text-6xl'>{dataUndangan?.nama_panggilan_pria || 'Cowok'} & {dataUndangan?.nama_panggilan_wanita || 'Cewek'}</p>
+            <p className='text-center text-4xl'>Walimatul Khitan</p>
+            <p className='text-center text-6xl'>{dataUndangan?.nama_panggilan_pria || 'Cowok'}</p>
           </div>
           <div className='absolute bottom-20 left-0 right-0 text-center flex justify-center'>
             <Image
@@ -562,20 +569,20 @@ const Page = () => {
             <Image src={imgIcon.gift} alt='Date & Venue' width={90} height={90} />
           </div>
 
-          <div id='love-story' className={`w-[70px] h-[70px] absolute left-1/2 top-[50px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsLoveStoryOpen(true); }}>
-            <Image src={imgIcon.loveStory} alt='Love Story' width={70} height={70} />
-          </div>
-          <div id='about-us' className={`w-[100px] h-[100px] absolute left-[165px] bottom-[44%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center [animation-delay:400ms] cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsAboutOpen(true); }}>
+          {/* <div id='love-story' className={`w-[40px] h-[40px] absolute right-[3px] bottom-[43%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsLoveStoryOpen(true); }}>
+            <Image src={imgIcon.loveStory} alt='Love Story' width={40} height={40} />
+          </div> */}
+          <div id='about-us' className={`w-[100px] h-[100px] absolute left-[180px] bottom-[40%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center [animation-delay:400ms] cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsAboutOpen(true); }}>
             <Image src={imgIcon.about} alt='About Us' width={150} height={150} />
           </div>
 
-          <div id='date-venue' className={`w-[70px] h-[70px] absolute right-[70px] top-[80px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse [animation-delay:300ms] cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsDateOpen(true); }}>
-            <Image src={imgIcon.date} alt='Date & Venue' width={70} height={70} />
+          <div id='date-venue' className={`w-[80px] h-[80px] absolute right-[80px] top-[25%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse [animation-delay:300ms] cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsDateOpen(true); }}>
+            <Image src={imgIcon.date} alt='Date & Venue' width={80} height={80} />
           </div>
-          <div id='dresscode' className={`w-[70px] h-[70px] absolute right-[70px] top-[210px] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse [animation-delay:500ms] cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsDresscodeOpen(true); }}>
-            <Image src={imgIcon.dresscode} alt='Dresscode' width={120} height={120} />
-          </div>
-          <div id='rsvp' className={`w-[90px] h-[90px] absolute right-[25px] bottom-[35%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center [animation-delay:150ms] cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsRsvpOpen(true); }}>
+          {/* <div id='dresscode' className={`w-[95px] h-[95px] absolute right-[70px] top-[20%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse [animation-delay:500ms] cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsDresscodeOpen(true); }}>
+            <Image src={imgIcon.dresscode} alt='Dresscode' width={95} height={95} />
+          </div> */}
+          <div id='rsvp' className={`w-[80px] h-[80px] absolute right-[15px] bottom-[35%] flex items-center justify-center ${!isLightOn ? 'filter drop-shadow-[0_0_10px_rgba(51,213,208,1)]' : ''} animate-custom-pulse-center [animation-delay:150ms] cursor-pointer`} onClick={() => { setOpenedFromPopup(false); setIsRsvpOpen(true); }}>
             <Image src={imgIcon.rsvp} alt='RSVP' width={170} height={170} />
           </div>
         </div>
