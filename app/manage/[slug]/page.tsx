@@ -260,7 +260,7 @@ export default function ManageDashboard() {
         {isSidebarOpen && <div className="sidebar-overlay" onClick={() => setIsSidebarOpen(false)}></div>}
         <aside className={`admin-sidebar ${isSidebarOpen ? 'open' : ''}`}>
           <div className="sidebar-header border-b pb-4 mb-4">
-            <h2 className="text-xl">👩‍❤️‍👨 Portal Pasangan</h2>
+            <h2 className="text-xl">Halaman Client</h2>
             <p className="text-sm opacity-80 mt-1">Undangan: {slug}</p>
           </div>
           <nav className="sidebar-nav">
@@ -270,7 +270,7 @@ export default function ManageDashboard() {
 
         <main className="admin-main bg-gray-50 overflow-y-auto w-full">
           <header className="admin-header md:hidden flex justify-between items-center w-full px-4 py-3 bg-white border-b">
-            <h1 className="font-bold">Portal Pasangan</h1>
+            <h1 className="font-bold">Halaman Client</h1>
             <button className="menu-toggle block" onClick={() => setIsSidebarOpen(true)}>☰</button>
           </header>
           <div className="max-w-4xl mx-auto p-4 md:p-8">
@@ -486,7 +486,7 @@ export default function ManageDashboard() {
       {/* SIDEBAR */}
       <aside className={`admin-sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-header border-b pb-4 mb-4">
-          <h2 className="text-xl flex gap-2 items-center"><Heart size={20} color="#e84aa9"/> Portal Pasangan</h2>
+          <h2 className="text-xl flex gap-2 items-center"><Heart size={20} color="#e84aa9"/> Halaman Client</h2>
           <p className="text-sm opacity-80 mt-1 truncate">Undangan: {slug}</p>
         </div>
         <nav className="sidebar-nav">
@@ -497,7 +497,7 @@ export default function ManageDashboard() {
 
       <main className="admin-main bg-gray-50 flex-1 w-full overflow-auto">
         <header className="admin-header md:hidden flex items-center justify-between w-full px-4 py-3 bg-white border-b">
-          <h1 className="font-bold flex gap-2 items-center"><Heart size={20} color="#e84aa9"/> Portal Pasangan</h1>
+          <h1 className="font-bold flex gap-2 items-center">Halaman Client</h1>
           <button className="menu-toggle block" onClick={() => setIsSidebarOpen(true)}>☰</button>
         </header>
         
@@ -509,10 +509,10 @@ export default function ManageDashboard() {
                 <h3 className="text-lg font-bold">Undangan: {formData.slug}</h3>
                 <p className="text-sm text-gray-500 mt-1">Tema: {formData.tema}</p>
               </div>
-              <div className="flex flex-wrap gap-2">
-                <a href={`/themes/${formData.tema}/${formData.slug}`} target="_blank" className="w-full sm:w-[150px] p-2 rounded btn-outline flex gap-1 items-center"><Globe size={18} /> <span className='text-[12px]'>Lihat Web Preview</span></a>
+                <a href={`/themes/${formData.tema}/${formData.slug}`} target="_blank" className="w-full p-2 rounded btn-outline flex gap-1 items-center"><Globe size={18} /> <span className='text-[12px]'>Lihat Web Preview</span></a>
+              {/* <div className="">
                 <button className="w-full sm:w-[150px] p-2 rounded btn-primary flex gap-1 items-center" onClick={openEdit}><Settings size={18} /> <span className='text-[12px]'>Edit Konten Umum</span></button>
-              </div>
+              </div> */}
                 <button className="w-full justify-center px-2 py-3 rounded btn-outline flex gap-1 items-center" onClick={openGuests}><Users size={18} /> <span className='text-[12px]'>Tambah Tamu</span></button>
             </div>
           </div>
@@ -520,28 +520,28 @@ export default function ManageDashboard() {
 
         {view === 'tamu' && (
            <div className="max-w-5xl">
-            <header className="flex justify-between items-center mb-6">
+            <header className="flex justify-center items-center mb-6">
               <div>
-                <h1 className="text-lg text-center font-bold">Daftar Tamu</h1>
+                <h1 className="text-lg text-center font-semibold">Daftar Tamu</h1>
               </div>
             </header>
 
-            <div className="admin-card p-6 mb-6">
-              <h3 className="text-lg font-bold mb-4">{editingGuestId ? 'Edit Tamu' : 'Tambah Tamu'}</h3>
-              <form onSubmit={handleGuestSubmit} className="flex gap-4">
-                <input className="form-input flex-1" value={guestForm.nama_tamu} onChange={e => setGuestForm({ nama_tamu: e.target.value })} placeholder="Nama Lengkap Tamu" required />
-                <button type="submit" className="btn btn-primary px-8">{editingGuestId ? 'Update' : 'Tambah'}</button>
+            <div className="mb-6">
+              <h3 className="font-semibold mb-2">{editingGuestId ? 'Edit Tamu' : 'Tambah Tamu'}</h3>
+              <form onSubmit={handleGuestSubmit} className="flex gap-2">
+                <input className="border border-slate-300 px-2 py-3 rounded-lg text-sm flex-1" value={guestForm.nama_tamu} onChange={e => setGuestForm({ nama_tamu: e.target.value })} placeholder="Nama Lengkap Tamu" required />
+                <button type="submit" className="py-2 btn-primary px-4 rounded-lg text-sm">{editingGuestId ? 'Update' : 'Tambah'}</button>
                 {editingGuestId && <button type="button" className="btn btn-outline" onClick={() => { setEditingGuestId(null); setGuestForm({ nama_tamu: '' }) }}>Batal</button>}
               </form>
             </div>
 
-            <div className="admin-card p-6">
+            <div className="">
               {loadingGuests ? <p>Memuat tamu...</p> : (
                 <div className="admin-table-wrapper">
                   <table className="admin-table w-full text-left">
                     <thead>
                       <tr>
-                        <th className="p-3 bg-gray-50 border-b w-12">No</th>
+                        <th className=" bg-gray-50 border-b">No</th>
                         <th className="p-3 bg-gray-50 border-b">Nama Tamu</th>
                         <th className="p-3 bg-gray-50 border-b min-w-[100px]">Kirim</th>
                         <th className="p-3 bg-gray-50 border-b min-w-[120px]">Edit / Hapus</th>
@@ -550,7 +550,7 @@ export default function ManageDashboard() {
                     <tbody>
                       {guests.map((g, i) => (
                         <tr key={g.id} className="border-b">
-                          <td className="p-3">{i + 1}</td>
+                          <td className="">{i + 1}</td>
                           <td className="p-3 font-bold">{g.nama_tamu}</td>
                           <td className="p-3">
                             <div className="flex gap-2">
