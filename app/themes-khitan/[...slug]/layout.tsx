@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = Array.isArray(slugParam) && slugParam.length > 1 ? slugParam[1] : '';
 
   let ogImage = '/logo.png';
-  let title = 'Youvitation - Wedding Invitation';
+  let title = 'Youvitation - Khitan Invitation';
   let description = 'Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.';
 
   if (slug) {
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       const res = await axios.get(`${BASE_URL}/invitation/${slug}`);
       const data = res.data?.data || res.data;
       if (data) {
-        title = `The Wedding of ${data.nama_panggilan_pria || 'Mempelai Pria'} & ${data.nama_panggilan_wanita || 'Mempelai Wanita'}`;
+        title = `Walimatul Khitan ${data.nama_panggilan_pria || 'Nama Anak'}`;
         if (data.foto_pria_url) ogImage = data.foto_pria_url;
         else if (data.foto_wanita_url) ogImage = data.foto_wanita_url;
       }
