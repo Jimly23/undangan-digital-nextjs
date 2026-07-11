@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       const res = await axios.get(`${BASE_URL}/invitation/${slug}`);
       const data = res.data?.data || res.data;
       if (data) {
-        title = `The Wedding of ${data.nama_panggilan_pria || 'Mempelai Pria'} & ${data.nama_panggilan_wanita || 'Mempelai Wanita'}`;
+        title = `Khitanan ${data.nama_panggilan_pria || 'Mempelai Pria'}`;
         if (data.foto_pria_url) ogImage = data.foto_pria_url;
         else if (data.foto_wanita_url) ogImage = data.foto_wanita_url;
       }
