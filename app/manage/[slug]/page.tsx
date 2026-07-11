@@ -563,8 +563,7 @@ export default function ManageDashboard() {
                                     <button className=" border-green-500 text-green-600 hover:bg-green-50" onClick={() => {
                                       const namaPria = formData.nama_panggilan_pria || 'Mempelai Pria';
                                       const namaWanita = formData.nama_panggilan_wanita || 'Mempelai Wanita';
-                                      const message = `Assalamu'alaikum Wr. Wb.\n\nBismillahirahmanirrahim.\nTanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i, teman sekaligus sahabat, untuk menghadiri acara pernikahan kami:\n\n${namaPria} \n\nBerikut klik link untuk info lengkap dari acara kami :\n${constructedUrl}\n\nMerupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.\n\nWassalamu'alaikum Wr. Wb.\n\nTerima Kasih..`;
-                                      const waLink = `https://wa.me/?text=${encodeURIComponent(message)}`;
+const message = `Assalamu'alaikum Wr. Wb.\n\nBismillahirrahmanirrahim.\nTanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i, teman sekaligus sahabat, untuk menghadiri acara tasyakuran khitan putra kami:\n\n${namaPria}\n\nBerikut klik link untuk informasi lengkap mengenai acara kami:\n${constructedUrl}\n\nMerupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir serta memberikan doa terbaik kepada putra kami.\n\nWassalamu'alaikum Wr. Wb.\n\nTerima kasih.`;                                      const waLink = `https://wa.me/?text=${encodeURIComponent(message)}`;
                                       window.open(waLink, '_blank');
                                     }}>Whatsapp</button>
                                   </>
