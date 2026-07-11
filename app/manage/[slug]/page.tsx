@@ -510,8 +510,8 @@ export default function ManageDashboard() {
                 <p className="text-sm text-gray-500 mt-1">Tema: {formData.tema}</p>
               </div>
               <div className="flex flex-wrap gap-2">
-                <a href={`/themes/${formData.tema}/${formData.slug}`} target="_blank" className="w-[150px] p-2 rounded btn-outline flex gap-1 items-center"><Globe size={18} /> <span className='text-[12px]'>Lihat Web Preview</span></a>
-                <button className="w-[150px] p-2 rounded btn-primary flex gap-1 items-center" onClick={openEdit}><Settings size={18} /> <span className='text-[12px]'>Edit Konten Umum</span></button>
+                <a href={`/themes/${formData.tema}/${formData.slug}`} target="_blank" className="w-full sm:w-[150px] p-2 rounded btn-outline flex gap-1 items-center"><Globe size={18} /> <span className='text-[12px]'>Lihat Web Preview</span></a>
+                <button className="w-full sm:w-[150px] p-2 rounded btn-primary flex gap-1 items-center" onClick={openEdit}><Settings size={18} /> <span className='text-[12px]'>Edit Konten Umum</span></button>
               </div>
                 <button className="w-full justify-center px-2 py-3 rounded btn-outline flex gap-1 items-center" onClick={openGuests}><Users size={18} /> <span className='text-[12px]'>Tambah Tamu</span></button>
             </div>
