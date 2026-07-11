@@ -504,16 +504,16 @@ export default function ManageDashboard() {
         <div className="p-4 md:p-8">
         {view === 'dashboard' && (
           <div className="max-w-4xl">
-            <h1 className="text-2xl font-bold mb-6">Manajemen Akses Client</h1>
             <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-6 flex justify-between items-center flex-wrap gap-4">
               <div>
                 <h3 className="text-lg font-bold">Undangan: {formData.slug}</h3>
                 <p className="text-sm text-gray-500 mt-1">Tema: {formData.tema}</p>
               </div>
-              <div className="flex gap-2">
-                <a href={`/themes/${formData.tema}/${formData.slug}`} target="_blank" className="btn btn-outline flex gap-2 items-center"><Globe size={18} /> Lihat Web Preview</a>
-                <button className="btn btn-primary flex gap-2 items-center" onClick={openEdit}><Settings size={18} /> Edit Konten Umum</button>
+              <div className="flex flex-wrap gap-2">
+                <a href={`/themes/${formData.tema}/${formData.slug}`} target="_blank" className="w-[150px] p-2 rounded btn-outline flex gap-1 items-center"><Globe size={18} /> <span className='text-[12px]'>Lihat Web Preview</span></a>
+                <button className="w-[150px] p-2 rounded btn-primary flex gap-1 items-center" onClick={openEdit}><Settings size={18} /> <span className='text-[12px]'>Edit Konten Umum</span></button>
               </div>
+                <button className="w-full justify-center px-2 py-3 rounded btn-outline flex gap-1 items-center" onClick={openGuests}><Users size={18} /> <span className='text-[12px]'>Tambah Tamu</span></button>
             </div>
           </div>
         )}
@@ -522,8 +522,7 @@ export default function ManageDashboard() {
            <div className="max-w-5xl">
             <header className="flex justify-between items-center mb-6">
               <div>
-                <h1 className="text-2xl font-bold">Daftar Tamu Spesifik</h1>
-                <p className="text-gray-500">Kelola dan bagikan link custom untuk setiap tamu undangan Anda.</p>
+                <h1 className="text-lg text-center font-bold">Daftar Tamu</h1>
               </div>
             </header>
 
@@ -544,7 +543,7 @@ export default function ManageDashboard() {
                       <tr>
                         <th className="p-3 bg-gray-50 border-b w-12">No</th>
                         <th className="p-3 bg-gray-50 border-b">Nama Tamu</th>
-                        <th className="p-3 bg-gray-50 border-b min-w-[200px]">Aksi Share Link</th>
+                        <th className="p-3 bg-gray-50 border-b min-w-[100px]">Kirim</th>
                         <th className="p-3 bg-gray-50 border-b min-w-[120px]">Edit / Hapus</th>
                       </tr>
                     </thead>
@@ -560,14 +559,14 @@ export default function ManageDashboard() {
                                 const constructedUrl = `${window.location.origin}/themes/${tema}/${slug}/${encodeURIComponent(g.nama_tamu)}`;
                                 return (
                                   <>
-                                    <a href={constructedUrl} target="_blank" className="btn btn-sm btn-outline"><Globe size={14} /> Link Unik</a>
-                                    <button className="btn btn-sm border border-green-500 text-green-600 hover:bg-green-50" onClick={() => {
+                                    {/* <a href={constructedUrl} target="_blank" className="btn btn-sm btn-outline"><Globe size={14} /> Link Unik</a> */}
+                                    <button className=" border-green-500 text-green-600 hover:bg-green-50" onClick={() => {
                                       const namaPria = formData.nama_panggilan_pria || 'Mempelai Pria';
                                       const namaWanita = formData.nama_panggilan_wanita || 'Mempelai Wanita';
-                                      const message = `Assalamu'alaikum Wr. Wb.\n\nBismillahirahmanirrahim.\nTanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i, teman sekaligus sahabat, untuk menghadiri acara pernikahan kami:\n\n${namaPria} & ${namaWanita}\n\nBerikut klik link untuk info lengkap dari acara kami :\n${constructedUrl}\n\nMerupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.\n\nWassalamu'alaikum Wr. Wb.\n\nTerima Kasih..`;
+                                      const message = `Assalamu'alaikum Wr. Wb.\n\nBismillahirahmanirrahim.\nTanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i, teman sekaligus sahabat, untuk menghadiri acara pernikahan kami:\n\n${namaPria} \n\nBerikut klik link untuk info lengkap dari acara kami :\n${constructedUrl}\n\nMerupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.\n\nWassalamu'alaikum Wr. Wb.\n\nTerima Kasih..`;
                                       const waLink = `https://wa.me/?text=${encodeURIComponent(message)}`;
                                       window.open(waLink, '_blank');
-                                    }}>Kirim WhatsApp</button>
+                                    }}>Whatsapp</button>
                                   </>
                                 );
                               })()}
