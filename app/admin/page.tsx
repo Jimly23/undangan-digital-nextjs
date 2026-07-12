@@ -305,8 +305,8 @@ export default function AdminPage() {
 
     const fd = new FormData()
     if (view === 'edit') {
-      // Sometimes Laravel needs _method PUT when files are uploaded
-      // fd.append('_method', 'PUT') // uncomment if backend requires it
+      // Laravel needs _method PUT when files are uploaded via FormData
+      fd.append('_method', 'PUT') 
     }
 
     Object.keys(formData).forEach(key => {
