@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
+import { trackEvent } from '../lib/fpixel';
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -12,10 +13,20 @@ export default function Home() {
   const handleOrder = (e: React.FormEvent) => {
     e.preventDefault();
     if (!orderModal) return;
+    
+    trackEvent('Lead');
+    
     const text = `Halo Youvitation,%0ASaya ingin memesan tema undangan.%0A%0A*Detail Pesanan:*%0ATema: ${orderModal.name}%0AHarga: ${orderModal.price}%0A%0A*Data Pemesan:*%0ANama Lengkap: ${orderForm.name}%0ANo. WhatsApp: ${orderForm.phone}%0A%0AMohon informasi lebih lanjut terkait pemesanan tema ini.`;
     const waNumber = '6282329322353';
     window.open(`https://wa.me/${waNumber}?text=${text}`, '_blank');
   };
+
+  const isFormOpen = !!orderModal;
+  useEffect(() => {
+    if (isFormOpen) {
+      trackEvent('InitiateCheckout');
+    }
+  }, [isFormOpen]);
 
   useEffect(() => {
     // Show promo after 5 seconds for impact
@@ -200,7 +211,11 @@ export default function Home() {
                 Dapatkan undangan online yang unik, interaktif, dan mudah dibagikan kepada seluruh tamu Anda.
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
-                <button onClick={() => { setOrderModal({ name: 'Custom/Belum Memilih', price: 'Konsultasi Admin' }); setOrderForm({ name: '', phone: '' }); }} className="bg-gold-leaf text-white px-8 py-3 rounded-xl font-label-caps text-label-caps hover:opacity-90 transition-all">
+                <button onClick={() => { 
+                  trackEvent('ViewContent');
+                  setOrderModal({ name: 'Custom/Belum Memilih', price: 'Konsultasi Admin' }); 
+                  setOrderForm({ name: '', phone: '' }); 
+                }} className="bg-gold-leaf text-white px-8 py-3 rounded-xl font-label-caps text-label-caps hover:opacity-90 transition-all">
                   Buat Undangan
                 </button>
               </div>
