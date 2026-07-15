@@ -165,7 +165,7 @@ export default function Home() {
         }
         @keyframes marquee {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          100% { transform: translateX(-82%); }
         }
         .animate-marquee {
           animation: marquee 30s linear infinite;
@@ -306,13 +306,13 @@ export default function Home() {
                     <h3 className="font-display-lg text-headline-sm text-primary">Japan Theme</h3>
                     <div className="flex items-center gap-2 mt-1 flex-wrap">
                       <span className="text-on-surface-variant line-through text-[10px]">Rp 689k</span>
-                      <span className="text-primary font-bold text-sm">Rp 250.000</span>
-                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">50%</span>
+                      <span className="text-primary font-bold text-sm">Rp119.000</span>
+                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">82%</span>
                     </div>
                   </div>
                   <div className="grid grid-cols-1 gap-2 pt-2">
                     <a href="https://youvitation.net/themes/mahara-japan-v2/adelio-elina/Tamu%20Undangan" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
-                    <button onClick={() => { setOrderModal({ name: 'Japan Theme', price: 'Rp 250.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
+                    <button onClick={() => { setOrderModal({ name: 'Japan Theme', price: 'Rp119.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
                   </div>
                 </div>
               </div>
@@ -331,13 +331,13 @@ export default function Home() {
                     <h3 className="font-display-lg text-headline-sm text-primary">Jawa Theme</h3>
                     <div className="flex items-center gap-2 mt-1 flex-wrap">
                       <span className="text-on-surface-variant line-through text-[10px]">Rp 689k</span>
-                      <span className="text-primary font-bold text-sm">Rp 250.000</span>
-                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">50%</span>
+                      <span className="text-primary font-bold text-sm">Rp119.000</span>
+                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">82%</span>
                     </div>
                   </div>
                   <div className="grid grid-cols-1 gap-2 pt-2">
                     <a href="https://youvitation.net/themes/mahara-jawa/adel-elina/Tamu%20Undangan" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
-                    <button onClick={() => { setOrderModal({ name: 'Jawa Theme', price: 'Rp 250.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
+                    <button onClick={() => { setOrderModal({ name: 'Jawa Theme', price: 'Rp119.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
                   </div>
                 </div>
               </div>
@@ -356,13 +356,13 @@ export default function Home() {
                     <h3 className="font-display-lg text-headline-sm text-primary">Chinese Theme</h3>
                     <div className="flex items-center gap-2 mt-1 flex-wrap">
                       <span className="text-on-surface-variant line-through text-[10px]">Rp 689k</span>
-                      <span className="text-primary font-bold text-sm">Rp 250.000</span>
-                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">50%</span>
+                      <span className="text-primary font-bold text-sm">Rp119.000</span>
+                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">82%</span>
                     </div>
                   </div>
                   <div className="grid grid-cols-1 gap-2 pt-2">
                     <a href="https://youvitation.net/themes/mahara-chinese/adelio-elaina/Tamu%20Undangan" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
-                    <button onClick={() => { setOrderModal({ name: 'Chinese Theme', price: 'Rp 250.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
+                    <button onClick={() => { setOrderModal({ name: 'Chinese Theme', price: 'Rp119.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
                   </div>
                 </div>
               </div>
@@ -381,13 +381,13 @@ export default function Home() {
                     <h3 className="font-display-lg text-headline-sm text-primary">Bali Theme</h3>
                     <div className="flex items-center gap-2 mt-1 flex-wrap">
                       <span className="text-on-surface-variant line-through text-[10px]">Rp 689k</span>
-                      <span className="text-primary font-bold text-sm">Rp 250.000</span>
-                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">50%</span>
+                      <span className="text-primary font-bold text-sm">Rp119.000</span>
+                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">82%</span>
                     </div>
                   </div>
                   <div className="grid grid-cols-1 gap-2 pt-2">
                     <a href="https://youvitation.net/themes/mahara-bali/adelio-eli/" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
-                    <button onClick={() => { setOrderModal({ name: 'Bali Theme', price: 'Rp 250.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
+                    <button onClick={() => { setOrderModal({ name: 'Bali Theme', price: 'Rp119.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
                   </div>
                 </div>
               </div>
@@ -406,13 +406,13 @@ export default function Home() {
                     <h3 className="font-display-lg text-headline-sm text-primary">Korea Theme</h3>
                     <div className="flex items-center gap-2 mt-1 flex-wrap">
                       <span className="text-on-surface-variant line-through text-[10px]">Rp 689k</span>
-                      <span className="text-primary font-bold text-sm">Rp 250.000</span>
-                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">50%</span>
+                      <span className="text-primary font-bold text-sm">Rp119.000</span>
+                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">82%</span>
                     </div>
                   </div>
                   <div className="grid grid-cols-1 gap-2 pt-2">
                     <a href="https://youvitation.net/themes/mahara-korea/ade-elina/Nama" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
-                    <button onClick={() => { setOrderModal({ name: 'Korea Theme', price: 'Rp 250.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
+                    <button onClick={() => { setOrderModal({ name: 'Korea Theme', price: 'Rp119.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
                   </div>
                 </div>
               </div>
@@ -430,13 +430,13 @@ export default function Home() {
                     <h3 className="font-display-lg text-headline-sm text-primary">Aceh Theme</h3>
                     <div className="flex items-center gap-2 mt-1 flex-wrap">
                       <span className="text-on-surface-variant line-through text-[10px]">Rp 689k</span>
-                      <span className="text-primary font-bold text-sm">Rp 250.000</span>
-                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">50%</span>
+                      <span className="text-primary font-bold text-sm">Rp119.000</span>
+                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">82%</span>
                     </div>
                   </div>
                   <div className="grid grid-cols-1 gap-2 pt-2">
                     <a href="https://youvitation.net/themes/mahara-aceh/adelio-elainaa/Nama" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
-                    <button onClick={() => { setOrderModal({ name: 'Korea Theme', price: 'Rp 250.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
+                    <button onClick={() => { setOrderModal({ name: 'Korea Theme', price: 'Rp119.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
                   </div>
                 </div>
               </div>
@@ -454,13 +454,13 @@ export default function Home() {
                     <h3 className="font-display-lg text-headline-sm text-primary">Forest Theme</h3>
                     <div className="flex items-center gap-2 mt-1 flex-wrap">
                       <span className="text-on-surface-variant line-through text-[10px]">Rp 689k</span>
-                      <span className="text-primary font-bold text-sm">Rp 250.000</span>
-                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">50%</span>
+                      <span className="text-primary font-bold text-sm">Rp119.000</span>
+                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">82%</span>
                     </div>
                   </div>
                   <div className="grid grid-cols-1 gap-2 pt-2">
                     <a href="https://youvitation.net/themes-forest/forest/tes-tes/Nama" target="_blank" rel="noreferrer" className="border border-outline py-2 text-[10px] font-label-caps hover:bg-primary hover:text-white transition-all rounded-xl text-center block w-full">LIHAT TEMA</a>
-                    <button onClick={() => { setOrderModal({ name: 'Korea Theme', price: 'Rp 250.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
+                    <button onClick={() => { setOrderModal({ name: 'Korea Theme', price: 'Rp119.000' }); setOrderForm({ name: '', phone: '' }); }} className="bg-primary text-white py-2 text-[10px] font-label-caps hover:bg-sage-deep transition-all rounded-xl w-full">PILIH TEMA</button>
                   </div>
                 </div>
               </div>
@@ -478,8 +478,8 @@ export default function Home() {
                     <h3 className="font-display-lg text-headline-sm text-primary">Floral - 07</h3>
                     <div className="flex items-center gap-2 mt-1 flex-wrap">
                       <span className="text-on-surface-variant line-through text-[10px]">Rp 689k</span>
-                      <span className="text-primary font-bold text-sm">Rp 250.000</span>
-                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">50%</span>
+                      <span className="text-primary font-bold text-sm">Rp119.000</span>
+                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">82%</span>
                     </div>
                   </div>
                   <div className="grid grid-cols-1 gap-2 pt-2">
@@ -502,8 +502,8 @@ export default function Home() {
                     <h3 className="font-display-lg text-headline-sm text-primary">Luxury - 02</h3>
                     <div className="flex items-center gap-2 mt-1 flex-wrap">
                       <span className="text-on-surface-variant line-through text-[10px]">Rp 689k</span>
-                      <span className="text-primary font-bold text-sm">Rp 250.000</span>
-                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">50%</span>
+                      <span className="text-primary font-bold text-sm">Rp119.000</span>
+                      <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold">82%</span>
                     </div>
                   </div>
                   <div className="grid grid-cols-1 gap-2 pt-2">
@@ -530,7 +530,7 @@ export default function Home() {
               <div className="bg-paper-white p-10 rounded-2xl premium-shadow border-t-4 border-gold-leaf relative transition-transform">
                 <div className="mb-8">
                   <h3 className="font-display-lg text-headline-sm text-primary mb-2">Style Reguler</h3>
-                  <p className="text-on-surface-variant text-xs line-through">Rp 250.000</p>
+                  <p className="text-on-surface-variant text-xs line-through">Rp119.000</p>
                   <div className="flex items-baseline gap-2">
                     <span className="font-display-lg text-4xl text-primary">Rp 99.000</span>
                     <span className="bg-red-100 text-red-700 text-[10px] px-2 py-0.5 rounded font-bold uppercase">40% Off</span>
@@ -554,7 +554,7 @@ export default function Home() {
                   <h3 className="font-display-lg text-headline-sm text-primary mb-2">Style Game</h3>
                   <p className="text-on-surface-variant text-xs line-through">Rp 689.000</p>
                   <div className="flex items-baseline gap-2">
-                    <span className="font-display-lg text-4xl text-primary">Rp 250.000</span>
+                    <span className="font-display-lg text-4xl text-primary">Rp119.000</span>
                     <span className="bg-red-100 text-red-700 text-[10px] px-2 py-0.5 rounded font-bold uppercase">40% OFF</span>
                   </div>
                 </div>
@@ -576,7 +576,7 @@ export default function Home() {
                   <p className="text-on-surface-variant text-xs line-through">Rp 889.000</p>
                   <div className="flex items-baseline gap-2">
                     <span className="font-display-lg text-4xl text-primary">Rp 449.000</span>
-                    <span className="bg-red-100 text-red-700 text-[10px] px-2 py-0.5 rounded font-bold uppercase">50% OFF</span>
+                    <span className="bg-red-100 text-red-700 text-[10px] px-2 py-0.5 rounded font-bold uppercase">82% OFF</span>
                   </div>
                 </div>
                 <ul className="space-y-4 mb-10 text-sm">
@@ -894,7 +894,7 @@ export default function Home() {
                       value={orderModal.name}
                       onChange={(e) => {
                         const newName = e.target.value;
-                        let newPrice = 'Rp 250.000';
+                        let newPrice = 'Rp119.000';
                         if (newName === 'Custom/Belum Memilih') newPrice = 'Konsultasi Admin';
                         setOrderModal({ ...orderModal, name: newName, price: newPrice });
                       }}
